@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<div class="navbar navbar-fixed-top scroll-hide"
+	style="overflow: visible;">
+	<div class="container-fluid top-bar">
+		<div class="pull-right">
+			<ul class="nav navbar-nav pull-right">
+				<li class="dropdown user hidden-xs"><a href="#"
+					class="dropdown-toggle" data-toggle="dropdown"> <img width="34"
+						height="34" src="__PUBLIC__/images/avatar-male.jpg">管理员<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="{:U('Admin/index')}"> <i class="icon-user"></i>我的账户</a></li>
+						<!--<li><a href="###"> <i class="icon-gear"></i>账户设置</a></li> -->
+						<li><a href="{:U('Public/logout')}"> <i class="icon-signout"></i>登出
+						</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		<button class="navbar-toggle">
+			<span class="icon-bar"></span><span class="icon-bar"></span><span
+				class="icon-bar"></span>
+		</button>
+		<a href="{:U('Index/index')}" class="logo">后台管理系统</a>
+	</div>
+	<div class="container-fluid main-nav clearfix">
+		<div class="nav-collapse">
+			<ul class="nav">
+				<li><a href="{:U('Index/index')}"><span
+						class="icon-dashboard" aria-hidden="true"></span>主页</a></li>
+				<li><a href="{:U('Project/index')}"><span
+						class="icon-list" aria-hidden="true"></span>报告管理</a></li>
+				<li><a href="{:U('Project/add')}"><span
+						class="icon-plus" aria-hidden="true"></span>新增报告</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

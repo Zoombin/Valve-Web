@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<include file="Common/head" />
+</head>
+<body>
+	<include file="Common/top" />
+	<div class="container-fluid main-content">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="widget-container fluid-height clearfix">
+					<div class="heading">
+						<i class="icon-table"></i>{$meta_title}
+						<a href="{:U('Project/add')}" class="pull-right" ><i class="icon-plus"></i>新增报告</a> 
+					</div>
+					<div class="widget-content padded clearfix">
+						<div id="dataTable1_wrapper" class="dataTables_wrapper"
+							role="grid">
+							<div class="search-section">
+								<form action="{:U('Project/index')}" method="get" id="searchForm">
+									<div class="col-md-4">
+										<div class="form-group ">
+											<div class="input-group">
+												<span class="input-group-addon">关键词</span>
+												<input class="form-control" placeholder="编号编号/公司名称" name="key" value="{$key}" type="text">
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="form-group ">
+											<div class="input-group">
+												<button class="btn btn-primary" type="submit">Search</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div>{$page}</div>
+							<table class="table table-striped" style="clear: both;">
+									<tr>
+										<th>编号</th>
+										<th>使用单位</th>
+										<th>联系人</th>
+										<th>添加日期</th>
+										<th>操作</th>
+									</tr>
+									<volist name="list" id="vo">
+										<tr>
+											<td>{$vo.rnum}</td>
+											<td>{$vo.company}</td>
+											<td>{$vo.contact}</td>
+											<td>{$vo.createtime}</td>
+											<td>
+												<div class="action-buttons">
+						                           <a href="{:U('Project/add','id='.$vo['id'])}" class="table-actions" title="编辑" data-toggle="tooltip"><i class="icon-edit"></i></a>
+						                           <a target="_blank" href="{:U('Project/toprint','type=1&id='.$vo['id'])}" class="table-actions" title="打印报告书" data-toggle="tooltip"><i class="icon-print"></i></a>
+												   <a target="_blank" href="{:U('Project/toprint','type=2&id='.$vo['id'])}" class="table-actions" title="打印校验记录" data-toggle="tooltip"><i class="icon-save"></i></a>
+						                           <a href="javascript:void(0);" class="table-actions" title="删除" data-toggle="tooltip" onclick="removeProduct({$vo.id});"><i class="icon-trash"></i></a>
+						                        </div>
+					                        </td>
+										</tr>
+									</volist>
+									<empty name="list">
+									<tr>
+										<td colspan="5">没有数据</td>										
+									</tr>
+									</empty>
+									
+							</table>
+							<div>{$page}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+<!-- end show detail -->
+	<include file="Common/footer" />
+	<script type="text/javascript">	
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+			$("a[data-lightbox]").lightbox({
+			    fitToScreen: true,
+			    imageClickClose: false,
+			    fileLoadingImage : '__PUBLIC__/images/loading.gif',
+				fileBottomNavCloseImage : '__PUBLIC__/images/closelabel.gif'
+		    });
+		});
+		function removeProduct(id){
+			alertify.confirm("确定要删除该报告？", function (e) {
+				if (e) {
+					$.post("{:U('Project/remove')}", { id: id},
+						   	function(data){
+						     alertify.log(data);
+						     reload(500);
+						   });
+				} 
+			});
+		}
+	</script>
+</body>
+</html>

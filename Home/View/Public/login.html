@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录后台管理系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <include file="Common/head" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="login-content">
+                <h1>登录后台管理系统</h1>
+                <hr/>
+                <form class="form-horizontal" id="loginForm" action="{:U('Public/checkLogin')}" method="post">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="uname">用户名:</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user login-icon"></i></span>
+                                <input type="text" class="form-control" id="uname" name="uname" placeholder="账号" datatype="s4-16" nullmsg="请输入账号！" errormsg="账号至少4个字符,最多16个字符！">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="upwd">密码:</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock login-icon"></i></span>
+                                <input type="password" class="form-control" id="upwd" name="upwd"  placeholder="密码" datatype="*4-16" nullmsg="请输入密码！" errormsg="密码至少4个字符,最多16个字符！">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <span id="msgdemo2" style="margin-left:30px;"></span>
+                        <button type="submit" class="btn btn-success pull-right">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Common/footer" />
+<script type="text/javascript">
+    $(".form-horizontal").Validform({
+        tiptype:function(msg,o,cssctl){
+            var objtip=$("#msgdemo2");
+            cssctl(objtip,o.type);
+            objtip.text(msg);
+        }
+    });
+</script>
+</body>
+</html>

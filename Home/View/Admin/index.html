@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<include file="Common/head" />
+</head>
+<body>
+	<include file="Common/top" />
+	<div class="container-fluid main-content">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="widget-container fluid-height clearfix">
+					<div class="heading"><i class="icon-user"></i>我的信息:{$Think.session.user.uname}</div>
+					<form class="form-horizontal" action="{:U('Admin/save')}" method="post" id="userform">
+						<input type="hidden" name="id" id="id" value="{$Think.session.user.id}"/>
+			          <div class="form-group col-md-6">
+			            <label class="control-label col-md-2">账号</label>
+			            <div class="col-md-3">
+			              <div class="input-group bootstrap-timepicker">
+			                {$Think.session.user.uname}
+			              </div>
+			            </div>
+			          </div>
+			          <div class="form-group col-md-6">
+			            <label class="control-label col-md-2">新密码</label>
+			            <div class="col-md-3">
+			              <div class="input-group bootstrap-timepicker">
+			                <input type="password" name="upwd" datatype="*5-12" errormsg="密码不能少于5-12个字符！" id="upwd" class="form-control" ignore="ignore">
+			              </div>
+			            </div>
+			          </div>
+			          			          
+			          <div class="form-group col-md-6">
+			            <label class="control-label col-md-2">重复新密码</label>
+			            <div class="col-md-3">
+			              <div class="input-group bootstrap-timepicker">
+			                <input type="password" name="re_password" errormsg="您两次输入的账号密码不一致！" recheck="upwd" datatype="*" id="re_password" class="form-control" ignore="ignore">
+			              </div>
+			            </div>
+			          </div>
+			           <div class="form-group col-md-6">
+			            <label class="control-label col-md-2">邮箱</label>
+			            <div class="col-md-3">
+			              <div class="input-group bootstrap-timepicker">
+			                <input type="text" name="email" value="{$Think.session.user.email}" datatype="e" errormsg="邮箱格式不正确" id="email" class="form-control">
+			              </div>
+			            </div>
+			          </div>
+			          <div class="form-group col-md-12"><input type="submit" value="保存" class="btn btn-primary pull-right"></div>
+			        </form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<include file="Common/footer" />
+	<script type="text/javascript">
+	$(function(){
+		$("#userform").Validform({
+			tiptype:3
+		});		
+	});
+	</script>
+</body>
+</html>
