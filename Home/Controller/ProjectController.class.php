@@ -103,6 +103,12 @@ class ProjectController extends CommonController {
 	            $typeList[]=$tmp;
 	        }
 	    }
+	    $project['verifydate']=date('Y 年  m 月 d 日',strtotime($project['verifydate']));
+	    $project['nextverifydate']=date('Y 年  m 月 d 日',strtotime($project['nextverifydate']));
+	    $project['verifymandate']=date('Y 年  m 月 d 日',strtotime($project['verifymandate']));
+	    $project['auditmandate']=date('Y 年  m 月 d 日',strtotime($project['auditmandate']));
+	    $project['madedate']=date('Y 年  m 月 d 日',strtotime($project['madedate']));
+	    $project['verifyvalidatedate']=date('Y 年  m 月 d 日',strtotime($project['verifyvalidatedate']));
 	    $this->assign('type', $type);
 	    $this->assign('project', $project);
 	    $this->assign('types', $typeList);
