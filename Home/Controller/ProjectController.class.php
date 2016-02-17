@@ -135,10 +135,8 @@ class ProjectController extends CommonController {
 	    // The text to draw
 	    // Replace path by your own font path
 	     $font='Public/fonts/gjfttf.ttf';
-		 echo file_exists($font);
-die();
 	    // Add some shadow to the text
-	    //imagettftext($im, 20, 0, 0, 29, $grey, $font, $text);
+	    imagettftext($im, 20, 0, 0, 29, $grey, $font, $text);
 	    // Add the text
 	    imagettftext($im, 20, 0, 0, 28, $black, $font, $text);
 	    // Using imagepng() results in clearer text compared with imagejpeg()
