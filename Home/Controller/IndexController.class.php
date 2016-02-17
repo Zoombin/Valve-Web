@@ -5,5 +5,7 @@ class IndexController extends CommonController {
             $this->meta_title = '后台管理面板';
             $this->display();
         }
-
+		public function info(){
+            phpinfo();
+        }
 }
