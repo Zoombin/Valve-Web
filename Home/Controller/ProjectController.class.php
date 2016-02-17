@@ -123,7 +123,7 @@ class ProjectController extends CommonController {
 	    $width=$size2*10+($size-$size2)*30;
 	    
 	    //$width=iconv_strlen($text,'utf-8')*30;
-	    header('Content-Type: image/png');
+	    //header('Content-Type: image/png');
 	    // Create the image
 	    $im = imagecreatetruecolor($width, 30);
 	    
@@ -134,7 +134,7 @@ class ProjectController extends CommonController {
 	    imagefilledrectangle($im, 0, 0, $width, 30, $white);	    
 	    // The text to draw
 	    // Replace path by your own font path
-	     $font=$_SERVER['DOCUMENT_ROOT'].'/Public/fonts/gjfttf.ttf';
+	     echo $font=$_SERVER['DOCUMENT_ROOT'].'/Public/fonts/gjfttf.ttf';
 	    // Add some shadow to the text
 	    imagettftext($im, 20, 0, 0, 29, $grey, $font, $text);
 	    // Add the text
