@@ -123,7 +123,7 @@ class ProjectController extends CommonController {
 	    $width=$size2*10+($size-$size2)*30;
 	    
 	    //$width=iconv_strlen($text,'utf-8')*30;
-	    //header('Content-Type: image/png');
+	    header('Content-Type: image/png');
 	    // Create the image
 	    $im = imagecreatetruecolor($width, 30);
 	    
