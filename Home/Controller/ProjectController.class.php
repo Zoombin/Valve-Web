@@ -114,4 +114,33 @@ class ProjectController extends CommonController {
 	    }
 	}
 	
+
+	function fonts(){
+	    $text = $_GET['font']?$_GET['font']:"test...";
+	    $size=iconv_strlen($text,'utf-8');
+	    $text2= preg_replace('/[^0-9A-Za-z]/', '', $text);
+	    $size2=strlen($text2);
+	    $width=$size2*10+($size-$size2)*30;
+	    
+	    //$width=iconv_strlen($text,'utf-8')*30;
+	    header('Content-Type: image/png');
+	    // Create the image
+	    $im = imagecreatetruecolor($width, 30);
+	    
+	    // Create some colors
+	    $white = imagecolorallocate($im, 255, 255, 255);
+	    $grey = imagecolorallocate($im, 232, 232, 232);
+	    $black = imagecolorallocate($im, 0, 0, 0);
+	    imagefilledrectangle($im, 0, 0, $width, 30, $white);	    
+	    // The text to draw
+	    // Replace path by your own font path
+	     $font=$_SERVER['DOCUMENT_ROOT'].'/Public/fonts/gjfttf.ttf';
+	    // Add some shadow to the text
+	    imagettftext($im, 20, 0, 0, 29, $grey, $font, $text);
+	    // Add the text
+	    imagettftext($im, 20, 0, 0, 28, $black, $font, $text);
+	    // Using imagepng() results in clearer text compared with imagejpeg()
+	    imagepng($im);
+	    imagedestroy($im);
+	}
 }

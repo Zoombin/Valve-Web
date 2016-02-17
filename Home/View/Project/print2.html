@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link href="__PUBLIC__/css/screen.css" media="screen" rel="stylesheet">
 	<link href="__PUBLIC__/css/print.css" media="print" rel="stylesheet">
-    <script type="text/javascript" src="http://api.youziku.com/webfont/FastJS/yzk_E1084822A2796990"></script>
 	</head>
 	<body>
 		
@@ -107,7 +106,7 @@
 		      <td colspan="4" class="w100 text-left">备注： <span class="hand-write">{$project.remarks}</span></td>
 	        </tr>
 		    <tr>
-		      <td colspan="2" class="w50">校验： <span class="hand-write font1">{$project.verifyman}</span> <span class="hand-write">{$project.verifymandate}</span></td>
+		      <td colspan="2" class="w50">校验： <span class="font1"><img alt="{$project.verifyman}" src="{:U('Project/fonts',array('font'=>$project['verifyman']))}"> </span> <span class="hand-write">{$project.verifymandate}</span></td>
 		      <td colspan="2" class="w50">校验报告编号：</td>
 	        </tr>
 		    <tr>
@@ -120,8 +119,6 @@
     <button class="printbtn" onclick="window.print();">打印</button>
     </div>	
     <script type="text/javascript">
-	 $youziku.load(".font1", "f055275b036f48f088955c277f9e9b2c", "chenwixun-jian");
-	 $youziku.draw(); 
 	 function pagesetup_null()
 	 {   
 
