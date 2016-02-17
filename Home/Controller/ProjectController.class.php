@@ -37,10 +37,10 @@ class ProjectController extends CommonController {
 	    }else{
 	        $project["type"]=array(1);
 	        $project["standard"]=1;
-	        $project["verifyDate"]=date("Y-m-d");
-	        $project["nextVerifyDate"]=date("Y-m-d",time()+365*24*60*60);
-	        $project["verifyManDate"]=date("Y-m-d");
-	        $project["auditManDate"]=date("Y-m-d");
+	        $project["verifydate"]=date("Y-m-d");
+	        $project["nextverifydate"]=date("Y-m-d",time()+365*24*60*60);
+	        $project["verifymandate"]=date("Y-m-d");
+	        $project["auditmandate"]=date("Y-m-d");
 	    }
 	    $types=getTypes();
 	    $typeList=array();
@@ -103,12 +103,6 @@ class ProjectController extends CommonController {
 	            $typeList[]=$tmp;
 	        }
 	    }
-	    $project['verifydate']=date('Y 年  m 月 d 日',strtotime($project['verifydate']));
-	    $project['nextverifydate']=date('Y 年  m 月 d 日',strtotime($project['nextverifydate']));
-	    $project['verifymandate']=date('Y 年  m 月 d 日',strtotime($project['verifymandate']));
-	    $project['auditmandate']=date('Y 年  m 月 d 日',strtotime($project['auditmandate']));
-	    $project['madedate']=date('Y 年  m 月 d 日',strtotime($project['madedate']));
-	    $project['verifyvalidatedate']=date('Y 年  m 月 d 日',strtotime($project['verifyvalidatedate']));
 	    $this->assign('type', $type);
 	    $this->assign('project', $project);
 	    $this->assign('types', $typeList);

@@ -97,10 +97,10 @@ input, select {
 }
 ul{list-style: none;}
 *{box-sizing: border-box;}
-.main-content{width: 90%;margin: 5%;}
-.data-table{border: 1px solid #ccc;}
-.data-table caption {padding: 10px 0;font-size: 20px;font-weight: bold;letter-spacing: 20px;}
-.data-table td,.data-table th{border: 1px solid #ccc;padding: 5px 10px 5px;text-align: center;}
+.main-content{width: 90%;margin: 5% auto; max-width:790px; }
+.data-table{border: 1px solid #ccc; width:100%;}
+.data-table caption {padding: 10px 0;font-size: 20px;font-weight: bold;letter-spacing: 20px; margin-bottom:20px;}
+.data-table td,.data-table th{border: 1px solid #ccc;padding: 5px 10px 5px;text-align: center; line-height:26px;font-size: 12pt;}
 .w25{width: 25%;}
 .w33{width: 33.333%}
 .w50{width: 50%;}
@@ -108,3 +108,8 @@ ul{list-style: none;}
 .w100{width: 100%;}
 h3{text-align: left;}
 .rlist li{ display: block;text-align: left;}
+.printbtn{ margin-top:20px; border:1px  solid #ccc; background:#eee; padding:5px 30px; cursor:pointer;}
+.printbtn:hover{ background:#007aff;border:1px  solid #007aff; color:#fff; transition: ease 0.3s}
+.hand-write{font-family: '宋体';font-size: 11pt}
+.data-table  .text-left{ text-align:left;}
+.data-table  .text-right{ text-align:right;}

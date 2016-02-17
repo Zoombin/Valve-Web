@@ -4,35 +4,36 @@
     <meta charset="utf-8">
 		<link href="__PUBLIC__/css/screen.css" media="screen" rel="stylesheet">
 		<link href="__PUBLIC__/css/print.css" media="print" rel="stylesheet">
+        <script type="text/javascript" src="http://api.youziku.com/webfont/FastJS/yzk_E1084822A2796990"></script>
 	</head>
 	<body>
 		<div class="container-fluid main-content">
 		<table class="data-table">
 		<caption>安全阀校验报告书</caption>
         <tr>
-        	<td colspan="2" width="70%"></td>
-        	<td>报告编号：</td>
-        	<td><strong>{$project.rnum}</strong></td>
+        	<td colspan="2" class="w50"></td>
+        	<td class="w25">报告编号：</td>
+        	<td class="w25"><strong>{$project.rnum}</strong></td>
         </tr>		
 	        <tr>
 	          <td class="w25">使用单位</td>
-	          <td class="w75" colspan="3">{$project.company}</td>
+	          <td class="w75 hand-write" colspan="3">{$project.company}</td>
             </tr>
 	        <tr>
 	          <td class="w25">单位地址</td>
-	          <td colspan="4" width="528">{$project.address}</td>
+	          <td colspan="3" class="w75 hand-write">{$project.address}</td>
             </tr>
 	        <tr>
 	          <td class="w25">联系人</td>
-	          <td class="w25">{$project.contact}</td>
+	          <td class="w25 hand-write">{$project.contact}</td>
 	          <td class="w25">联系电话</td>
-	          <td  class="w25">{$project.phone}</td>
+	          <td  class="w25 hand-write">{$project.phone}</td>
             </tr>
 	        <tr>
 	          <td class="w25">设备代码</td>
-	          <td class="w25">{$project.devnum}</td>
+	          <td class="w25 hand-write">{$project.devnum}</td>
 	          <td class="w25">安装位置</td>
-	          <td class="w25">{$project.installposition}</td>
+	          <td class="w25 hand-write">{$project.installposition}</td>
             </tr>
 	        <tr>
 	          <td class="w25">安全阀类型</td>
@@ -46,80 +47,89 @@
 					</volist>
 				</td>
 	          <td class="w25">安全阀型号</td>
-	          <td class="w25">{$project.model}</td>
+	          <td class="w25 hand-write">{$project.model}</td>
             </tr>
 	        <tr>
 	          <td class="w25">工作压力</td>
-	          <td class="w25">{$project.workpressure} Mpa</td>
+	          <td class="w25 hand-write">{$project.workpressure} Mpa</td>
 	          <td class="w25">工作介质</td>
-	          <td class="w25">{$project.workmedium}</td>
+	          <td class="w25 hand-write">{$project.workmedium}</td>
             </tr>
 	        <tr>
 	          <td class="w25">要求整定压力</td>
-	          <td class="w25">{$project.needpressure} Mpa</td>
+	          <td class="w25 hand-write">{$project.needpressure} Mpa</td>
 	          <td class="w25">执行标准</td>
-	          <td class="w25">{$standards[$project['standard']]}</td>
+	          <td class="w25 hand-write">{$standards[$project['standard']]}</td>
             </tr>
 	        <tr>
 	          <td class="w25">校验方式</td>
-	          <td class="w25">{$project.verifytype}</td>
+	          <td class="w25 hand-write">{$project.verifytype}</td>
 	          <td class="w25">校验介质</td>
-	          <td class="w25">{$project.verifymedium}</td>
+	          <td class="w25 hand-write">{$project.verifymedium}</td>
             </tr>
 	        <tr>
 	          <td class="w25">整定压力</td>
-	          <td class="w25">{$project.setpressure} Mpa</td>
+	          <td class="w25 hand-write">{$project.setpressure} Mpa</td>
 	          <td class="w25">密封试验压力</td>
-	          <td class="w25">{$project.finalpressure} Mpa</td>
+	          <td class="w25 hand-write">{$project.finalpressure} Mpa</td>
             </tr>
 	        <tr>
 	          <td class="w25">校验结果</td>
-	          <td class="w25">{$project.verifyresult} </td>
+	          <td class="w25 hand-write">{$project.verifyresult} </td>
 	          <td class="w25">校验标牌号</td>
-	          <td class="w25">{$project.verifynum}</td>
+	          <td class="w25 hand-write">{$project.verifynum}</td>
             </tr>
 	        <tr>
-	          <td colspan="4" class="w100"><h3>维护检修情况说明：</h3>              <ul class="rlist">
+	          <td colspan="4" class="w100"><h3>维护检修情况说明：</h3><ul class="rlist">
 	          	<li>1.该安全阀经校验合格并有标牌及铅封编号，本校验报告仅对委托校验的安全阀有效；</li>
 	          	<li>2.本校验报告复印件无效，未加盖本单位&ldquo;专用章&rdquo;无效，有效期至下次校验日期止；</li>
 	          	<li>3.使用单位不得自行拆卸铅封进行调试，铅封一旦损坏，本校验报告自行失效；  </li>
 	          	<li>4.为了确保安全阀灵敏，可靠，按国家规定，安全阀一年应进行一次定期校验； </li>
 	          	<li>5.使用单位应按规定的允许使用参数使用，严禁超温、超压使用。</li>
                 <li>维护检修情况说明： 油漆   密封面研磨  换弹簧  更换阀瓣</li>
-	          </ul>                                                                   
-	                                       
-	                         
-	                                 
-	                                   
-	                                             
-	                                       </td>
+	          </ul></td>
             </tr>
 	        <tr>
 	          <td class="w25">校验日期</td>
-	          <td class="w25">{$project.verifydate}</td>
+	          <td class="w25 hand-write">{$project.verifydate}</td>
 	          <td class="w25">下次校验日期</td>
-	          <td class="w25">{$project.nextverifydate}</td>
+	          <td class="w25 hand-write">{$project.nextverifydate}</td>
             </tr>
 	        <tr>
-	          <td colspan="2" rowspan="2" class="w50"> 校验： {$project.verifyman}            {$project.verifymandate}</td>
-	          <td colspan="2" rowspan="2" class="w50">（检验机构核准编号）：                                       </td>
+	          <td colspan="2" rowspan="2" class="w50"> 校验： <span class="font1">{$project.verifyman}</span>    {$project.verifymandate}</td>
+	          <td colspan="2" rowspan="2" class="w50">（检验机构核准编号）：</td>
             </tr>
 	        <tr> </tr>
 	        <tr>
-	          <td colspan="2" rowspan="2" class="w50"> 审批：       {$project.auditman}            {$project.auditmandate}</td>
-	          <td colspan="2" class="w50">           （校验机构校验专用章）                              </td>
+	          <td colspan="2" rowspan="2" class="w50"> 审批： <span class="font1">{$project.auditman}</span>      {$project.auditmandate}</td>
+	          <td colspan="2" class="w50">（校验机构校验专用章）</td>
             </tr>
 	        <tr>
-	          <td colspan="2">                         年    月    日          </td>
+	          <td colspan="2">                         年    月    日 </td>
             </tr>
 	        <tr>
-	          <td colspan="4">苏州中特安安全阀检测研究有限公司 </td>
+	          <td colspan="4" class="text-right">苏州中特安安全阀检测研究有限公司 </td>
             </tr>
 	        <tr>
-	          <td colspan="4">电话：0512-65786922   </td>
+	          <td colspan="4"  class="text-right">电话：0512-65786922   </td>
             </tr>
       </table>
-      <button onclick="window.print();">打印</button>
+      <button class="printbtn" onclick="window.print();">打印</button>
     </div>
+    <script type="text/javascript">
+	 $youziku.load(".font1", "f055275b036f48f088955c277f9e9b2c", "chenwixun-jian");
+	 $youziku.draw(); 
+	 function pagesetup_null()
+	 {   
+
+	     var RegWsh = new ActiveXObject("WScript.Shell");
+	     hkey_key="header";
+	     RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"");
+	     hkey_key="footer";
+	     RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"");
+
+	 }
+	 pagesetup_null();
+	 </script>
 	</body>
 </html>
