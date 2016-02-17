@@ -134,7 +134,7 @@ class ProjectController extends CommonController {
 	    imagefilledrectangle($im, 0, 0, $width, 30, $white);	    
 	    // The text to draw
 	    // Replace path by your own font path
-	     $font=$_SERVER['DOCUMENT_ROOT'].'/Public/fonts/gjfttf.ttf';
+	     echo $font=$_SERVER['DOCUMENT_ROOT'].'/Public/fonts/gjfttf.ttf';
 		 echo file_exists($font);
 die();
 	    // Add some shadow to the text
