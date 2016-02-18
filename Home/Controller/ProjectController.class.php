@@ -31,28 +31,15 @@ class ProjectController extends CommonController {
 	    $project=array();
 	    if($id){
 	        $project=M("project")->where("id='".$id."'")->find();
-	        if(isset($project["type"])){
-	            $project["type"]=explode(",", $project["type"]);
-	        }
 	    }else{
-	        $project["type"]=array(1);
+	        $project["type"]=1;
 	        $project["standard"]=1;
 	        $project["verifydate"]=date("Y-m-d");
 	        $project["nextverifydate"]=date("Y-m-d",time()+365*24*60*60);
 	        $project["verifymandate"]=date("Y-m-d");
 	        $project["auditmandate"]=date("Y-m-d");
 	    }
-	    $types=getTypes();
-	    $typeList=array();
-	    if ($types) {
-	        foreach ($types as $k=>$v){
-	            $tmp=array('id'=>$k,'text'=>$v,'checked'=>'');
-	            if (in_array($k, $project["type"])){
-	                $tmp['checked']=1;
-	            }
-	            $typeList[]=$tmp;
-	        }
-	    }
+	    $typeList=getTypes();
 	    $this->assign('project', $project); 
 	    $this->assign('types', $typeList); 
 	    $this->assign('standards', getStandards()); 
@@ -63,11 +50,6 @@ class ProjectController extends CommonController {
 	    if(IS_POST&&$_POST){
 	        $model=M('project');
 	        $data=$model->create();
-	        if($_POST['type']){
-	            $data['type']=implode(",", $_POST['type']);
-	        }else{
-	            unset($data['type']);
-	        }
 	        if($data["id"]){
 	            $model->where("id='".$data["id"]."'")->save($data);
 	        }else{
@@ -89,20 +71,7 @@ class ProjectController extends CommonController {
 	    $id=I("get.id");
 	    $type=I("get.type",1);
 	    $project=M("project")->where("id='".$id."'")->find();
-	    if(isset($project["type"])){
-	        $project["type"]=explode(",", $project["type"]);
-	    }
-	    $types=getTypes();
-	    $typeList=array();
-	    if ($types) {
-	        foreach ($types as $k=>$v){
-	            $tmp=array('id'=>$k,'text'=>$v,'checked'=>'');
-	            if (in_array($k, $project["type"])){
-	                $tmp['checked']=1;
-	            }
-	            $typeList[]=$tmp;
-	        }
-	    }
+	    $typeList=getTypes();
 	    $this->assign('type', $type);
 	    $this->assign('project', $project);
 	    $this->assign('types', $typeList);

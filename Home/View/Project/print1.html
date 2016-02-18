@@ -36,15 +36,7 @@
             </tr>
 	        <tr>
 	          <td class="w25">安全阀类型</td>
-	          <td class="w25">
-					<volist name="types" id="to">
-							<if condition="$to.checked eq 1 ">
-							<label class="checkbox-inline"><input type="checkbox" name="type[]" value="{$to.id}" checked><span>{$to.text}</span></label>
-							<else />
-							<label class="checkbox-inline"><input type="checkbox" name="type[]" value="{$to.id}"><span>{$to.text}</span></label>
-							</if>
-					</volist>
-				</td>
+	          <td class="w25 hand-write">{$types[$project['type']]}</td>
 	          <td class="w25">安全阀型号</td>
 	          <td class="w25 hand-write">{$project.model}</td>
             </tr>
@@ -58,7 +50,11 @@
 	          <td class="w25">要求整定压力</td>
 	          <td class="w25 hand-write">{$project.needpressure} Mpa</td>
 	          <td class="w25">执行标准</td>
-	          <td class="w25 hand-write">{$standards[$project['standard']]}</td>
+	          <td class="w25 hand-write standard">
+	          <volist name="standards" id="so" key="skey">
+				<span>{$so}</span>
+				</volist>
+	          </td>
             </tr>
 	        <tr>
 	          <td class="w25">校验方式</td>
@@ -96,12 +92,12 @@
             </tr>
 	        <tr>
 	          <td colspan="2" rowspan="2" class="w50"> 校验： <span class="font1"><img alt="{$project.verifyman}" src="{:U('Project/fonts',array('font'=>$project['verifyman']))}"> </span>    {$project.verifymandate}</td>
-	          <td colspan="2" rowspan="2" class="w50">（检验机构核准编号）：</td>
+	          <td colspan="2" rowspan="2" class="w50 p20">（检验机构核准编号）：</td>
             </tr>
 	        <tr> </tr>
 	        <tr>
 	          <td colspan="2" rowspan="2" class="w50"> 审批： <span class="font1"><img alt="{$project.auditman}" src="{:U('Project/fonts',array('font'=>$project['auditman']))}"></span>      {$project.auditmandate}</td>
-	          <td colspan="2" class="w50">（校验机构校验专用章）</td>
+	          <td colspan="2" class="w50 p20">（校验机构校验专用章）</td>
             </tr>
 	        <tr>
 	          <td colspan="2">                         年    月    日 </td>

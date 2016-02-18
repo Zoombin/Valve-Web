@@ -68,11 +68,11 @@
 									<div class="form-group col-md-6">
 										<label class="control-label col-md-4">安全阀类型:</label>
 										<div class="col-md-8">
-										<volist name="types" id="to">
-												<if condition="$to.checked eq 1 ">
-												<label class="checkbox-inline"><input type="checkbox" name="type[]" value="{$to.id}" checked><span>{$to.text}</span></label>
+										<volist name="types" id="to" key="tkey">
+												<if condition="$tkey eq $project.type ">
+												<label class="checkbox-inline"><input type="radio" name="type" value="{$tkey}" checked><span>{$to}</span></label>
 												<else />
-												<label class="checkbox-inline"><input type="checkbox" name="type[]" value="{$to.id}"><span>{$to.text}</span></label>
+												<label class="checkbox-inline"><input type="radio" name="type" value="{$tkey}"><span>{$to}</span></label>
 												</if>
 										</volist>
 										</div>
@@ -109,11 +109,7 @@
 										<label class="control-label col-md-4">执行标准:</label>
 										<div class="col-md-8">
 											<volist name="standards" id="so" key="skey">
-												<if condition="$skey eq $project.standard ">
-												<label class="radio-inline"><input name="standard" value="{$skey}" type="radio" checked><span>{$so}</span></label>
-												<else />
-												<label class="radio-inline"><input name="standard" value="{$skey}" type="radio"><span>{$so}</span></label>
-												</if>
+												<label class="radio-inline"><span>{$so}</span></label>
 											</volist>
 										</div>
 									</div>
