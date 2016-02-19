@@ -49,6 +49,18 @@ function getTypes($id=''){
     }
     return $arr;
 }
+function getRepairs($id=''){
+    $arr=array(
+        1=>'油漆',
+        2=>'密封面研磨',
+        3=>'换弹簧',
+        4=>'更换阀瓣'
+    );
+    if($id&&isset($arr[$id])){
+        return $arr[$id];
+    }
+    return $arr;
+}
 
 function getStandards($id=''){
     $arr=array(

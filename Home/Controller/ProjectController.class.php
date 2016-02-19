@@ -29,8 +29,10 @@ class ProjectController extends CommonController {
 	public function add() {
 	    $id=I("get.id");
 	    $project=array();
+	    $repairs=getRepairs();
 	    if($id){
 	        $project=M("project")->where("id='".$id."'")->find();
+	        $project['repairs']=explode(",", $project['repairs']);
 	    }else{
 	        $project["type"]=1;
 	        $project["standard"]=1;
@@ -38,10 +40,22 @@ class ProjectController extends CommonController {
 	        $project["nextverifydate"]=date("Y-m-d",time()+365*24*60*60);
 	        $project["verifymandate"]=date("Y-m-d");
 	        $project["auditmandate"]=date("Y-m-d");
+	        $project['repairs']=array();
 	    }
-	    $typeList=getTypes();
+	    $repairsList=array();
+	    foreach ($repairs as $k=>$v){
+	        $tmp=array();
+	        $tmp["isselected"]=0;
+	        $tmp["id"]=$k;
+	        $tmp["text"]=$v;
+	        if(in_array($k, $project['repairs'])){
+	            $tmp["isselected"]=1;
+	        }
+	        $repairsList[]=$tmp;
+	    }
+	    $this->assign('repairs', $repairsList);
 	    $this->assign('project', $project); 
-	    $this->assign('types', $typeList); 
+	    $this->assign('types', getTypes()); 
 	    $this->assign('standards', getStandards()); 
 	    $this->display ();
 	}
@@ -50,6 +64,9 @@ class ProjectController extends CommonController {
 	    if(IS_POST&&$_POST){
 	        $model=M('project');
 	        $data=$model->create();
+	        if (isset($_POST['repairs'])&&$_POST['repairs']){
+	            $data['repairs']=implode(",", $_POST['repairs']);
+	        }
 	        if($data["id"]){
 	            $model->where("id='".$data["id"]."'")->save($data);
 	        }else{
@@ -71,10 +88,28 @@ class ProjectController extends CommonController {
 	    $id=I("get.id");
 	    $type=I("get.type",1);
 	    $project=M("project")->where("id='".$id."'")->find();
-	    $typeList=getTypes();
+	    $project['repairs']=explode(",", $project['repairs']);
+	    $repairs=getRepairs();
+	    $repairsList=array();
+	    foreach ($repairs as $k=>$v){
+	        $tmp=array();
+	        $tmp["isselected"]=0;
+	        $tmp["id"]=$k;
+	        $tmp["text"]=$v;
+	        if(in_array($k, $project['repairs'])){
+	            $tmp["isselected"]=1;
+	        }
+	        $repairsList[]=$tmp;
+	    }
+	    $project["verifydate"]=date("Y 年  m 月 d 日",strtotime($project['verifydate']));
+	    $project["nextverifydate"]=date("Y 年  m 月 d 日",strtotime($project['nextverifydate']));
+	    $project["verifymandate"]=date("Y 年 m 月  d 日",strtotime($project['verifymandate']));
+	    $project["auditmandate"]=date("Y 年 m 月 d 日",strtotime($project['auditmandate']));
+	    $project["verifyvalidatedate"]=date("Y 年 m 月 d 日",strtotime($project['verifyvalidatedate']));
+	    $this->assign('repairs', $repairsList);
 	    $this->assign('type', $type);
 	    $this->assign('project', $project);
-	    $this->assign('types', $typeList);
+	    $this->assign('types', getTypes());
 	    $this->assign('standards', getStandards());
 	    if($type==1){
 	        $this->display ("print1");//报告

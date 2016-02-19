@@ -7,12 +7,11 @@
 	</head>
 	<body>
 		<div class="container-fluid main-content">
-		<table class="data-table">
-		<caption>安全阀校验报告书</caption>
+		<table class="data-table noborder">
+		<caption>安全阀校验报告书<span>{$project.rnum}</span></caption>
         <tr>
-        	<td colspan="2" class="w50"></td>
-        	<td class="w25">报告编号：</td>
-        	<td class="w25"><strong>{$project.rnum}</strong></td>
+        	<td colspan="2" class="w50 noborder"></td>
+        	<td colspan="2" class="noborder text-right" style="padding-right: 15%">报告编号：</td>
         </tr>		
 	        <tr>
 	          <td class="w25">使用单位</td>
@@ -42,13 +41,13 @@
             </tr>
 	        <tr>
 	          <td class="w25">工作压力</td>
-	          <td class="w25 hand-write">{$project.workpressure} Mpa</td>
+	          <td class="w25 hand-write"><span class="text-info">{$project.workpressure}</span><span class="text-unit">Mpa</span></td>
 	          <td class="w25">工作介质</td>
 	          <td class="w25 hand-write">{$project.workmedium}</td>
             </tr>
 	        <tr>
 	          <td class="w25">要求整定压力</td>
-	          <td class="w25 hand-write">{$project.needpressure} Mpa</td>
+	          <td class="w25 hand-write"><span class="text-info">{$project.needpressure}</span><span class="text-unit">Mpa</span></td>
 	          <td class="w25">执行标准</td>
 	          <td class="w25 hand-write standard">
 	          <volist name="standards" id="so" key="skey">
@@ -64,9 +63,9 @@
             </tr>
 	        <tr>
 	          <td class="w25">整定压力</td>
-	          <td class="w25 hand-write">{$project.setpressure} Mpa</td>
+	          <td class="w25 hand-write"><span class="text-info">{$project.setpressure}</span><span class="text-unit">Mpa</span></td>
 	          <td class="w25">密封试验压力</td>
-	          <td class="w25 hand-write">{$project.finalpressure} Mpa</td>
+	          <td class="w25 hand-write"><span class="text-info">{$project.finalpressure}</span><span class="text-unit">Mpa</span></td>
             </tr>
 	        <tr>
 	          <td class="w25">校验结果</td>
@@ -81,7 +80,11 @@
 	          	<li>3.使用单位不得自行拆卸铅封进行调试，铅封一旦损坏，本校验报告自行失效；  </li>
 	          	<li>4.为了确保安全阀灵敏，可靠，按国家规定，安全阀一年应进行一次定期校验； </li>
 	          	<li>5.使用单位应按规定的允许使用参数使用，严禁超温、超压使用。</li>
-                <li>维护检修情况说明： 油漆   密封面研磨  换弹簧  更换阀瓣</li>
+                <li>维护检修情况说明：<volist name="repairs" id="ro">
+												<if condition="$ro.isselected eq 1">
+												<label class="checkbox-inline">{$ro.text}</label>
+												</if>
+										</volist></li>
 	          </ul></td>
             </tr>
 	        <tr>
@@ -92,21 +95,23 @@
             </tr>
 	        <tr>
 	          <td colspan="2" rowspan="2" class="w50"> 校验： <span class="font1"><img alt="{$project.verifyman}" src="{:U('Project/fonts',array('font'=>$project['verifyman']))}"> </span>    {$project.verifymandate}</td>
-	          <td colspan="2" rowspan="2" class="w50 p20">（检验机构核准编号）：</td>
+	          <td colspan="2" class="w50 text-left" style="border-bottom: none;padding: 0">（检验机构核准编号）：</td>
             </tr>
-	        <tr> </tr>
+            <tr>
+	          <td colspan="2" style="border-bottom: none;border-top: none;padding: 0">&nbsp;</td>
+            </tr>
 	        <tr>
 	          <td colspan="2" rowspan="2" class="w50"> 审批： <span class="font1"><img alt="{$project.auditman}" src="{:U('Project/fonts',array('font'=>$project['auditman']))}"></span>      {$project.auditmandate}</td>
-	          <td colspan="2" class="w50 p20">（校验机构校验专用章）</td>
+	          <td colspan="2" class="w50" style="border-bottom: none;border-top: none;padding: 0">（校验机构校验专用章）</td>
             </tr>
 	        <tr>
-	          <td colspan="2">                         年    月    日 </td>
+	          <td colspan="2" style="border-top: none;text-align: right;padding:0 18px 0 0;">{$project.verifydate}</td>
             </tr>
 	        <tr>
-	          <td colspan="4" class="text-right">苏州中特安安全阀检测研究有限公司 </td>
+	          <td colspan="4" class="text-right text-small noborder">苏州中特安安全阀检测研究有限公司 </td>
             </tr>
 	        <tr>
-	          <td colspan="4"  class="text-right">电话：0512-65786922   </td>
+	          <td colspan="4"  class="text-right text-small noborder">电话：0512-65786922   </td>
             </tr>
       </table>
       <button class="printbtn" onclick="window.print();">打印</button>
