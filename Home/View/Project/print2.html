@@ -8,6 +8,7 @@
 	<body>
 		
 	<div class="container-fluid main-content">
+		<div class="left-num">ZTABG02-{$year}</div>
 		<table class="data-table noborder">
 		<caption>安全阀校验记录<span>{$project.rnum}</span></caption>
         <tr>
@@ -15,36 +16,36 @@
         	<td colspan="2" class="noborder text-right" style="padding-right: 15%">编号：</td>
         </tr>		
 		    <tr>
-	          <td class="w25">使用单位</td>
-	          <td class="w75 hand-write" colspan="3">{$project.company}</td>
+	          <td class="w25 hbt hbl">使用单位</td>
+	          <td class="w75 hand-write hbt hbr" colspan="3">{$project.company}</td>
             </tr>
 		    <tr>
-		      <td class="w25">设备代码</td>
+		      <td class="w25 hbl">设备代码</td>
 		      <td class="w25 hand-write">{$project.devnum}</td>
 		      <td class="w25">要求整定压力</td>
-		      <td class="w25 hand-write"><span class="text-info">{$project.needpressure}</span><span class="text-unit">Mpa</span></td>
+		      <td class="w25 hand-write hbr"><span class="text-info">{$project.needpressure}</span><span class="text-unit">Mpa</span></td>
 	        </tr>
 		    <tr>
-		      <td class="w25">工作介质</td>
+		      <td class="w25 hbl">工作介质</td>
 		      <td class="w25 hand-write">{$project.workmedium}</td>
 		      <td class="w25">安全阀型号</td>
-		      <td class="w25 hand-write">{$project.model}</td>
+		      <td class="w25 hand-write hbr">{$project.model}</td>
 	        </tr>
 		    <tr>
-		      <td class="w25">公称通径</td>
+		      <td class="w25 hbl">公称通径</td>
 		      <td class="w25 hand-write"><span class="text-info">{$project.gctj}</span><span class="text-unit">mm</span></td>
 		      <td class="w25">阀座口径</td>
-		      <td class="w25 hand-write"><span class="text-info">{$project.fztj}</span><span class="text-unit">mm</span></td>
+		      <td class="w25 hand-write hbr"><span class="text-info">{$project.fztj}</span><span class="text-unit">mm</span></td>
 	        </tr>
 		    <tr>
-		      <td class="w25">制造单位</td>
-		      <td colspan="3" class="w75 hand-write">{$project.madecompany}</td>
+		      <td class="w25 hbl">制造单位</td>
+		      <td colspan="3" class="w75 hand-write hbr">{$project.madecompany}</td>
 	        </tr>
 		    <tr>
-		      <td class="w25">制造许可证编号</td>
+		      <td class="w25 hbl">制造许可证编号</td>
 		      <td class="w25 hand-write">{$project.mlnum}</td>
 		      <td class="w25">压力级别范围</td>
-		      <td class="w25 hand-write">
+		      <td class="w25 hand-write hbr">
 		      <span style="display: inline-block;width: 28%;float: left;">{$project.plevelfrom}</span>
 		      <span style="display: inline-block;width: 30%;float: left;">Mpa至</span>
 		      <span style="display: inline-block;width: 27%;float: left;">{$project.plevelto}</span>
@@ -52,64 +53,64 @@
 		      </td>
 	        </tr>
 		    <tr>
-		      <td class="w25">产品编号</td>
+		      <td class="w25 hbl">产品编号</td>
 		      <td class="w25 hand-write">{$project.sku}</td>
 		      <td class="w25">出厂日期</td>
-		      <td class="w25 hand-write">{$project.madedate}</td>
+		      <td class="w25 hand-write hbr">{$project.madedate}</td>
 	        </tr>
 		    <tr>
-		      <td class="w25">校验方式</td>
+		      <td class="w25 hbl">校验方式</td>
 		      <td class="w25 hand-write">{$project.verifytype}</td>
 		      <td class="w25">校验编号</td>
-		      <td class="w25 hand-write">{$project.recverifynum}</td>
+		      <td class="w25 hand-write hbr">{$project.recverifynum}</td>
 	        </tr>
 		    <tr>
-		      <td class="w25">校验介质</td>
+		      <td class="w25 hbl">校验介质</td>
 		      <td class="w25 hand-write">{$project.verifymedium}</td>
 		      <td class="w25">校验介质温度</td>
-		      <td class="w25 hand-write"><span class="text-info">{$project.temperature}</span><span class="text-unit">℃</span></td>
+		      <td class="w25 hand-write hbr"><span class="text-info">{$project.temperature}</span><span class="text-unit">℃</span></td>
 	        </tr>
 		    <tr>
-		      <td class="w100" colspan="4">检查与校验</td>
+		      <td class="w100 hbl hbr hbr" colspan="4">检查与校验</td>
 	        </tr>
 		    <tr>
-		      <td class="w25">外观<br>检查</td>
-		      <td class="w75 hand-write" colspan="3">{$project.wgjc}</td>
+		      <td class="w25 hbl">外观<br>检查</td>
+		      <td class="w75 hand-write hbr" colspan="3">{$project.wgjc}</td>
 	        </tr>
 		    <tr>
-		      <td class="w25">拆卸<br>检查<br>维修</td>
-		      <td colspan="3" class="w75 hand-write">{$project.cxjcwx} </td>
+		      <td class="w25 hbl">拆卸<br>检查<br>维修</td>
+		      <td colspan="3" class="w75 hand-write hbr">{$project.cxjcwx} </td>
 	        </tr>
 		    <tr>
-		      <td class="w25">试验次数</td>
+		      <td class="w25 hbl">试验次数</td>
 		      <td class="w25">第1次</td>
 		      <td class="w25">第2次</td>
-		      <td class="w25">第3次</td>
+		      <td class="w25 hbr">第3次</td>
 	        </tr>
 		    <tr>
-		      <td class="w25">实际整定压力</td>
+		      <td class="w25 hbl">实际整定压力</td>
 		      <td class="w25 hand-write"><span class="text-info">{$project.truepressure1}</span><span class="text-unit">Mpa</span></td>
 		      <td class="w25 hand-write"><span class="text-info">{$project.truepressure2}</span><span class="text-unit">Mpa</span></td>
-		      <td class="w25 hand-write"><span class="text-info">{$project.truepressure3}</span><span class="text-unit">Mpa</span></td>
+		      <td class="w25 hand-write hbr"><span class="text-info">{$project.truepressure3}</span><span class="text-unit">Mpa</span></td>
 	        </tr>
 		    <tr>
-		      <td class="w25">密封试验压力</td>
+		      <td class="w25 hbl">密封试验压力</td>
 		      <td class="w25 hand-write"><span class="text-info">{$project.closepressure1}</span><span class="text-unit">Mpa</span></td>
 		      <td class="w25 hand-write"><span class="text-info">{$project.closepressure2}</span><span class="text-unit">Mpa</span></td>
-		      <td class="w25 hand-write"><span class="text-info">{$project.closepressure3}</span><span class="text-unit">Mpa</span></td>
+		      <td class="w25 hand-write hbr"><span class="text-info">{$project.closepressure3}</span><span class="text-unit">Mpa</span></td>
 	        </tr>
 		    <tr>
-		      <td class="w25">校验结论</td>
+		      <td class="w25 hbl">校验结论</td>
 		      <td class="w25 hand-write">{$project.recverifyresult}</td>
 		      <td class="w25">校验有效期</td>
-		      <td class="w25 hand-write">{$project.verifyvalidatedate}</td>
+		      <td class="w25 hand-write hbr">{$project.verifyvalidatedate}</td>
 	        </tr>
 		    <tr>
-		      <td colspan="4" class="w100 text-left" style="height: 80px;">备注： <span class="hand-write">{$project.remarks}</span></td>
+		      <td colspan="4" class="w100 text-left hbl hbr" style="height: 80px;">备注： <span class="hand-write">{$project.remarks}</span></td>
 	        </tr>
 		    <tr>
-		      <td colspan="2" class="w50">校验： <span class="font1"><img alt="{$project.verifyman}" src="{:U('Project/fonts',array('font'=>$project['verifyman']))}"> </span> <span class="hand-write">{$project.verifymandate}</span></td>
-		      <td colspan="2" class="w50">校验报告编号：</td>
+		      <td colspan="2" class="w50 hbl hbb">校验： <span class="font1"><img alt="{$project.verifyman}" src="{:U('Project/fonts',array('font'=>$project['verifyman']))}"> </span> <span class="hand-write">{$project.verifymandate}</span></td>
+		      <td colspan="2" class="w50 hbr hbb">校验报告编号：</td>
 	        </tr>
 		     <tr>
 	          <td colspan="4" class="text-right text-small noborder">苏州中特安安全阀检测研究有限公司 </td>

@@ -61,7 +61,27 @@ function getRepairs($id=''){
     }
     return $arr;
 }
-
+function getSendfrom($id=''){
+    $arr=array(
+        1=>'相城区',
+        2=>'吴中区'
+    );
+    if($id&&isset($arr[$id])){
+        return $arr[$id];
+    }
+    return $arr;
+}
+function getUseto($id=''){
+    $arr=array(
+        'R'=>'容器上',
+        'G'=>'锅炉上',
+        'D'=>'管道上'
+    );
+    if($id&&isset($arr[$id])){
+        return $arr[$id];
+    }
+    return $arr;
+}
 function getStandards($id=''){
     $arr=array(
         1=>'TSG ZF001-2006',
@@ -72,4 +92,22 @@ function getStandards($id=''){
         return $arr[$id];
     }
     return $arr;
+}
+function seitchToDataArray($arr){
+    $result=array();
+    if($arr){
+        foreach ($arr as $k=>$v){
+            $temp=array();
+            $temp['key']=$k;
+            $temp['value']=$v;
+            $result[]=$temp;
+        }
+    }
+    return $result;
+}
+function getNextRnum($sendfrom='',$useto=''){
+    $year=date("Y",time());
+    $cnt=M("project")->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'")->count();
+    $cnt=sprintf("%04d",$cnt+1);
+    return  $rnum='SZZTA-'.$sendfrom.$useto.'X-'.$cnt.'-'.date("Y",time());
 }

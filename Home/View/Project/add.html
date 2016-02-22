@@ -23,6 +23,30 @@
 							<div class="widget-content padded clearfix">
 								<fieldset>
 									<legend>基本信息</legend>
+									<div class="form-group col-md-6">
+										<label class="control-label col-md-4">送达地:</label>
+										<div class="col-md-8">
+											<volist name="sendfroms" id="tpo" key="tpkey">
+												<if condition="$tpkey eq $project.sendfrom ">
+												<label class="checkbox-inline"><input type="radio" name="sendfrom" value="{$tpkey}" checked><span>{$tpo}</span></label>
+												<else />
+												<label class="checkbox-inline"><input type="radio" name="sendfrom" value="{$tpkey}"><span>{$tpo}</span></label>
+												</if>
+										</volist>
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+										<label class="control-label col-md-4">用途:</label>
+										<div class="col-md-8">
+											<volist name="usetos" id="uo">
+												<if condition="$uo.key eq $project['useto']">
+												<label class="checkbox-inline"><input type="radio" name="useto" value="{$uo.key}" checked><span>{$uo.value}</span></label>
+												<else />
+												<label class="checkbox-inline"><input type="radio" name="useto" value="{$uo.key}"><span>{$uo.value}</span></label>
+												</if>
+										</volist>
+										</div>
+									</div>
 									<div class="form-group col-md-12">
 										<label class="control-label col-md-2">报告编号:</label>
 										<div class="col-md-8">
@@ -87,7 +111,7 @@
 										<label class="control-label col-md-4">工作压力:</label>
 										<div class="col-md-8">
 											<div class="input-group">
-									           <input type="text" name="workPressure" id="workPressure" value="{$project.workpressure}" dataType="n" ignore="ignore" class="form-control"><span class="input-group-addon">Mpa</span>
+									           <input type="text" name="workPressure" id="workPressure" value="{$project.workpressure}" dataType="decimal" ignore="ignore" class="form-control"><span class="input-group-addon">Mpa</span>
 									        </div>
 										</div>
 									</div>
@@ -101,7 +125,7 @@
 										<label class="control-label col-md-4">要求整定压力:</label>
 										<div class="col-md-8">
 											<div class="input-group">
-									           <input type="text" name="needPressure" id="needPressure" value="{$project.needpressure}" class="form-control" dataType="n" ignore="ignore"><span class="input-group-addon">Mpa</span>
+									           <input type="text" name="needPressure" id="needPressure" value="{$project.needpressure}" class="form-control" dataType="decimal" ignore="ignore"><span class="input-group-addon">Mpa</span>
 									        </div>
 										</div>
 									</div>
@@ -129,7 +153,7 @@
 										<label class="control-label col-md-4">整定压力:</label>
 										<div class="col-md-8">
 											<div class="input-group">
-									           <input type="text" name="setPressure" id="setPressure" value="{$project.setpressure}" class="form-control" dataType="n" ignore="ignore"><span class="input-group-addon">Mpa</span>
+									           <input type="text" name="setPressure" id="setPressure" value="{$project.setpressure}" class="form-control" dataType="decimal" ignore="ignore"><span class="input-group-addon">Mpa</span>
 									        </div>
 										</div>
 									</div>
@@ -137,7 +161,7 @@
 										<label class="control-label col-md-4">密封试验压力:</label>
 										<div class="col-md-8">
 											<div class="input-group">
-									           <input type="text" class="form-control" name="finalPressure" id="finalPressure" value="{$project.finalpressure}" dataType="n" ignore="ignore"><span class="input-group-addon">Mpa</span>
+									           <input type="text" class="form-control" name="finalPressure" id="finalPressure" value="{$project.finalpressure}" dataType="decimal" ignore="ignore"><span class="input-group-addon">Mpa</span>
 									        </div>
 										</div>
 									</div>
@@ -229,7 +253,7 @@
 										<label class="control-label col-md-4">公称通径:</label>
 										<div class="col-md-8">
 											<div class="input-group">
-									           <input type="text" class="form-control" id="gctj" name="gctj" value="{$project.gctj}" dataType="n" ignore="ignore"><span class="input-group-addon">mm</span>
+									           <input type="text" class="form-control" id="gctj" name="gctj" value="{$project.gctj}" dataType="decimal" ignore="ignore"><span class="input-group-addon">mm</span>
 									        </div>
 										</div>
 									</div>
@@ -237,7 +261,7 @@
 										<label class="control-label col-md-4">阀座口径:</label>
 										<div class="col-md-8">
 											<div class="input-group">
-									           <input type="text" class="form-control" id="fztj" name="fztj" value="{$project.fztj}" dataType="n" ignore="ignore"><span class="input-group-addon">mm</span>
+									           <input type="text" class="form-control" id="fztj" name="fztj" value="{$project.fztj}" dataType="decimal" ignore="ignore"><span class="input-group-addon">mm</span>
 									        </div>
 										</div>
 									</div>
@@ -258,14 +282,14 @@
 										<div class="col-md-8">
 											<div class="col-sm-5">
 											<div class="input-group">
-												<input name="pLevelFrom" id="pLevelFrom" value="{$project.plevelfrom}" class="form-control" type="text" dataType="n" ignore="ignore">
+												<input name="pLevelFrom" id="pLevelFrom" value="{$project.plevelfrom}" class="form-control" type="text" dataType="decimal" ignore="ignore">
 												<span class="input-group-addon">Mpa</span>
 											</div>
 											</div>
 											<label class="control-label col-sm-2" style="text-align: center;">至</label>
 											<div class="col-sm-5">
 											<div class="input-group">
-												<input name="pLevelTo" id="pLevelTo" value="{$project.plevelto}" class="form-control" type="text" dataType="n" ignore="ignore">
+												<input name="pLevelTo" id="pLevelTo" value="{$project.plevelto}" class="form-control" type="text" dataType="decimal" ignore="ignore">
 												<span class="input-group-addon">Mpa</span>
 											</div>
 											</div>
@@ -298,7 +322,7 @@
 										<label class="control-label col-md-4">校验介质温度:</label>
 										<div class="col-md-8">
 											<div class="input-group">
-													<input name="temperature" id="temperature" value="{$project.temperature}" class="form-control" type="text" dataType="n" ignore="ignore">
+													<input name="temperature" id="temperature" value="{$project.temperature}" class="form-control" type="text" dataType="decimal" ignore="ignore">
 													<span class="input-group-addon">℃</span>
 												 </div>
 										</div>
@@ -320,19 +344,19 @@
 										<div class="col-md-8">
 											   <div class="col-sm-4">
 									           <div class="input-group">
-												<input name="truePressure1" id="truePressure1" value="{$project.truepressure1}" placeholder="第1次" class="form-control" type="text" dataType="n" ignore="ignore">
+												<input name="truePressure1" id="truePressure1" value="{$project.truepressure1}" placeholder="第1次" class="form-control" type="text" dataType="decimal" ignore="ignore">
 												<span class="input-group-addon">Mpa</span>
 												</div>
 												</div>
 												<div class="col-sm-4">
 												 <div class="input-group">
-												<input name="truePressure2" id="truePressure2" value="{$project.truepressure2}" placeholder="第2次" class="form-control" type="text" dataType="n" ignore="ignore">
+												<input name="truePressure2" id="truePressure2" value="{$project.truepressure2}" placeholder="第2次" class="form-control" type="text" dataType="decimal" ignore="ignore">
 												<span class="input-group-addon">Mpa</span>
 												</div>
 												</div>
 												<div class="col-sm-4">
 												 <div class="input-group">
-													<input name="truePressure3" id="truePressure3" value="{$project.truepressure3}" placeholder="第3次" class="form-control" type="text" dataType="n" ignore="ignore">
+													<input name="truePressure3" id="truePressure3" value="{$project.truepressure3}" placeholder="第3次" class="form-control" type="text" dataType="decimal" ignore="ignore">
 													<span class="input-group-addon">Mpa</span>
 												 </div>
 												</div>
@@ -343,19 +367,19 @@
 										<div class="col-md-8">
 											   <div class="col-sm-4">
 									           <div class="input-group">
-												<input name="closePressure1" id="closePressure1" value="{$project.closepressure1}" placeholder="第1次" class="form-control" type="text" dataType="n" ignore="ignore">
+												<input name="closePressure1" id="closePressure1" value="{$project.closepressure1}" placeholder="第1次" class="form-control" type="text" dataType="decimal" ignore="ignore">
 												<span class="input-group-addon">Mpa</span>
 												</div>
 												</div>
 												<div class="col-sm-4">
 												 <div class="input-group">
-												<input name="closePressure2" id="closePressure2" value="{$project.closepressure2}" placeholder="第2次" class="form-control" type="text" dataType="n" ignore="ignore">
+												<input name="closePressure2" id="closePressure2" value="{$project.closepressure2}" placeholder="第2次" class="form-control" type="text" dataType="decimal" ignore="ignore">
 												<span class="input-group-addon">Mpa</span>
 												</div>
 												</div>
 												<div class="col-sm-4">
 												 <div class="input-group">
-													<input name="closePressure3" id="closePressure3" value="{$project.closepressure3}" placeholder="第3次" class="form-control" type="text" dataType="n" ignore="ignore">
+													<input name="closePressure3" id="closePressure3" value="{$project.closepressure3}" placeholder="第3次" class="form-control" type="text" dataType="decimal" ignore="ignore">
 													<span class="input-group-addon">Mpa</span>
 												 </div>
 												</div>
@@ -399,6 +423,28 @@
 		</div>
 		<include file="Common/footer" />
 		<script type="text/javascript">
+		function checkNum(){
+			var url="{:U('Project/getnextno')}";
+			var id=$.trim($("#id").val());
+			if(id==''){
+				var sendfrom=$("input[name=sendfrom]:checked").val();
+				var useto=$("input[name=useto]:checked").val();
+				if(sendfrom!=''&&useto!=''){
+					$.post(url, { sendfrom: sendfrom, useto: useto },
+					          function(data){
+				        	 $("#rnum").val(data);
+				    });
+				}
+			}
+		}
+		$(function(){
+			$("input[name=sendfrom],input[name=useto]").change(function(){
+				checkNum();
+			});
+			
+		});
+		
+		
 		/**验证表单 */
 		myform=$("#form").Validform({
 			tiptype: function (msg, o, cssctl) {

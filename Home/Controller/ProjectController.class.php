@@ -41,6 +41,9 @@ class ProjectController extends CommonController {
 	        $project["verifymandate"]=date("Y-m-d");
 	        $project["auditmandate"]=date("Y-m-d");
 	        $project['repairs']=array();
+	        $project['sendfrom']=1;
+	        $project['useto']='R';
+	        $project['rnum']=getNextRnum($project['sendfrom'],$project['useto']);;
 	    }
 	    $repairsList=array();
 	    foreach ($repairs as $k=>$v){
@@ -56,6 +59,8 @@ class ProjectController extends CommonController {
 	    $this->assign('repairs', $repairsList);
 	    $this->assign('project', $project); 
 	    $this->assign('types', getTypes()); 
+	    $this->assign('sendfroms', getSendfrom()); 
+	    $this->assign('usetos', seitchToDataArray(getUseto())); 
 	    $this->assign('standards', getStandards()); 
 	    $this->display ();
 	}
@@ -68,8 +73,13 @@ class ProjectController extends CommonController {
 	            $data['repairs']=implode(",", $_POST['repairs']);
 	        }
 	        if($data["id"]){
-	            $model->where("id='".$data["id"]."'")->save($data);
+	            if($model->where("rnum='".$data['rnum']."' and id!='".$data["id"]."' ")->count()>0){
+	                $this->error("报告编号为:".$data['rnum'].'的报告已经存在了,请修改报告编号！');
+	            }else{
+	                $model->where("id='".$data["id"]."'")->save($data);
+	            }
 	        }else{
+	            $data['rnum']=getNextRnum($data['sendfrom'],$data['useto']);;
 	            $model->add($data);
 	        }
 	        $this->success("数据已经保存成功",U("Project/index"));
@@ -101,6 +111,7 @@ class ProjectController extends CommonController {
 	        }
 	        $repairsList[]=$tmp;
 	    }
+	    $this->assign('year', date("Y",time()));
 	    $project["verifydate"]=date("Y 年  m 月 d 日",strtotime($project['verifydate']));
 	    $project["nextverifydate"]=date("Y 年  m 月 d 日",strtotime($project['nextverifydate']));
 	    $project["verifymandate"]=date("Y 年 m 月  d 日",strtotime($project['verifymandate']));
@@ -118,6 +129,11 @@ class ProjectController extends CommonController {
 	    }
 	}
 	
+	
+	
+	function getnextno(){
+	    echo getNextRnum($_REQUEST['sendfrom'],$_REQUEST['useto']);
+	}
 
 	function fonts(){
 	    $text = $_GET['font']?$_GET['font']:"test...";
