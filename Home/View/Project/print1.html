@@ -9,11 +9,11 @@
 		<div class="container-fluid main-content">
 		<div class="left-num">ZTABG03-{$year}</div>
 		<table class="data-table noborder">
-		<caption>安全阀校验报告书<span>{$project.rnum}</span></caption>
+		<caption>安全阀校验报告书<!-- <span>{$project.rnum}</span> --></caption>
         <tr>
         	<td colspan="2" class="w50 noborder"></td>
-        	<td colspan="2" class="noborder text-right" style="padding-right: 15%">报告编号：</td>
-        </tr>		
+        	<td colspan="2" class="noborder text-right rnum" style="padding-right: 0%">报告编号：<span>{$project.rnum}</span></td>
+        </tr>	
 	        <tr>
 	          <td class="w25 hbt hbl">使用单位</td>
 	          <td class="w75 hand-write hbt hbr" colspan="3">{$project.company}</td>
