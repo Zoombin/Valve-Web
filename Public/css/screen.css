@@ -31,7 +31,7 @@ ul{list-style:none}
 h3{text-align:left}
 .text-left{text-align: left !important;}
 .text-right{text-align: right !important;}
-.rlist li{display:block;text-align:left}
+.rlist li{display:block;text-align:left;line-height: 28px}
 .rlist li label{padding: 0 5px;}
 .printbtn{margin-top:20px;border:1px solid #ccc;background:#eee;padding:5px 30px;cursor:pointer}
 .printbtn:hover{background:#007aff;border:1px solid #007aff;color:#fff;transition:ease .3s}
