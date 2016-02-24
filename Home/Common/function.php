@@ -54,7 +54,8 @@ function getRepairs($id=''){
         1=>'油漆',
         2=>'密封面研磨',
         3=>'换弹簧',
-        4=>'更换阀瓣'
+        4=>'更换阀瓣',
+        5=>'无'
     );
     if($id&&isset($arr[$id])){
         return $arr[$id];

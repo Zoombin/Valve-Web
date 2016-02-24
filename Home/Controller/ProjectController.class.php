@@ -112,11 +112,11 @@ class ProjectController extends CommonController {
 	        $repairsList[]=$tmp;
 	    }
 	    $this->assign('year', date("Y",time()));
-	    $project["verifydate"]=date("Y 年  m 月 d 日",strtotime($project['verifydate']));
-	    $project["nextverifydate"]=date("Y 年  m 月 d 日",strtotime($project['nextverifydate']));
-	    $project["verifymandate"]=date("Y 年 m 月  d 日",strtotime($project['verifymandate']));
-	    $project["auditmandate"]=date("Y 年 m 月 d 日",strtotime($project['auditmandate']));
-	    $project["verifyvalidatedate"]=date("Y 年 m 月 d 日",strtotime($project['verifyvalidatedate']));
+	    $project["verifydate"]=date("Y年  m月 d日",strtotime($project['verifydate']));
+	    $project["nextverifydate"]=date("Y年  m月 d日",strtotime($project['nextverifydate']));
+	    $project["verifymandate"]=date("Y年 m月  d日",strtotime($project['verifymandate']));
+	    $project["auditmandate"]=date("Y年 m月 d日",strtotime($project['auditmandate']));
+	    $project["verifyvalidatedate"]=date("Y年 m月 d日",strtotime($project['verifyvalidatedate']));
 	    $this->assign('repairs', $repairsList);
 	    $this->assign('type', $type);
 	    $this->assign('project', $project);
