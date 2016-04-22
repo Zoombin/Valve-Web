@@ -94,22 +94,26 @@
 	          <td class="w25">下次校验日期</td>
 	          <td class="w25 hand-write hbr">{$project.nextverifydate}</td>
             </tr>
-	        <tr>
-	          <td colspan="2" rowspan="2" class="w50 hbl" style="padding: 28px 0;"> 校验： <span class="font1"><img alt="{$project.verifyman}" src="{:U('Project/fonts',array('font'=>$project['verifyman']))}"> </span>    {$project.verifymandate}</td>
-	          <td colspan="2" class="w50 text-left hbr" style="border-bottom: none;padding: 0">（检验机构核准编号）：</td>
+       		<tr>
+	          <td colspan="2" class="w50 hbl" style="padding: 14px 0;text-align: left;"> 校验： <span class="font1"><img alt="{$project.verifyman}" src="{:U('Project/fonts',array('font'=>$project['verifyman']))}"> </span>    
+	          <span style="float: right;margin-top: 7px;padding-right: 5px;">{$project.verifymandate}</span></td>
+	          <td colspan="2" class="w50 text-left hbr" style="border-bottom: none;padding: 0">（检验机构核准编号）：{$project.hzbh}</td>
             </tr>
             <tr>
+              <td colspan="2" class="w50 hbl" style="padding: 14px 0;text-align: left;"> 审核： <span class="font1"><img alt="{$project.checkman}" src="{:U('Project/fonts',array('font'=>$project['checkman']))}"> </span>    
+              <span style="float: right;margin-top: 7px;padding-right: 5px;">{$project.checkmandate}</span></td>
 	          <td colspan="2" class=" hbr" style="border-bottom: none;border-top: none;padding: 0">&nbsp;</td>
             </tr>
 	        <tr>
-	          <td colspan="2" rowspan="2" class="w50 hbl hbb" style="padding: 28px 0;"> 审批： <span class="font1"><img alt="{$project.auditman}" src="{:U('Project/fonts',array('font'=>$project['auditman']))}"></span>      {$project.auditmandate}</td>
+	          <td colspan="2" rowspan="2" class="w50 hbl hbb" style="padding: 14px 0;text-align: left;"> 审批： <span class="font1"><img alt="{$project.auditman}" src="{:U('Project/fonts',array('font'=>$project['auditman']))}"></span>      
+	          <span style="float: right;margin-top: 7px;padding-right: 5px;">{$project.auditmandate}</span></td>
 	          <td colspan="2" class="w50 hbr" style="border-bottom: none;border-top: none;padding: 0">（校验机构校验专用章）</td>
             </tr>
 	        <tr>
 	          <td colspan="2" class="hbr hbb" style="border-top: none;text-align: right;padding:0 18px 0 0;">{$project.verifydate}</td>
             </tr>
 	        <tr>
-	          <td colspan="4" class="text-right text-small noborder">苏州中特安安全阀检测研究有限公司 </td>
+	          <td colspan="4" class="text-right text-small noborder">苏州中特安安全阀检测研究有限公司<br>苏州市相城区阳澄湖路18号</td>
             </tr>
 	        <tr>
 	          <td colspan="4"  class="text-right text-small noborder">电话：0512-65786922   </td>

@@ -40,6 +40,7 @@ class ProjectController extends CommonController {
 	        $project["nextverifydate"]=date("Y-m-d",time()+365*24*60*60);
 	        $project["verifymandate"]=date("Y-m-d");
 	        $project["auditmandate"]=date("Y-m-d");
+	        $project["checkmandate"]=date("Y-m-d");
 	        $project['repairs']=array();
 	        $project['sendfrom']=1;
 	        $project['useto']='R';
@@ -116,6 +117,7 @@ class ProjectController extends CommonController {
 	    $project["nextverifydate"]=date("Y年  m月 d日",strtotime($project['nextverifydate']));
 	    $project["verifymandate"]=date("Y年 m月  d日",strtotime($project['verifymandate']));
 	    $project["auditmandate"]=date("Y年 m月 d日",strtotime($project['auditmandate']));
+	    $project["checkmandate"]=date("Y年 m月 d日",strtotime($project['checkmandate']));
 	    $project["verifyvalidatedate"]=date("Y年 m月 d日",strtotime($project['verifyvalidatedate']));
 	    $this->assign('repairs', $repairsList);
 	    $this->assign('type', $type);
