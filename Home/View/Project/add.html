@@ -3,7 +3,7 @@
 	<head lang="en">
 		<include file="Common/head" />
 	</head>
-	<body>
+	<body onload="load()">
 		<include file="Common/top" />
 		<div class="container-fluid main-content">
 			<div class="page-title mytitle">
@@ -91,15 +91,15 @@
 									</div>
 									<div class="form-group col-md-6">
 										<label class="control-label col-md-4">安全阀类型:</label>
-										<div class="col-md-8">
-										<volist name="types" id="to" key="tkey">
-												<if condition="$tkey eq $project.type ">
-												<label class="checkbox-inline"><input type="radio" name="type" value="{$tkey}" checked><span>{$to}</span></label>
-												<else />
-												<label class="checkbox-inline"><input type="radio" name="type" value="{$tkey}"><span>{$to}</span></label>
-												</if>
-										</volist>
+										<div class="col-md-8" hidden>
+											<input type="text"  id="type" value="{$project.type}" class="form-control" >
 										</div>
+											<div class="col-md-8">
+												<label class="checkbox-inline"><input type="radio" name="type" value="弹簧式" id="type1"><span>弹簧式</span></label>
+												<label class="checkbox-inline"><input type="radio" name="type" value="先导式" id="type2"><span>先导式</span></label>
+												<label class="checkbox-inline"><input type="radio" name="type" value="重锤式" id="type3"><span>重锤式</span></label>
+											</div>
+										<!--</div>-->
 									</div>
 									<div class="form-group col-md-6">
 										<label class="control-label col-md-4">安全阀型号:</label>
@@ -139,8 +139,12 @@
 									</div>
 									<div class="form-group col-md-6 clear">
 										<label class="control-label col-md-4">校验方式:</label>
+										<div class="col-md-8" hidden>
+											<input type="text"  id="verifyType" value="{$project.verifytype}" class="form-control" >
+										</div>
 										<div class="col-md-8">
-											<input type="text" name="verifyType" id="verifyType" value="{$project.verifytype}" class="form-control">
+										<label class="checkbox-inline"><input type="radio" name="verifyType" value="离线校验" id="verifyType1"><span>离线校验</span></label>
+										<label class="checkbox-inline"><input type="radio" name="verifyType" value="在线校验" id="verifyType2"><span>在线校验</span></label>
 										</div>
 									</div>
 									<div class="form-group col-md-6">
@@ -168,7 +172,14 @@
 									<div class="form-group col-md-6">
 										<label class="control-label col-md-4">校验结果:</label>
 										<div class="col-md-8">
-											<input type="text" name="verifyResult" id="verifyResult" value="{$project.verifyresult}" class="form-control">
+											<div id="verifyResult" hidden>
+											<input type="text" name="verifyResult" id="txtverifyResult" value="{$project.verifyresult}" class="form-control">
+											</div>
+											<select class="form-control" id="lstverifyResult" name="verifyResult">
+												<option value="合格">合格</option>
+												<option value="不合格">不合格</option>
+											</select>
+
 										</div>
 									</div>
 									<div class="form-group col-md-6">
@@ -204,7 +215,14 @@
 										<div class="col-md-8">
 											<div class="form-group">
 									            <div class="col-sm-6">
-									              <input type="text" placeholder="校验人" id="verifyMan" name="verifyMan" value="{$project.verifyman}" class="form-control">
+									              <!--<input type="text" placeholder="校验人" id="verifyMan" name="verifyMan" value="{$project.verifyman}" class="form-control">-->
+													<div hidden><input type="text"  id="txtverifyman" value="{$project.verifyman}" class="form-control"></div>
+													<select id="verifyMan" class="form-control" name="verifyMan">
+														<option value="0">请选择</option>
+														<option value="../../../Public/images/feng.jpg">丰晟涵</option>
+														<option value="../../../Public/images/pu.jpg">浦一顺</option>
+														<option value="../../../Public/images/zhou.jpg">周志刚</option>
+													</select>
 									            </div>
 									            <div class="col-sm-6">
 									            	<div class="input-group">
@@ -221,7 +239,13 @@
 										<div class="col-md-8">
 											<div class="form-group">
 									            <div class="col-sm-6">
-									              <input type="text" placeholder="审核人" id="checkman" name="checkman" value="{$project.checkman}" class="form-control">
+													<div hidden><input type="text"  id="txtcheckman" value="{$project.checkman}" class="form-control"></div>
+													<select id="checkman" class="form-control" name="checkman">
+														<option value="0">请选择</option>
+														<option value="../../../Public/images/feng.jpg">丰晟涵</option>
+														<option value="../../../Public/images/pu.jpg">浦一顺</option>
+														<option value="../../../Public/images/zhou.jpg">周志刚</option>
+													</select>
 									            </div>
 									            <div class="col-sm-6">
 									            	<div class="input-group">
@@ -239,7 +263,13 @@
 										<div class="col-md-8">
 											<div class="form-group">
 									            <div class="col-sm-6">
-									              <input type="text" placeholder="审批人" id="auditMan" name="auditMan" value="{$project.auditman}" class="form-control">
+									              <div hidden><input type="text"  id="txtauditMan" value="{$project.auditman}" class="form-control"></div>
+													<select id="auditMan" class="form-control" name="auditMan">
+														<option value="0">请选择</option>
+														<option value="../../../Public/images/feng.jpg">丰晟涵</option>
+														<option value="../../../Public/images/pu.jpg">浦一顺</option>
+														<option value="../../../Public/images/zhou.jpg">周志刚</option>
+													</select>
 									            </div>
 									            <div class="col-sm-6">
 									            	<div class="input-group">
@@ -440,55 +470,8 @@
 			</div>
 		</div>
 		<include file="Common/footer" />
-		<script type="text/javascript">
-		function checkNum(){
-			var url="{:U('Project/getnextno')}";
-			var id=$.trim($("#id").val());
-			if(id==''){
-				var sendfrom=$("input[name=sendfrom]:checked").val();
-				var useto=$("input[name=useto]:checked").val();
-				if(sendfrom!=''&&useto!=''){
-					$.post(url, { sendfrom: sendfrom, useto: useto },
-					          function(data){
-				        	 $("#rnum").val(data);
-				    });
-				}
-			}
-		}
-		$(function(){
-			$("input[name=sendfrom],input[name=useto]").change(function(){
-				checkNum();
-			});
-			
-		});
-		
-		
-		/**验证表单 */
-		myform=$("#form").Validform({
-			tiptype: function (msg, o, cssctl) {
-				switch (o.type) {
-					case 1:
-						alertify.log('正在检测...');
-						break;
-					case 2:
-						//alertify.success(msg, 5000);
-						break;
-					case 3:
-						alertify.error(msg, 5000);
-						break;
-					case 4:
-						//alertify.log(msg);
-						break;
-				}			
-				//msg：提示信息;
-				//o:{obj:*,type:*,curform:*},
-				//obj指向的是当前验证的表单元素（或表单对象，验证全部验证通过，提交表单时o.obj为该表单对象），
-				//type指示提示的状态，值为1、2、3、4， 1：正在检测/提交数据，2：通过验证，3：验证失败，4：提示ignore状态, 
-				//curform为当前form对象;
-				//cssctl:内置的提示信息样式控制函数，该函数需传入两个参数：显示提示信息的对象 和 当前提示的状态（既形参o中的type）;
-			},
-			postonce: true
-		});
+		<script type="text/javascript" src="../../../Public/js/customize/add.js">
+
 		</script>
 	</body>
 

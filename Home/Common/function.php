@@ -49,13 +49,22 @@ function getTypes($id=''){
     }
     return $arr;
 }
+
+function getVerifyTypes($id=''){
+    $arr=array(
+        1=>'离线校验',
+        2=>'在线校验'
+    );
+    if($id&&isset($arr[$id])){
+        return $arr[$id];
+    }
+    return $arr;
+}
+
 function getRepairs($id=''){
     $arr=array(
-        1=>'油漆',
-        2=>'密封面研磨',
-        3=>'换弹簧',
-        4=>'更换阀瓣',
-        5=>'无'
+        1=>'密封面研磨',
+        2=>'阀瓣和阀座密封面严重损坏，无法修复'
     );
     if($id&&isset($arr[$id])){
         return $arr[$id];
@@ -109,6 +118,6 @@ function seitchToDataArray($arr){
 function getNextRnum($sendfrom='',$useto=''){
     $year=date("Y",time());
     $cnt=M("project")->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'")->count();
-    $cnt=sprintf("%04d",$cnt+1);
+    $cnt=sprintf("%05d",$cnt+1);
     return  $rnum='SZZTA-'.$sendfrom.$useto.'X-'.$cnt.'-'.date("Y",time());
 }

@@ -35,6 +35,7 @@ class ProjectController extends CommonController {
 	        $project['repairs']=explode(",", $project['repairs']);
 	    }else{
 	        $project["type"]=1;
+	        $project["verifyType"]=1;
 	        $project["standard"]=1;
 	        $project["verifydate"]=date("Y-m-d");
 	        $project["nextverifydate"]=date("Y-m-d",time()+365*24*60*60);
@@ -59,7 +60,8 @@ class ProjectController extends CommonController {
 	    }
 	    $this->assign('repairs', $repairsList);
 	    $this->assign('project', $project); 
-	    $this->assign('types', getTypes()); 
+	    $this->assign('types', getTypes());
+	    $this->assign('verifyTypes', getVerifyTypes());
 	    $this->assign('sendfroms', getSendfrom()); 
 	    $this->assign('usetos', seitchToDataArray(getUseto())); 
 	    $this->assign('standards', getStandards()); 
@@ -118,11 +120,12 @@ class ProjectController extends CommonController {
 	    $project["verifymandate"]=date("Y年 m月  d日",strtotime($project['verifymandate']));
 	    $project["auditmandate"]=date("Y年 m月 d日",strtotime($project['auditmandate']));
 	    $project["checkmandate"]=date("Y年 m月 d日",strtotime($project['checkmandate']));
-	    $project["verifyvalidatedate"]=date("Y年 m月 d日",strtotime($project['verifyvalidatedate']));
+
 	    $this->assign('repairs', $repairsList);
 	    $this->assign('type', $type);
 	    $this->assign('project', $project);
 	    $this->assign('types', getTypes());
+	    $this->assign('verifyTypes', getVerifyTypes());
 	    $this->assign('standards', getStandards());
 	    if($type==1){
 	        $this->display ("print1");//报告
