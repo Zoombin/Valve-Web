@@ -47,10 +47,22 @@
 										</volist>
 										</div>
 									</div>
-									<div class="form-group col-md-12">
-										<label class="control-label col-md-2">报告编号:</label>
+									<div class="form-group col-md-6">
+										<label class="control-label col-md-4">报告编号:</label>
 										<div class="col-md-8">
 											<input name="rnum" id="rnum" maxlength="30" class="form-control" value="{$project.rnum}">
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+										<label class="control-label col-md-4">新旧情况:</label>
+										<div class="col-md-8">
+											<div class="col-md-8" hidden>
+												<input type="text"  id="newold" value="{$project.newold}" class="form-control" >
+											</div>
+											<div class="col-md-8">
+												<label class="checkbox-inline"><input type="radio" name="newold" value="新" id="new"><span>新</span></label>
+												<label class="checkbox-inline"><input type="radio" name="newold" value="旧" id="old"><span>旧</span></label>
+											</div>
 										</div>
 									</div>
 									<div class="form-group col-md-12">
@@ -150,7 +162,7 @@
 									<div class="form-group col-md-6">
 										<label class="control-label col-md-4">校验介质:</label>
 										<div class="col-md-8">
-											<input type="text" name="verifyMedium" id="verifyMedium" value="{$project.verifymedium}" class="form-control">
+											<input type="text" name="verifyMedium" id="verifyMedium" value="氮气" class="form-control" readonly>
 										</div>
 									</div>
 									<div class="form-group col-md-6">

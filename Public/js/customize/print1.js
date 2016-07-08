@@ -43,6 +43,7 @@ function load()
         document.getElementById("devnum").innerHTML = '<div style="text-align: center;">' + '不明' + '</div>';
     }
 
+    //显示电子签名
     var checkman = document.getElementById('checkman').value;
     var auditman = document.getElementById('auditman').value;
     var verifyman = document.getElementById('verifyman').value;
@@ -61,10 +62,5 @@ function load()
         var shenpiImg = document.getElementById("shenpiImg");
         shenpiImg.src= auditman;
     }
-
-
-
-
-
 
 }

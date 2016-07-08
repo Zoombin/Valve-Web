@@ -80,6 +80,18 @@ function load(){
         }
     }
 
+
+    //显示新旧
+    var newold= document.getElementById("newold").value;
+    if(newold=="新"){
+        document.getElementById("new").setAttribute("checked","checked");
+    }
+    if(newold=="旧"){
+        document.getElementById("old").setAttribute("checked","checked");
+    }
+
+
+    //selectlist选中那个人
     var auditman= document.getElementById("txtauditMan").value;
     if(auditman=="/Public/images/feng.jpg"){
         var opts = document.getElementById('auditMan');
