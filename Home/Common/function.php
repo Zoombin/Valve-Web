@@ -64,7 +64,8 @@ function getVerifyTypes($id=''){
 function getRepairs($id=''){
     $arr=array(
         1=>'密封面研磨',
-        2=>'阀瓣和阀座密封面严重损坏，无法修复'
+        2=>'阀瓣和阀座密封面严重损坏，无法修复',
+        3=>'无'
     );
     if($id&&isset($arr[$id])){
         return $arr[$id];

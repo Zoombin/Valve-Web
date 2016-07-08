@@ -17,11 +17,9 @@ function load()
     var type= document.getElementById("typetxt").value;
     if(type=="1"){
         var typehtml = '<input type="checkbox" onclick="return false;">弹簧式'+'&nbsp;&nbsp;'+'<input type="checkbox" onclick="return false;" align="right">先导式'+'<br>'+'<input type="checkbox" onclick="return false;">重锤式';
-        document.getElementById("type").innerHTML= shtml;
     }
     if(type=="弹簧式"){
         var typehtml = '<input type="checkbox" checked onclick="return false;">弹簧式'+'&nbsp;&nbsp;'+'<input type="checkbox" onclick="return false;" align="right">先导式'+'<br>'+'<input type="checkbox" onclick="return false;">重锤式';
-        document.getElementById("type").innerHTML= shtml;
     }
     if(type=="先导式"){
         var typehtml = '<input type="checkbox" onclick="return false;">弹簧式'+'&nbsp;&nbsp;'+'<input type="checkbox" onclick="return false;" checked>先导式'+'<br>'+'<input type="checkbox" onclick="return false;">重锤式';
@@ -33,18 +31,6 @@ function load()
     }
     document.getElementById("type").innerHTML= typehtml;
 
-    //校验方式改为显示checkbox
-    var verifyType= document.getElementById("VerifyTypetxt").value;
-    if(verifyType=="离线校验"){
-        var shtml = '<input type="checkbox"  checked onclick="return false;">离线校验'+'&nbsp;'+'<input type="checkbox"  onclick="return false;" align="right">在线校验';
-    }
-    if(verifyType=="在线校验"){
-        var shtml = '<input type="checkbox" onclick="return false;">离线校验'+'&nbsp;'+'<input type="checkbox"  checked onclick="return false;">在线校验';
-    }
-    if(verifyType==""){
-        var shtml = '<input type="checkbox" onclick="return false;">离线校验'+'&nbsp;'+'<input type="checkbox" onclick="return false;">在线校验';
-    }
-    document.getElementById("verifyType").innerHTML= shtml;
 
     //校验标牌号自定义显示
     var rnum= document.getElementById("txtrnum").value;

@@ -81,26 +81,42 @@ function load(){
     }
 
     var auditman= document.getElementById("txtauditMan").value;
-    if(auditman=="../../../Public/images/feng.jpg"){
+    if(auditman=="/Public/images/feng.jpg"){
         var opts = document.getElementById('auditMan');
         for(var i=0;i<opts.options.length;i++){
-            if('../../../Public/images/feng.jpg'==opts.options[i].value){
+            if('/Public/images/feng.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
     }
-    else if(auditman=="../../../Public/images/pu.jpg"){
+    else if(auditman=="/Public/images/pu.jpg"){
         var opts = document.getElementById('auditMan');
         for(var i=0;i<opts.options.length;i++){
-            if('../../../Public/images/pu.jpg'==opts.options[i].value){
+            if('/Public/images/pu.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
     }
-    else if(auditman=="../../../Public/images/zhou.jpg"){
+    else if(auditman=="/Public/images/zhou.jpg"){
         var opts = document.getElementById('auditMan');
         for(var i=0;i<opts.options.length;i++){
-            if('../../../Public/images/zhou.jpg'==opts.options[i].value){
+            if('/Public/images/zhou.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(auditman=="/Public/images/ma.jpg"){
+        var opts = document.getElementById('auditMan');
+        for(var i=0;i<opts.options.length;i++){
+            if('/Public/images/ma.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(auditman=="/Public/images/xu.jpg"){
+        var opts = document.getElementById('auditMan');
+        for(var i=0;i<opts.options.length;i++){
+            if('/Public/images/xu.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
@@ -113,28 +129,46 @@ function load(){
             }
         }
     }
+
+
 
     var checkman= document.getElementById("txtcheckman").value;
-    if(checkman=="../../../Public/images/feng.jpg"){
+    if(checkman=="/Public/images/feng.jpg"){
         var opts = document.getElementById('checkman');
         for(var i=0;i<opts.options.length;i++){
-            if('../../../Public/images/feng.jpg'==opts.options[i].value){
+            if('/Public/images/feng.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
     }
-    else if(checkman=="../../../Public/images/pu.jpg"){
+    else if(checkman=="/Public/images/pu.jpg"){
         var opts = document.getElementById('checkman');
         for(var i=0;i<opts.options.length;i++){
-            if('../../../Public/images/pu.jpg'==opts.options[i].value){
+            if('/Public/images/pu.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
     }
-    else if(checkman=="../../../Public/images/zhou.jpg"){
+    else if(checkman=="/Public/images/zhou.jpg"){
         var opts = document.getElementById('checkman');
         for(var i=0;i<opts.options.length;i++){
-            if('../../../Public/images/zhou.jpg'==opts.options[i].value){
+            if('/Public/images/zhou.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(checkman=="/Public/images/ma.jpg"){
+        var opts = document.getElementById('checkman');
+        for(var i=0;i<opts.options.length;i++){
+            if('/Public/images/ma.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(checkman=="/Public/images/xu.jpg"){
+        var opts = document.getElementById('checkman');
+        for(var i=0;i<opts.options.length;i++){
+            if('/Public/images/xu.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
@@ -148,27 +182,47 @@ function load(){
         }
     }
 
+
+
+
+
     var verifyman= document.getElementById("txtverifyman").value;
-    if(verifyman=="../../../Public/images/feng.jpg"){
+    if(verifyman=="/Public/images/feng.jpg"){
         var opts = document.getElementById('verifyMan');
         for(var i=0;i<opts.options.length;i++){
-            if('../../../Public/images/feng.jpg'==opts.options[i].value){
+            if('/Public/images/feng.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
     }
-    else if(verifyman=="../../../Public/images/pu.jpg"){
+    else if(verifyman=="/Public/images/pu.jpg"){
         var opts = document.getElementById('verifyMan');
         for(var i=0;i<opts.options.length;i++){
-            if('../../../Public/images/pu.jpg'==opts.options[i].value){
+            if('/Public/images/pu.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
     }
-    else if(verifyman=="../../../Public/images/zhou.jpg"){
+    else if(verifyman=="/Public/images/zhou.jpg"){
         var opts = document.getElementById('verifyMan');
         for(var i=0;i<opts.options.length;i++){
-            if('../../../Public/images/zhou.jpg'==opts.options[i].value){
+            if('/Public/images/zhou.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(verifyman=="/Public/images/ma.jpg"){
+        var opts = document.getElementById('verifyMan');
+        for(var i=0;i<opts.options.length;i++){
+            if('/Public/images/ma.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(verifyman=="/Public/images/xu.jpg"){
+        var opts = document.getElementById('verifyMan');
+        for(var i=0;i<opts.options.length;i++){
+            if('/Public/images/xu.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }

@@ -8,21 +8,27 @@ class ProjectController extends CommonController {
 	public function index() {
 		$this->meta_title = '安全阀报告';
 		$model=M('project');
-		$where="1=1";
+		$xiangcheng="sendfrom=1 AND isDeleted=0";
+		$wuzhong="sendfrom=2  AND isDeleted=0";
 		$key=I('get.key');
 		if($key){
 		    $where.=" and CONCAT(`rnum`,address) LIKE '%".$key."%'";
 		    $this->assign("key",$key);
 		}
-		$count=$model->where($where)->count();
-		$page = new Page($count);
+		$count1=$model->where($xiangcheng)->count();
+		$page1 = new Page($count1);
+		$count2=$model->where($wuzhong)->count();
+        $page2 = new Page($count2);
 		if($key){
-		    $page->parameter["key"]=urlencode($key);
+		    $page1->parameter["key"]=urlencode($key);
+		    $page2->parameter["key"]=urlencode($key);
 		}
-		$list = $model->where($where)->order('id desc')->limit($page->firstRow, $page->listRows)->select();
-		//dump($list);
-		$this->assign('list', $list); // 赋值数据集
-		$this->assign('page', $page->show());
+		$listxiangcheng = $model->where($xiangcheng)->order('id desc')->limit($page1->firstRow, $page1->listRows)->select();
+        $listwuzhong = $model->where($wuzhong)->order('id desc')->limit($page2->firstRow, $page2->listRows)->select();
+		$this->assign('listxiangcheng', $listxiangcheng); // 赋值数据集
+		$this->assign('page1', $page1->show());
+		$this->assign('listwuzhong', $listwuzhong); // 赋值数据集
+        $this->assign('page2', $page2->show());
 		$this->display ();
 	}
 	
@@ -93,7 +99,7 @@ class ProjectController extends CommonController {
 	
 	function remove(){
 	    $id=I("post.id");
-	    M("project")->where("id='".$id."'")->delete();
+	    M("project")->where("id='".$id."'")->setField('isDeleted','1');
 	    echo '已经删除！';
 	}
 	

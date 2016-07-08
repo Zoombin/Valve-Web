@@ -9,18 +9,6 @@ function pagesetup_null()
 
 }
 function load(){
-    //校验方式改为checkox
-    var verifyType= document.getElementById("VerifyTypetxt").value;
-    if(verifyType=="离线校验"){
-        var shtml = '<input type="checkbox" checked onclick="return false;">离线校验'+'&nbsp;'+'<input type="checkbox" onclick="return false;" align="right">在线校验';
-    }
-    if(verifyType=="在线校验"){
-        var shtml = '<input type="checkbox" onclick="return false;">离线校验'+'&nbsp;'+'<input type="checkbox" checked onclick="return false;">在线校验';
-    }
-    if(verifyType==""){
-        var shtml = '<input type="checkbox" onclick="return false;">离线校验'+'&nbsp;'+'<input type="checkbox"   onclick="return false;">在线校验';
-    }
-    document.getElementById("verifyType").innerHTML= shtml;
 
     //校验编码自定义显示
     var rnum= document.getElementById("txtrnum").value;
