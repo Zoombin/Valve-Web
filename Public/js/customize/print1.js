@@ -63,4 +63,14 @@ function load()
         shenpiImg.src= auditman;
     }
 
+    //如果阀门不合格,设置整定压力,密封试验压力,校验标牌号和下次校验日期为/
+    var verifyResult = document.getElementById("verifyResult").value;
+
+    if(verifyResult=='不合格'){
+        document.getElementById("spanSetPressure").innerHTML='<span class="text-info" id="spanSetPressure">/</span>';
+        document.getElementById("spanFinalPressure").innerHTML='<span class="text-info" id="spanFinalPressure">/</span>';
+        document.getElementById("spanNextVerifyDate").innerHTML='<span id="spanNextVerifyDate">/</span>';
+        document.getElementById("rnum").innerHTML= '<div style="text-align: center;">/</div>';
+    }
+
 }
