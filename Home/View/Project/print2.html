@@ -13,7 +13,7 @@
 		<caption>安全阀校验记录<!--<span>{$project.rnum}</span>--></caption>
 		<tr>
 			<td colspan="2" class="w50 noborder"></td>
-			<td colspan="2" class="noborder text-right rnum" style="padding-right: 0%">编号：<span>SZZTA-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2016</span></td>
+			<td colspan="2" class="noborder text-right rnum" style="padding-right: 0%">编号：<span>{$project.rnum}</span></td>
 		</tr>
 		<tr>
 			<td class="w25 hbt hbl">使用单位</td>
@@ -23,7 +23,7 @@
 			<td class="w25 hbl">设备代码</td>
 			<td class="w25 hand-write">{$project.devnum}</td>
 			<td class="w25">要求整定压力</td>
-			<td class="w25 hand-write hbr"><span class="text-info">{$project.needpressure}</span><span class="text-unit">Mpa</span></td>
+			<td class="w25 hand-write hbr"><span class="text-info">{$project.needpressure}</span><span class="text-unit">MPa</span></td>
 		</tr>
 		<tr>
 			<td class="w25 hbl">工作介质</td>
@@ -47,9 +47,9 @@
 			<td class="w25">压力级别范围</td>
 			<td class="w25 hand-write hbr">
 				<span style="float: left;">{$project.plevelfrom}</span>
-				<span>Mpa至</span>
+				<span>MPa至</span>
 				<span>{$project.plevelto}</span>
-				<span style="float: right;">Mpa</span>
+				<span style="float: right;">MPa</span>
 			</td>
 		</tr>
 		<tr>
@@ -91,15 +91,15 @@
 		</tr>
 		<tr>
 			<td class="w25 hbl">实际整定压力</td>
-			<td class="w25 hand-write"><span class="text-info">{$project.truepressure1}</span><span class="text-unit">Mpa</span></td>
-			<td class="w25 hand-write"><span class="text-info">{$project.truepressure2}</span><span class="text-unit">Mpa</span></td>
-			<td class="w25 hand-write hbr"><span class="text-info">{$project.truepressure3}</span><span class="text-unit">Mpa</span></td>
+			<td class="w25 hand-write"><span class="text-info">{$project.truepressure1}</span><span class="text-unit">MPa</span></td>
+			<td class="w25 hand-write"><span class="text-info">{$project.truepressure2}</span><span class="text-unit">MPa</span></td>
+			<td class="w25 hand-write hbr"><span class="text-info">{$project.truepressure3}</span><span class="text-unit">MPa</span></td>
 		</tr>
 		<tr>
 			<td class="w25 hbl">密封试验压力</td>
-			<td class="w25 hand-write"><span class="text-info">{$project.closepressure1}</span><span class="text-unit">Mpa</span></td>
-			<td class="w25 hand-write"><span class="text-info">{$project.closepressure2}</span><span class="text-unit">Mpa</span></td>
-			<td class="w25 hand-write hbr"><span class="text-info">{$project.closepressure3}</span><span class="text-unit">Mpa</span></td>
+			<td class="w25 hand-write"><span class="text-info">{$project.closepressure1}</span><span class="text-unit">MPa</span></td>
+			<td class="w25 hand-write"><span class="text-info">{$project.closepressure2}</span><span class="text-unit">MPa</span></td>
+			<td class="w25 hand-write hbr"><span class="text-info">{$project.closepressure3}</span><span class="text-unit">MPa</span></td>
 		</tr>
 		<tr>
 			<td class="w25 hbl">校验结论</td>
@@ -113,7 +113,7 @@
 		<tr>
 			<td colspan="2" class="w50 hbl" style="text-align: left;height: 40px;"> 校验： <div hidden>
 				<input type="text" value="{$project.verifyman}" id="verifyman"></div><img id="jiaoyanImg"> <span style="float: right;margin-top: 7px;padding-right: 5px;">{$project.verifymandate}</span></td>
-			<td colspan="2" rowspan="2" class="w50 hbr hbb">校验报告编号： SZZTA-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2016</td>
+			<td colspan="2" rowspan="2" class="w50 hbr hbb">校验报告编号：<span>{$project.rnum}</span></td>
 		</tr>
 		<tr>
 			<td colspan="2" class="w50 hbl hbb" style="text-align: left;height: 40px;"> 审核： <div hidden><input type="text" value={$project.checkman} id="checkman"></div><img id="shenheImg">
