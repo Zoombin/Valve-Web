@@ -10,12 +10,8 @@ function pagesetup_null()
 }
 function load(){
 
-    //校验编码自定义显示
-    var rnum= document.getElementById("txtrnum").value;
-    var modifyrum = rnum.substring(6,15);
-    document.getElementById("rnum").innerHTML= '<div style="text-align: center;">'+modifyrum+'</div>';
 
-
+    //显示电子签名
     var checkman = document.getElementById('checkman').value;
     var verifyman = document.getElementById('verifyman').value;
 
@@ -28,6 +24,7 @@ function load(){
         var jiaoyanImg = document.getElementById("jiaoyanImg");
         jiaoyanImg.src= verifyman;
     }
+
 
 }
 pagesetup_null();
