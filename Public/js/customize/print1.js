@@ -19,14 +19,14 @@ function load()
         var typehtml = '<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">先导式'+'<br>'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">重锤式';
     }
     if(type=="弹簧式"){
-        var typehtml = '<img class="checkbox" src="/Public/images/checkbox.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">先导式'+'<br>'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">重锤式';
+        var typehtml = '<img class="checkbox" src="/valve/Public/images/checkbox.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">先导式'+'<br>'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">重锤式';
     }
     if(type=="先导式"){
-        var typehtml = '<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/Public/images/checkbox.jpg">先导式'+'<br>'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">重锤式';
+        var typehtml = '<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/valve/Public/images/checkbox.jpg">先导式'+'<br>'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">重锤式';
 
     }
     if(type=="重锤式"){
-        var typehtml = '<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">先导式'+'<br>'+'<img class="checkbox" src="/Public/images/checkbox.jpg">重锤式';
+        var typehtml = '<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">先导式'+'<br>'+'<img class="checkbox" src="/valve/Public/images/checkbox.jpg">重锤式';
 
     }
     document.getElementById("type").innerHTML= typehtml;
