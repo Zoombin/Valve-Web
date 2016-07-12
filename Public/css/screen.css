@@ -62,3 +62,9 @@ display:block;
 #mytable tr{
     font-size:10px;
 }
+
+.checkbox{
+    padding-top: 1px;
+    margin-right: 4px;
+    height: 80%;
+}
