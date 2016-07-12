@@ -16,17 +16,17 @@ function load()
     //安全阀类型改为显示checkbox
     var type= document.getElementById("typetxt").value;
     if(type=="1"){
-        var typehtml = '<input type="checkbox" class="checkbox" onclick="return false;">弹簧式'+'&nbsp;&nbsp;'+'<input type="checkbox" onclick="return false;" align="right">先导式'+'<br>'+'<input type="checkbox" onclick="return false;">重锤式';
+        var typehtml = '<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">先导式'+'<br>'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">重锤式';
     }
     if(type=="弹簧式"){
-        var typehtml = '<img class="checkbox" src="/valve/Public/images/checkbox.jpg">弹簧式'+'&nbsp;&nbsp;'+'<input type="checkbox" onclick="return false;" align="right">先导式'+'<br>'+'<input type="checkbox" onclick="return false;">重锤式';
+        var typehtml = '<img class="checkbox" src="/Public/images/checkbox.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">先导式'+'<br>'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">重锤式';
     }
     if(type=="先导式"){
-        var typehtml = '<input type="checkbox" onclick="return false;">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/valve/Public/images/checkbox.jpg">先导式'+'<br>'+'<input type="checkbox" onclick="return false;">重锤式';
+        var typehtml = '<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/Public/images/checkbox.jpg">先导式'+'<br>'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">重锤式';
 
     }
     if(type=="重锤式"){
-        var typehtml = '<input type="checkbox" onclick="return false;">弹簧式'+'&nbsp;&nbsp;'+'<input type="checkbox" onclick="return false;" align="right">先导式'+'<br>'+'<img class="checkbox" src="/valve/Public/images/checkbox.jpg">重锤式';
+        var typehtml = '<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">弹簧式'+'&nbsp;&nbsp;'+'<img class="checkbox" src="/valve/Public/images/checkboxWhite.jpg">先导式'+'<br>'+'<img class="checkbox" src="/Public/images/checkbox.jpg">重锤式';
 
     }
     document.getElementById("type").innerHTML= typehtml;
