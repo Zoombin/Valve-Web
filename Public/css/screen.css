@@ -47,7 +47,7 @@ h3{text-align:left}
 .hbr{border-right: 2px solid #000 !important;}
 .hbb{border-bottom: 2px solid #000 !important;}
 .hbl{border-left: 2px solid #000 !important;}
-.left-num{width:auto;line-height:24px;position:absolute;left:10px;font-size:14px;top:60px; letter-spacing:2px;
+.left-num{width:auto;line-height:24px;position:absolute;left:10px;font-size:8px;top:60px; letter-spacing:2px;
 /*0, 1, 2,和3分别表示将元素旋转0度、90度、180度、270度。*/
 /*
 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3.8888);
