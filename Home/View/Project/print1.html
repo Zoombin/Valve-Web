@@ -1,3 +1,4 @@
+<!--注明：代码里有用到&nbsp;是为了让文字对其-->
 <!DOCTYPE html>
 <html>
 	<head lang="en">
@@ -9,11 +10,14 @@
 		<!--hidden fields-->
 		<div hidden>
 			<input type="text" id="verifyResult" value="{$project.verifyresult}">
+			<input type="text" id="gctj" value="{$project.gctj}">
+			<input type="text" value="{$project.type}" id="typetxt">
+			<input type="text" value="{$project.devrnum}" id="txtdevnum">
 		</div>
 		<div class="container-fluid main-content">
 		<div class="left-num">ZTABG03-{$year}</div>
 		<table class="data-table noborder">
-		<caption>安全阀校验报告书<!-- <span>{$project.rnum}</span> --></caption>
+		<caption>安全阀校验报告<!-- <span>{$project.rnum}</span> --></caption>
         <tr>
         	<td colspan="2" class="w50 noborder"></td>
         	<td colspan="2" class="noborder text-right rnum" style="padding-right: 0%">报告编号：<span>{$project.rnum}</span></td>
@@ -34,29 +38,25 @@
             </tr>
 	        <tr>
 	          <td class="w25 hbl">设备代码</td>
-				<td class="w25 hand-write"><div id="devnum">
-					<input type="text" value="{$project.devrnum}" id="txtdevnum">
-				</div></td>
+				<td class="w25 hand-write"><div id="devnum"></div></td>
 	          <td class="w25">安装位置</td>
 	          <td class="w25 hand-write hbr">{$project.installposition}</td>
             </tr>
 	        <tr>
 	          <td class="w25 hbl">安全阀类型</td>
-	          <td class="w25 hand-write" style="font-size: 14px;"><div id="type" value={$types[$project['type']]} align="left">
-				  <input type="text" value="{$project.type}" id="typetxt">
-			  </div></td>
+	          <td class="w25 hand-write" style="font-size: 14px;"><div><div id="type" align="left"></div></div></td>
 	          <td class="w25">安全阀型号</td>
-	          <td class="w25 hand-write hbr">{$project.model}</td>
+	          <td class="w25 hand-write hbr">{$project.model}<span id="gctjAfter" hidden>&nbsp;DN{$project.gctj}</span></td>
             </tr>
 	        <tr>
 	          <td class="w25 hbl">工作压力</td>
-	          <td class="w25 hand-write"><span class="text-info">{$project.workpressure}</span><span class="text-unit">MPa</span></td>
+	          <td class="w25 hand-write"><span class="text-info">&nbsp;&nbsp;{$project.workpressure}</span><span class="text-unit">MPa</span></td>
 	          <td class="w25">工作介质</td>
 	          <td class="w25 hand-write hbr">{$project.workmedium}</td>
             </tr>
 	        <tr>
 	          <td class="w25 hbl">要求整定压力</td>
-	          <td class="w25 hand-write"><span class="text-info">{$project.needpressure}</span><span class="text-unit">MPa</span></td>
+	          <td class="w25 hand-write"><span class="text-info">&nbsp;&nbsp;{$project.needpressure}</span><span class="text-unit">MPa</span></td>
 	          <td class="w25">执行标准</td>
 	          <td class="w25 hand-write standard hbr">
 	          <volist name="standards" id="so" key="skey">
@@ -72,9 +72,9 @@
             </tr>
 	        <tr>
 	          <td class="w25 hbl">整定压力</td>
-	          <td class="w25 hand-write"><span class="text-info" id="spanSetPressure">{$project.setpressure}</span><span class="text-unit">MPa</span></td>
+	          <td class="w25 hand-write"><span class="text-info" id="spanSetPressure">&nbsp;&nbsp;{$project.setpressure}</span><span class="text-unit">MPa</span></td>
 	          <td class="w25">密封试验压力</td>
-	          <td class="w25 hand-write hbr"><span class="text-info" id="spanFinalPressure">{$project.finalpressure}</span><span class="text-unit">MPa</span></td>
+	          <td class="w25 hand-write hbr"><span class="text-info" id="spanFinalPressure">&nbsp;&nbsp;{$project.finalpressure}</span><span class="text-unit">MPa</span></td>
             </tr>
 	        <tr>
 	          <td class="w25 hbl">校验结果</td>
@@ -105,7 +105,7 @@
 	          <td class="w25 hand-write hbr"><span id="spanNextVerifyDate">{$project.nextverifydate}</span></td>
             </tr>
        		<tr>
-	          <td colspan="2" class="w50 hbl" style="height: 60px; text-align: left;"> 校验：<div hidden>
+	          <td colspan="2" class="w50 hbl" style="height: 40px; text-align: left;"> 校验：<div hidden>
 				  <input type="text" value="{$project.verifyman}" id="verifyman"></div><img id="jiaoyanImg">
 
 	          <span style="float: right;margin-top: 7px;padding-right: 5px;">{$project.verifymandate}</span></td>
@@ -117,11 +117,11 @@
 				</td>
             </tr>
             <tr>
-              <td colspan="2" class="w50 hbl" style="height: 60px;text-align: left;"> 审核：<div hidden><input type="text" value={$project.checkman} id="checkman"></div><img id="shenheImg">
+              <td colspan="2" class="w50 hbl" style="height: 40px;text-align: left;"> 审核：<div hidden><input type="text" value={$project.checkman} id="checkman"></div><img id="shenheImg">
               <span style="float: right;margin-top: 7px;padding-right: 5px;">{$project.checkmandate}</span></td>
             </tr>
 	        <tr>
-	          <td colspan="2" class="w50 hbl hbb" style="height: 60px; text-align: left;"> 审批：<div hidden><input type="text" value={$project.auditman} id="auditman" ></div><img id="shenpiImg"><span style="float: right;margin-top: 7px;padding-right: 5px;">{$project.auditmandate}</span></td>
+	          <td colspan="2" class="w50 hbl hbb" style="height: 40px; text-align: left;"> 审批：<div hidden><input type="text" value={$project.auditman} id="auditman" ></div><img id="shenpiImg"><span style="float: right;margin-top: 7px;padding-right: 5px;">{$project.auditmandate}</span></td>
             </tr>
 	        <tr>
 	          <td colspan="4" class="text-right text-small noborder">苏州中特安安全阀检测研究有限公司<br>苏州市相城区阳澄湖路18号</td>

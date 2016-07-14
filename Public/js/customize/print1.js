@@ -67,10 +67,16 @@ function load()
     var verifyResult = document.getElementById("verifyResult").value;
 
     if(verifyResult=='不合格'){
-        document.getElementById("spanSetPressure").innerHTML='<span class="text-info" id="spanSetPressure">/</span>';
-        document.getElementById("spanFinalPressure").innerHTML='<span class="text-info" id="spanFinalPressure">/</span>';
+        document.getElementById("spanSetPressure").innerHTML='<span class="text-info" id="spanSetPressure">&nbsp;&nbsp;/</span>';
+        document.getElementById("spanFinalPressure").innerHTML='<span class="text-info" id="spanFinalPressure">&nbsp;&nbsp;/</span>';
         document.getElementById("spanNextVerifyDate").innerHTML='<span id="spanNextVerifyDate">/</span>';
         document.getElementById("rnum").innerHTML= '<div style="text-align: center;">/</div>';
+    }
+
+    //若公称通径不为null，则在安全阀型号后加入 DN+gctj
+    var gctj = document.getElementById("gctj").value;
+    if(gctj.trim()!=''){
+        document.getElementById("gctjAfter").removeAttribute("hidden");
     }
 
 }
