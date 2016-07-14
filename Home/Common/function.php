@@ -118,7 +118,15 @@ function seitchToDataArray($arr){
 }
 function getNextRnum($sendfrom='',$useto=''){
     $year=date("Y",time());
-    $cnt=M("project")->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'")->count();
-    $cnt=sprintf("%05d",$cnt+1);
-    return  $rnum='SZZTA-'.$sendfrom.$useto.'X-'.$cnt.'-'.date("Y",time());
+    $User=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and isDeleted ='1'")->limit(1);
+    if($User->count()>0){
+    $User=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and isDeleted ='1'")->limit(1);
+         $rnum = substr($User->getField('rnum'),0,16).date("Y",time());
+    }
+    else{
+        $cnt=M("project")->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'")->count();
+        $cnt=sprintf("%05d",$cnt+1);
+        $rnum='SZZTA-'.$sendfrom.$useto.'X-'.$cnt.'-'.date("Y",time());
+    }
+    return $rnum;
 }

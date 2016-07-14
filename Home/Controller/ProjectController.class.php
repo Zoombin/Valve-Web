@@ -85,13 +85,15 @@ class ProjectController extends CommonController {
 	            if($model->where("rnum='".$data['rnum']."' and id!='".$data["id"]."' ")->count()>0){
 	                $this->error("报告编号为:".$data['rnum'].'的报告已经存在了,请修改报告编号！');
 	            }else{
+	                $data['rnum']=getNextRnum($data['sendfrom'],$data['useto']);
 	                $model->where("id='".$data["id"]."'")->save($data);
 	            }
 	        }else{
-	            $data['rnum']=getNextRnum($data['sendfrom'],$data['useto']);;
+	            $data['rnum']=getNextRnum($data['sendfrom'],$data['useto']);
 	            $model->add($data);
 	        }
 	        $this->success("数据已经保存成功",U("Project/index"));
+	        $model->where("rnum='".$data['rnum']."' and isDeleted='1'")->delete();
 	    }else{
 	        $this->error("接收不到数据");
 	    }
