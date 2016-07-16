@@ -130,3 +130,18 @@ function getNextRnum($sendfrom='',$useto=''){
     }
     return $rnum;
 }
+
+function getCount($sendfrom='',$useto='')
+{
+   $year=date("Y",time());
+   $User=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."' and isDeleted ='1'")->limit(1);
+   if($User->count()>0){
+   $User=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."' and isDeleted ='1'")->limit(1);
+        $num = $User->getField('num');
+   }
+   else{
+       $cnt=M("project")->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'")->count();
+       $num=$cnt+1;
+   }
+   return $num;
+}

@@ -23,8 +23,8 @@ class ProjectController extends CommonController {
 		    $page1->parameter["key"]=urlencode($key);
 		    $page2->parameter["key"]=urlencode($key);
 		}
-		$listxiangcheng = $model->where($xiangcheng)->order('id desc')->limit($page1->firstRow, $page1->listRows)->select();
-        $listwuzhong = $model->where($wuzhong)->order('id desc')->limit($page2->firstRow, $page2->listRows)->select();
+		$listxiangcheng = $model->where($xiangcheng)->order('num')->limit($page1->firstRow, $page1->listRows)->select();
+        $listwuzhong = $model->where($wuzhong)->order('num')->limit($page2->firstRow, $page2->listRows)->select();
 		$this->assign('listxiangcheng', $listxiangcheng); // 赋值数据集
 		$this->assign('page1', $page1->show());
 		$this->assign('listwuzhong', $listwuzhong); // 赋值数据集
@@ -90,6 +90,7 @@ class ProjectController extends CommonController {
 	            }
 	        }else{
 	            $data['rnum']=getNextRnum($data['sendfrom'],$data['useto']);
+                $data['num']=getCount($data['sendfrom'],$data['useto']);
 	            $model->add($data);
 	        }
 	        $this->success("数据已经保存成功",U("Project/index"));
