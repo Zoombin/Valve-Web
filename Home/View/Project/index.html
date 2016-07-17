@@ -17,7 +17,7 @@
 						<div id="dataTable1_wrapper" class="dataTables_wrapper"
 							role="grid">
 							<div class="search-section">
-								<form action="{:U('Project/index')}" method="get" id="searchForm">
+								<form action="{:U('Project/index')}" method="post" id="searchForm">
 									<div class="col-md-4">
 										<div class="form-group ">
 											<div class="input-group">
@@ -37,20 +37,146 @@
 							</div>
 							<div class="search-section">
 								<div class="input-group">
+									<form action="{:U('Project/index')}" method="post" id="areaForm">
 									<label class="control-label col-md-4" style="padding-top: 8px;">区域:</label>
 									<div class="col-md-8">
-										<select id="area" class="form-control" onchange="areaChange()">
-											<option value="xiangcheng">相城区</option>
-											<option value="wuzhong">吴中区</option>
+										<div hidden><input class="form-control" id="currentarea" name="currentarea" value="{$currentarea}" type="text"></div>
+										<select id="area" name="area" class="form-control" onchange="areaChange()">
+											<option value="0">select</option>
+											<option value="1">相城区</option>
+											<option value="2">吴中区</option>
 										</select>
+
 									</div>
+									</form>
 								</div>
 							</div>
-							<div id="page2" hidden>
-							<input style="float: right; margin-bottom: 5px;;" type="button" onclick="wuzhongToExcel('mytable', 'W3C Example Table')" value="导出Excel">
-							<!--<div id="myTable"></div>-->
-							<div>{$page2}</div>
-							<table class="table table-striped" id="mytable">
+							<!--<div id="page2" hidden>-->
+							<!--<input style="float: right; margin-bottom: 5px;;" type="button" onclick="wuzhongToExcel('mytable', 'W3C Example Table')" value="导出Excel">-->
+							<!--&lt;!&ndash;<div id="myTable"></div>&ndash;&gt;-->
+							<!--<div>{$page2}</div>-->
+							<!--<table class="table table-striped" id="mytable">-->
+									<!--<tr>-->
+										<!--<th>日期</th>-->
+										<!--<th>使用单位</th>-->
+										<!--<th>设备名称</th>-->
+										<!--<th>设备代码</th>-->
+										<!--<th>新/旧</th>-->
+										<!--<th>安全阀型号</th>-->
+										<!--<th>公称通径</th>-->
+										<!--<th>工作压力MPa</th>-->
+										<!--<th>整定压力MPa</th>-->
+										<!--<th>结论</th>-->
+										<!--<th>编号</th>-->
+										<!--<th>操作</th>-->
+									<!--</tr>-->
+									<!--<volist name="listwuzhong" id="vo">-->
+										<!--<tr>-->
+											<!--<td style="font-size:12px;">{$vo.verifydate}</td>-->
+											<!--<td style="font-size:12px;">{$vo.company}</td>-->
+											<!--<td style="font-size:12px;">{$vo.installposition}</td>-->
+											<!--<td style="font-size:12px;">{$vo.devnum}</td>-->
+											<!--<td style="font-size:12px;"></td>-->
+											<!--<td style="font-size:12px;">{$vo.model}</td>-->
+											<!--<td style="font-size:12px;">{$vo.gctj}</td>-->
+											<!--<td style="font-size:12px;">{$vo.workpressure}</td>-->
+											<!--<td style="font-size:12px;">{$vo.needpressure}</td>-->
+											<!--<td style="font-size:12px;">{$vo.verifyresult}</td>-->
+											<!--<td style="font-size:12px;">{$vo.rnum}</td>-->
+											<!--<td style="font-size:12px;">-->
+												<!--<div class="action-buttons">-->
+						                           <!--<a href="{:U('Project/add','id='.$vo['id'])}" class="table-actions" title="编辑" data-toggle="tooltip"><i class="icon-edit"></i></a>-->
+						                           <!--<a target="_blank" href="{:U('Project/toprint','type=1&id='.$vo['id'])}" class="table-actions" title="打印报告书" data-toggle="tooltip"><i class="icon-print"></i></a>-->
+												   <!--<a target="_blank" href="{:U('Project/toprint','type=2&id='.$vo['id'])}" class="table-actions" title="打印校验记录" data-toggle="tooltip"><i class="icon-save"></i></a>-->
+						                           <!--<a href="javascript:void(0);" class="table-actions" title="删除" data-toggle="tooltip" onclick="removeProduct({$vo.id});"><i class="icon-trash"></i></a>-->
+						                        <!--</div>-->
+					                        <!--</td>-->
+										<!--</tr>-->
+									<!--</volist>-->
+									<!--<empty name="listwuzhong">-->
+									<!--<tr>-->
+										<!--<td colspan="5">没有数据</td>										-->
+									<!--</tr>-->
+									<!--</empty>-->
+							<!--</table>-->
+							<!--<div>{$page2}</div>-->
+							<!--</div>-->
+							<!--<div id="page1" hidden>-->
+							<!--<input style="float: right; margin-bottom: 5px;;" type="button" onclick="xiangchengToExcel('mytable', 'W3C Example Table')" value="导出Excel">-->
+							<!--&lt;!&ndash;<div id="myTable"></div>&ndash;&gt;-->
+							<!--<div>{$page1}</div>-->
+							<!--<table class="table table-striped" id="mytable">-->
+								<!--<tr>-->
+									<!--<th>日期</th>-->
+									<!--<th>使用单位</th>-->
+									<!--<th>设备名称</th>-->
+									<!--<th>设备代码</th>-->
+									<!--<th>新/旧</th>-->
+									<!--<th>安全阀型号</th>-->
+									<!--<th>公称通径</th>-->
+									<!--<th>工作压力MPa</th>-->
+									<!--<th>整定压力MPa</th>-->
+									<!--<th>结论</th>-->
+									<!--<th>编号</th>-->
+									<!--<th>操作</th>-->
+								<!--</tr>-->
+								<!--<volist name="listxiangcheng" id="vo">-->
+									<!--<tr>-->
+										<!--<td style="font-size:12px;">{$vo.verifydate}</td>-->
+										<!--<td style="font-size:12px;">{$vo.company}</td>-->
+										<!--<td style="font-size:12px;">{$vo.installposition}</td>-->
+										<!--<td style="font-size:12px;">{$vo.devnum}</td>-->
+										<!--<td style="font-size:12px;">{$vo.newold}</td>-->
+										<!--<td style="font-size:12px;">{$vo.model}</td>-->
+										<!--<td style="font-size:12px;">{$vo.gctj}</td>-->
+										<!--<td style="font-size:12px;">{$vo.workpressure}</td>-->
+										<!--<td style="font-size:12px;">{$vo.needpressure}</td>-->
+										<!--<td style="font-size:12px;">{$vo.verifyresult}</td>-->
+										<!--<td style="font-size:12px;">{$vo.rnum}</td>-->
+										<!--<td style="font-size:12px;">-->
+											<!--<div class="action-buttons">-->
+												<!--<a href="{:U('Project/add','id='.$vo['id'])}" class="table-actions" title="编辑" data-toggle="tooltip"><i class="icon-edit"></i></a>-->
+												<!--<a target="_blank" href="{:U('Project/toprint','type=1&id='.$vo['id'])}" class="table-actions" title="打印报告书" data-toggle="tooltip"><i class="icon-print"></i></a>-->
+												<!--<a target="_blank" href="{:U('Project/toprint','type=2&id='.$vo['id'])}" class="table-actions" title="打印校验记录" data-toggle="tooltip"><i class="icon-save"></i></a>-->
+												<!--<a href="javascript:void(0);" class="table-actions" title="删除" data-toggle="tooltip" onclick="removeProduct({$vo.id});"><i class="icon-trash"></i></a>-->
+											<!--</div>-->
+										<!--</td>-->
+									<!--</tr>-->
+								<!--</volist>-->
+								<!--<empty name="listxiangcheng">-->
+									<!--<tr>-->
+										<!--<td colspan="5">没有数据</td>-->
+									<!--</tr>-->
+								<!--</empty>-->
+							<!--</table>-->
+							<!--<div>{$page1}</div>-->
+							<!--</div>-->
+
+
+
+
+
+
+
+
+
+							<div id="page">
+								<input style="float: right; margin-bottom: 5px;;" type="button" onclick="exportToExcel('mytable', 'W3C Example Table')" value="导出Excel">
+								<!--<div id="myTable"></div>-->
+								<!--<div>{$page}</div>-->
+								<a id="btn0"></a>
+								<input id="pageSize" type="text" size="1" maxlength="2" value="getDefaultValue()"/><a> 条 </a> <a href="#" id="pageSizeSet">设置</a>
+								<a id="sjzl"></a>
+								<a  href="#" id="btn1">首页</a>
+								<a  href="#" id="btn2">上一页</a>
+								<a  href="#" id="btn3">下一页</a>
+								<a  href="#" id="btn4">尾页</a>
+								<a>转到 </a>
+								<input id="changePage" type="text" size="1" maxlength="4"/>
+								<a>页 </a>
+								<a  href="#" id="btn5">跳转</a>
+
+								<table class="table table-striped" id="mytable">
 									<tr>
 										<th>日期</th>
 										<th>使用单位</th>
@@ -65,13 +191,13 @@
 										<th>编号</th>
 										<th>操作</th>
 									</tr>
-									<volist name="listwuzhong" id="vo">
+									<volist name="list" id="vo">
 										<tr>
 											<td style="font-size:12px;">{$vo.verifydate}</td>
 											<td style="font-size:12px;">{$vo.company}</td>
 											<td style="font-size:12px;">{$vo.installposition}</td>
 											<td style="font-size:12px;">{$vo.devnum}</td>
-											<td style="font-size:12px;"></td>
+											<td style="font-size:12px;">{$vo.newold}</td>
 											<td style="font-size:12px;">{$vo.model}</td>
 											<td style="font-size:12px;">{$vo.gctj}</td>
 											<td style="font-size:12px;">{$vo.workpressure}</td>
@@ -80,71 +206,21 @@
 											<td style="font-size:12px;">{$vo.rnum}</td>
 											<td style="font-size:12px;">
 												<div class="action-buttons">
-						                           <a href="{:U('Project/add','id='.$vo['id'])}" class="table-actions" title="编辑" data-toggle="tooltip"><i class="icon-edit"></i></a>
-						                           <a target="_blank" href="{:U('Project/toprint','type=1&id='.$vo['id'])}" class="table-actions" title="打印报告书" data-toggle="tooltip"><i class="icon-print"></i></a>
-												   <a target="_blank" href="{:U('Project/toprint','type=2&id='.$vo['id'])}" class="table-actions" title="打印校验记录" data-toggle="tooltip"><i class="icon-save"></i></a>
-						                           <a href="javascript:void(0);" class="table-actions" title="删除" data-toggle="tooltip" onclick="removeProduct({$vo.id});"><i class="icon-trash"></i></a>
-						                        </div>
-					                        </td>
+													<a href="{:U('Project/add','id='.$vo['id'])}" class="table-actions" title="编辑" data-toggle="tooltip"><i class="icon-edit"></i></a>
+													<a target="_blank" href="{:U('Project/toprint','type=1&id='.$vo['id'])}" class="table-actions" title="打印报告书" data-toggle="tooltip"><i class="icon-print"></i></a>
+													<a target="_blank" href="{:U('Project/toprint','type=2&id='.$vo['id'])}" class="table-actions" title="打印校验记录" data-toggle="tooltip"><i class="icon-save"></i></a>
+													<a href="javascript:void(0);" class="table-actions" title="删除" data-toggle="tooltip" onclick="removeProduct({$vo.id});"><i class="icon-trash"></i></a>
+												</div>
+											</td>
 										</tr>
 									</volist>
-									<empty name="listwuzhong">
-									<tr>
-										<td colspan="5">没有数据</td>										
-									</tr>
+									<empty name="listxiangcheng">
+										<tr>
+											<td colspan="5">没有数据</td>
+										</tr>
 									</empty>
-							</table>
-							<div>{$page2}</div>
-							</div>
-							<div id="page1" hidden>
-							<input style="float: right; margin-bottom: 5px;;" type="button" onclick="xiangchengToExcel('mytable', 'W3C Example Table')" value="导出Excel">
-							<!--<div id="myTable"></div>-->
-							<div>{$page1}</div>
-							<table class="table table-striped" id="mytable">
-								<tr>
-									<th>日期</th>
-									<th>使用单位</th>
-									<th>设备名称</th>
-									<th>设备代码</th>
-									<th>新/旧</th>
-									<th>安全阀型号</th>
-									<th>公称通径</th>
-									<th>工作压力MPa</th>
-									<th>整定压力MPa</th>
-									<th>结论</th>
-									<th>编号</th>
-									<th>操作</th>
-								</tr>
-								<volist name="listxiangcheng" id="vo">
-									<tr>
-										<td style="font-size:12px;">{$vo.verifydate}</td>
-										<td style="font-size:12px;">{$vo.company}</td>
-										<td style="font-size:12px;">{$vo.installposition}</td>
-										<td style="font-size:12px;">{$vo.devnum}</td>
-										<td style="font-size:12px;">{$vo.newold}</td>
-										<td style="font-size:12px;">{$vo.model}</td>
-										<td style="font-size:12px;">{$vo.gctj}</td>
-										<td style="font-size:12px;">{$vo.workpressure}</td>
-										<td style="font-size:12px;">{$vo.needpressure}</td>
-										<td style="font-size:12px;">{$vo.verifyresult}</td>
-										<td style="font-size:12px;">{$vo.rnum}</td>
-										<td style="font-size:12px;">
-											<div class="action-buttons">
-												<a href="{:U('Project/add','id='.$vo['id'])}" class="table-actions" title="编辑" data-toggle="tooltip"><i class="icon-edit"></i></a>
-												<a target="_blank" href="{:U('Project/toprint','type=1&id='.$vo['id'])}" class="table-actions" title="打印报告书" data-toggle="tooltip"><i class="icon-print"></i></a>
-												<a target="_blank" href="{:U('Project/toprint','type=2&id='.$vo['id'])}" class="table-actions" title="打印校验记录" data-toggle="tooltip"><i class="icon-save"></i></a>
-												<a href="javascript:void(0);" class="table-actions" title="删除" data-toggle="tooltip" onclick="removeProduct({$vo.id});"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-								</volist>
-								<empty name="listxiangcheng">
-									<tr>
-										<td colspan="5">没有数据</td>
-									</tr>
-								</empty>
-							</table>
-							<div>{$page1}</div>
+								</table>
+								<!--<div>{$page}</div>-->
 							</div>
 							<div></div>
 						</div>
@@ -179,8 +255,8 @@
 			});
 		}
 
-		//导出吴中区excel
-		var wuzhongToExcel = (function() {
+		//导出excel
+		var exportToExcel = (function() {
 			var excelhtml = '<tr>'+
 					'<th>日期</th>'+
 					'<th>使用单位</th>'+
@@ -194,7 +270,7 @@
 					'<th>结论</th>'+
 					'<th>校验报告编号</th>'+
 					'</tr>'+
-					'<volist name="listwuzhong" id="vo">'+
+					'<volist name="list" id="vo">'+
 					'<tr>'+
 					'<td>{$vo.verifydate}</td>'+
 					'<td>{$vo.company}</td>'+
@@ -220,65 +296,128 @@
 			}
 		})();
 
-		//导出相城区excel
-		var xiangchengToExcel = (function() {
-			var excelhtml = '<tr>'+
-					'<th>日期</th>'+
-					'<th>使用单位</th>'+
-					'<th>设备名称</th>'+
-					'<th>设备代码</th>'+
-					'<th>新/旧</th>'+
-					'<th>安全阀型号</th>'+
-					'<th>公称通径</th>'+
-					'<th>工作压力MPa</th>'+
-					'<th>整定压力MPa</th>'+
-					'<th>结论</th>'+
-					'<th>校验报告编号</th>'+
-					'</tr>'+
-					'<volist name="listxiangcheng" id="vo">'+
-					'<tr>'+
-					'<td>{$vo.verifydate}</td>'+
-					'<td>{$vo.company}</td>'+
-					'<td>{$vo.installposition}</td>'+
-					'<td>{$vo.devnum}</td>'+
-					'<td>{$vo.newold}</td>'+
-					'<td>{$vo.model}</td>'+
-					'<td>{$vo.gctj}</td>'+
-					'<td>{$vo.workpressure}</td>'+
-					'<td>{$vo.needpressure}</td>'+
-					'<td>{$vo.verifyresult}</td>'+
-					'<td>{$vo.rnum}</td>'+
-					'</tr>'+
-					'</volist>';
-			var uri = 'data:application/vnd.ms-excel;base64,'
-					, template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>'+excelhtml+'</table></body></html>'
-					, base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
-					, format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) };
-			return function(table, name) {
-				if (!table.nodeType) table = document.getElementById(table);
-				var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML};
-				window.location.href = uri + base64(format(template, ctx))
-			}
-		})();
 
 		function load(){
-			$('#page1').show();
+			if($('#currentarea').val()==2){
+				$('#area').val('2');
+			}
+			if($('#currentarea').val()==1){
+				$('#area').val('1');
+			}
+
+			var pageSize = 15;    //每页显示的记录条数
+			var curPage=0;        //当前页
+			var lastPage;        //最后页
+			var direct=0;        //方向
+			var len;            //总行数
+			var page;            //总页数
+			var begin;
+			var end;
+
+				len =$("#mytable tr").length - 2;    // 求这个表的总行数，剔除第一行介绍
+				page=len % pageSize==0 ? len/pageSize : Math.floor(len/pageSize)+1;//根据记录条数，计算页数
+				// alert("page==="+page);
+				curPage=1;    // 设置当前为第一页
+				displayPage(1);//显示第一页
+
+				document.getElementById("btn0").innerHTML="当前 " + curPage + "/" + page + " 页    每页 ";    // 显示当前多少页
+				document.getElementById("sjzl").innerHTML="数据总量 " + len + "";        // 显示数据量
+				document.getElementById("pageSize").value = pageSize;
+
+
+
+				$("#btn1").click(function firstPage(){    // 首页
+					curPage=1;
+					direct = 0;
+					displayPage();
+				});
+				$("#btn2").click(function frontPage(){    // 上一页
+					direct=-1;
+					displayPage();
+				});
+				$("#btn3").click(function nextPage(){    // 下一页
+					direct=1;
+					displayPage();
+				});
+				$("#btn4").click(function lastPage(){    // 尾页
+					curPage=page;
+					direct = 0;
+					displayPage();
+				});
+				$("#btn5").click(function changePage(){    // 转页
+					curPage=document.getElementById("changePage").value * 1;
+					if (!/^[1-9]\d*$/.test(curPage)) {
+						alert("请输入正整数");
+						return ;
+					}
+					if (curPage > page) {
+						alert("超出数据页面");
+						return ;
+					}
+					direct = 0;
+					displayPage();
+				});
+
+
+				$("#pageSizeSet").click(function setPageSize(){    // 设置每页显示多少条记录
+					pageSize = document.getElementById("pageSize").value;    //每页显示的记录条数
+					if (!/^[1-9]\d*$/.test(pageSize)) {
+						alert("请输入正整数");
+						return ;
+					}
+					len =$("#mytable tr").length - 1;
+					page=len % pageSize==0 ? len/pageSize : Math.floor(len/pageSize)+1;//根据记录条数，计算页数
+					curPage=1;        //当前页
+					direct=0;        //方向
+					firstPage();
+				});
+
+
+			function displayPage(){
+				if(curPage <=1 && direct==-1){
+					direct=0;
+					alert("已经是第一页了");
+					return;
+				} else if (curPage >= page && direct==1) {
+					direct=0;
+					alert("已经是最后一页了");
+					return ;
+				}
+
+				lastPage = curPage;
+
+				// 修复当len=1时，curPage计算得0的bug
+				if (len > pageSize) {
+					curPage = ((curPage + direct + len) % len);
+				} else {
+					curPage = 1;
+				}
+
+
+				document.getElementById("btn0").innerHTML="当前 " + curPage + "/" + page + " 页    每页 ";        // 显示当前多少页
+
+				begin=(curPage-1)*pageSize + 1;// 起始记录号
+				end = begin + 1*pageSize - 1;    // 末尾记录号
+
+
+				if(end > len ) end=len;
+				$("#mytable tr").hide();    // 首先，设置这行为隐藏
+				$("#mytable tr").each(function(i){    // 然后，通过条件判断决定本行是否恢复显示
+					if((i>=begin && i<=end) || i==0 )//显示begin<=x<=end的记录
+						$(this).show();
+				});
+			}
 		}
 
 		function areaChange(){
-			if($('#area').val()=='xiangcheng'){
-				$('#page1').show();
-				$('#page2').hide();
+			if($('#area').val()=='1'){
+				document.forms["areaForm"].submit();
 			}
-			if($('#area').val()=='wuzhong'){
-				$('#page1').hide();
-				$('#page2').show();
+			if($('#area').val()=='2'){
+				document.forms["areaForm"].submit();
+
 			}
 		}
-
-
-
-
 
 
 

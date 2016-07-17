@@ -6,11 +6,13 @@ use Think\Page;
 class ProjectController extends CommonController {
 
 	public function index() {
-		$this->meta_title = '安全阀报告';
+		/*$this->meta_title = '安全阀报告';
 		$model=M('project');
 		$xiangcheng="sendfrom=1";
 		$wuzhong="sendfrom=2";
-		$key=I('get.key');
+		$key=$_POST["key"];
+		$area=$_POST["area"];
+		echo $key;
 		if($key){
 		    $where.=" and CONCAT(`rnum`,address) LIKE '%".$key."%'";
 		    $this->assign("key",$key);
@@ -23,13 +25,48 @@ class ProjectController extends CommonController {
 		    $page1->parameter["key"]=urlencode($key);
 		    $page2->parameter["key"]=urlencode($key);
 		}
-		$listxiangcheng = $model->where($xiangcheng)->order('num')->limit($page1->firstRow, $page1->listRows)->select();
+		$listxiangcheng = $model->where($xiangcheng.$where)->order('num')->limit($page1->firstRow, $page1->listRows)->select();
         $listwuzhong = $model->where($wuzhong)->order('num')->limit($page2->firstRow, $page2->listRows)->select();
 		$this->assign('listxiangcheng', $listxiangcheng); // 赋值数据集
 		$this->assign('page1', $page1->show());
 		$this->assign('listwuzhong', $listwuzhong); // 赋值数据集
         $this->assign('page2', $page2->show());
-		$this->display ();
+		$this->display ();*/
+
+
+
+
+		$this->meta_title = '安全阀报告';
+        		$model=M('project');
+        		$where="1=1";
+        		$key=$_POST["key"];
+                $area=I("post.area");
+
+        		if($key){
+        		    $where.=" and CONCAT(`rnum`,address) LIKE '%".$key."%'";
+        		    $this->assign("key",$key);
+        		}
+        		if($area==2){
+        		    $where.=" and sendfrom = 2";
+        		    $this->assign("currentarea",$area);
+        		}
+        		if($area==1){
+                    $where.=" and sendfrom = 1";
+                    $this->assign("currentarea",$area);
+                }
+        		$count=$model->where($where)->count();
+        		$page = new Page($count);
+                echo $page;
+        		if($key){
+        		    $page->parameter["key"]=urlencode($key);
+        		    $page->parameter["area"]=urlencode($area);
+        		}
+        		$list = $model->where($where)->order('num')->select();
+
+        		$this->assign('list', $list); // 赋值数据集
+        		$this->assign('page', $page->show());
+
+        		$this->display ();
 	}
 	
 	public function add() {
