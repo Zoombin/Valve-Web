@@ -8,8 +8,8 @@ class ProjectController extends CommonController {
 	public function index() {
 		$this->meta_title = '安全阀报告';
 		$model=M('project');
-		$xiangcheng="sendfrom=1 AND isDeleted=0";
-		$wuzhong="sendfrom=2  AND isDeleted=0";
+		$xiangcheng="sendfrom=1";
+		$wuzhong="sendfrom=2";
 		$key=I('get.key');
 		if($key){
 		    $where.=" and CONCAT(`rnum`,address) LIKE '%".$key."%'";
@@ -81,28 +81,39 @@ class ProjectController extends CommonController {
 	        if (isset($_POST['repairs'])&&$_POST['repairs']){
 	            $data['repairs']=implode(",", $_POST['repairs']);
 	        }
+	        //如果是保存修改
 	        if($data["id"]){
 	            if($model->where("rnum='".$data['rnum']."' and id!='".$data["id"]."' ")->count()>0){
 	                $this->error("报告编号为:".$data['rnum'].'的报告已经存在了,请修改报告编号！');
 	            }else{
-	                $data['rnum']=getNextRnum($data['sendfrom'],$data['useto']);
-	                $model->where("id='".$data["id"]."'")->save($data);
+	                    //如果送达地或用途 与编号的 1RX 这部分不匹配则无法修改
+	                    $sendfrom= substr($data['rnum'],6,1);
+	                    $useto = substr($data['rnum'],7,1);
+	                    if($data['sendfrom']!= $sendfrom || $data['useto']!=$useto){
+	                        $this->error('送达地或用途与编号不匹配');
+	                    }
+	                    else{
+                            $num =substr($data['rnum'],10,5);
+                            $data['num']= $num;
+                            $model->where("id='".$data["id"]."'")->save($data);
+	                    }
 	            }
 	        }else{
-	            $data['rnum']=getNextRnum($data['sendfrom'],$data['useto']);
-                $data['num']=getCount($data['sendfrom'],$data['useto']);
-	            $model->add($data);
+	              //这里是新增一个记录,此记录的编号会根据送达地与用途的值自动生成一个号码
+                  $data['rnum']=getNextRnum($data['sendfrom'],$data['useto']);
+                  $data['num']= getNum($data['sendfrom'],$data['useto']);
+	              $model->add($data);
 	        }
 	        $this->success("数据已经保存成功",U("Project/index"));
-	        $model->where("rnum='".$data['rnum']."' and isDeleted='1'")->delete();
+
 	    }else{
 	        $this->error("接收不到数据");
 	    }
 	}
-	
+
 	function remove(){
 	    $id=I("post.id");
-	    M("project")->where("id='".$id."'")->setField('isDeleted','1');
+	    M("project")->where("id='".$id."'")->delete();
 	    echo '已经删除！';
 	}
 	

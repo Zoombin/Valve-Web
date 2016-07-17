@@ -116,32 +116,60 @@ function seitchToDataArray($arr){
     }
     return $result;
 }
+
+
 function getNextRnum($sendfrom='',$useto=''){
     $year=date("Y",time());
-    $User=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and isDeleted ='1'")->limit(1);
-    if($User->count()>0){
-    $User=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and isDeleted ='1'")->limit(1);
-         $rnum = substr($User->getField('rnum'),0,16).date("Y",time());
+    $Users = array();
+    $Users=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'");
+    $Count = $Users->count();
+    if($Count>0){
+        for($i = 0; $i < $Count; $i++)
+        {
+
+            $Users=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'");
+            $numlist = $Users->order('num')->getField('num',$Count);
+
+            if($i != ($numlist[$i]-1)){
+                $formatnum=sprintf("%05d",$i+1);
+                $rnum = 'SZZTA-'.$sendfrom.$useto.'X-'.$formatnum.'-'.date("Y",time());
+                return $rnum;
+            }
+            else{
+                $num = $i+2;
+                $formatnum=sprintf("%05d",$num);
+                $rnum = 'SZZTA-'.$sendfrom.$useto.'X-'.$formatnum.'-'.date("Y",time());
+            }
+        }
     }
     else{
-        $cnt=M("project")->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'")->count();
-        $cnt=sprintf("%05d",$cnt+1);
-        $rnum='SZZTA-'.$sendfrom.$useto.'X-'.$cnt.'-'.date("Y",time());
+        $rnum = 'SZZTA-'.$sendfrom.$useto.'X-'.'00001'.'-'.date("Y",time());
     }
     return $rnum;
+
 }
 
-function getCount($sendfrom='',$useto='')
-{
-   $year=date("Y",time());
-   $User=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."' and isDeleted ='1'")->limit(1);
-   if($User->count()>0){
-   $User=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."' and isDeleted ='1'")->limit(1);
-        $num = $User->getField('num');
-   }
-   else{
-       $cnt=M("project")->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'")->count();
-       $num=$cnt+1;
-   }
-   return $num;
+function getNum($sendfrom='',$useto=''){
+    $year=date("Y",time());
+    $Users = array();
+    $Users=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'");
+    $Count = $Users->count();
+    if($Count>0){
+        for($i = 0; $i < $Count; $i++)
+        {
+            $Users=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'");
+            $numlist = $Users->order('num')->getField('num',$Count);
+            if($i != ($numlist[$i]-1)){
+                $num = $i+1;
+                return $num;
+            }
+            else{
+                $num = $i+2;
+            }
+        }
+    }
+    else{
+        $num=1;
+    }
+    return $num;
 }
