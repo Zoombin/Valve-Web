@@ -249,14 +249,12 @@ function load(){
     }
 
 
-
     var listcompanys = $('#listcompanys').html();
     listcompanys =listcompanys.substr(0,listcompanys.length-3)+"]'";
     var html = '<input  type="text" class="form-control" id="searchcompany" name="searchcompany" data-provide="typeahead" data-source='+listcompanys+'>';
     $('#innercompanys').html(html);
 
 }
-
 
 
 $('#companys').typeahead({
