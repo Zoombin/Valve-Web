@@ -26,7 +26,6 @@ class ProjectController extends CommonController {
                 }
         		$count=$model->where($where)->count();
         		$page = new Page($count);
-                echo $page;
         		if($key){
         		    $page->parameter["key"]=urlencode($key);
         		    $page->parameter["area"]=urlencode($area);
@@ -48,6 +47,7 @@ class ProjectController extends CommonController {
 	        $project=M("project")->where("id='".$id."'")->find();
 	        $project['repairs']=explode(",", $project['repairs']);
 	    }else{
+	            //自动填充公司
 	        if($searchcompany){
 	            $model=M('project');
                 $where="company = '".$searchcompany."'";
