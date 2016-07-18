@@ -6,36 +6,6 @@ use Think\Page;
 class ProjectController extends CommonController {
 
 	public function index() {
-		/*$this->meta_title = '安全阀报告';
-		$model=M('project');
-		$xiangcheng="sendfrom=1";
-		$wuzhong="sendfrom=2";
-		$key=$_POST["key"];
-		$area=$_POST["area"];
-		echo $key;
-		if($key){
-		    $where.=" and CONCAT(`rnum`,address) LIKE '%".$key."%'";
-		    $this->assign("key",$key);
-		}
-		$count1=$model->where($xiangcheng)->count();
-		$page1 = new Page($count1);
-		$count2=$model->where($wuzhong)->count();
-        $page2 = new Page($count2);
-		if($key){
-		    $page1->parameter["key"]=urlencode($key);
-		    $page2->parameter["key"]=urlencode($key);
-		}
-		$listxiangcheng = $model->where($xiangcheng.$where)->order('num')->limit($page1->firstRow, $page1->listRows)->select();
-        $listwuzhong = $model->where($wuzhong)->order('num')->limit($page2->firstRow, $page2->listRows)->select();
-		$this->assign('listxiangcheng', $listxiangcheng); // 赋值数据集
-		$this->assign('page1', $page1->show());
-		$this->assign('listwuzhong', $listwuzhong); // 赋值数据集
-        $this->assign('page2', $page2->show());
-		$this->display ();*/
-
-
-
-
 		$this->meta_title = '安全阀报告';
         		$model=M('project');
         		$where="1=1";
@@ -71,24 +41,56 @@ class ProjectController extends CommonController {
 	
 	public function add() {
 	    $id=I("get.id");
+	    $searchcompany=$_POST["searchcompany"];
 	    $project=array();
 	    $repairs=getRepairs();
 	    if($id){
 	        $project=M("project")->where("id='".$id."'")->find();
 	        $project['repairs']=explode(",", $project['repairs']);
 	    }else{
-	        $project["type"]=1;
-	        $project["verifyType"]=1;
-	        $project["standard"]=1;
-	        $project["verifydate"]=date("Y-m-d");
-	        $project["nextverifydate"]=date("Y-m-d",time()+365*24*60*60);
-	        $project["verifymandate"]=date("Y-m-d");
-	        $project["auditmandate"]=date("Y-m-d");
-	        $project["checkmandate"]=date("Y-m-d");
-	        $project['repairs']=array();
-	        $project['sendfrom']=1;
-	        $project['useto']='R';
-	        $project['rnum']=getNextRnum($project['sendfrom'],$project['useto']);;
+	        if($searchcompany){
+	            $model=M('project');
+                $where="company = '".$searchcompany."'";
+                $companyinfo = $model->where($where)->limit(1);
+                $companyname = $companyinfo->getField('company');
+                $companyinfo = $model->where($where)->limit(1);
+                $address = $companyinfo->getField('address');
+                $companyinfo = $model->where($where)->limit(1);
+                $contact = $companyinfo->getField('contact');
+                $companyinfo = $model->where($where)->limit(1);
+                $phone = $companyinfo->getField('phone');
+	            $project["company"]=$companyname;
+	            $project["address"]=$address;
+	            $project["contact"]=$contact;
+	            $project["phone"]=$phone;
+	            $project["type"]=1;
+                $project["verifyType"]=1;
+                $project["standard"]=1;
+                $project["verifydate"]=date("Y-m-d");
+                $project["nextverifydate"]=date("Y-m-d",time()+365*24*60*60);
+                $project["verifymandate"]=date("Y-m-d");
+                $project["auditmandate"]=date("Y-m-d");
+                $project["checkmandate"]=date("Y-m-d");
+                $project['repairs']=array();
+                $project['sendfrom']=1;
+                $project['useto']='R';
+                $project['rnum']=getNextRnum($project['sendfrom'],$project['useto']);
+                $this->assign('project', $project); // 赋值数据集
+            }
+            else{
+                $project["type"]=1;
+                $project["verifyType"]=1;
+                $project["standard"]=1;
+                $project["verifydate"]=date("Y-m-d");
+                $project["nextverifydate"]=date("Y-m-d",time()+365*24*60*60);
+                $project["verifymandate"]=date("Y-m-d");
+                $project["auditmandate"]=date("Y-m-d");
+                $project["checkmandate"]=date("Y-m-d");
+                $project['repairs']=array();
+                $project['sendfrom']=1;
+                $project['useto']='R';
+                $project['rnum']=getNextRnum($project['sendfrom'],$project['useto']);
+	        }
 	    }
 	    $repairsList=array();
 	    foreach ($repairs as $k=>$v){
@@ -101,6 +103,8 @@ class ProjectController extends CommonController {
 	        }
 	        $repairsList[]=$tmp;
 	    }
+	    $companys = M("project")->Distinct(true)->getField('company',1000000);
+	    $this->assign('companys', $companys);
 	    $this->assign('repairs', $repairsList);
 	    $this->assign('project', $project); 
 	    $this->assign('types', getTypes());

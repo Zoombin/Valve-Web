@@ -51,114 +51,6 @@
 									</form>
 								</div>
 							</div>
-							<!--<div id="page2" hidden>-->
-							<!--<input style="float: right; margin-bottom: 5px;;" type="button" onclick="wuzhongToExcel('mytable', 'W3C Example Table')" value="导出Excel">-->
-							<!--&lt;!&ndash;<div id="myTable"></div>&ndash;&gt;-->
-							<!--<div>{$page2}</div>-->
-							<!--<table class="table table-striped" id="mytable">-->
-									<!--<tr>-->
-										<!--<th>日期</th>-->
-										<!--<th>使用单位</th>-->
-										<!--<th>设备名称</th>-->
-										<!--<th>设备代码</th>-->
-										<!--<th>新/旧</th>-->
-										<!--<th>安全阀型号</th>-->
-										<!--<th>公称通径</th>-->
-										<!--<th>工作压力MPa</th>-->
-										<!--<th>整定压力MPa</th>-->
-										<!--<th>结论</th>-->
-										<!--<th>编号</th>-->
-										<!--<th>操作</th>-->
-									<!--</tr>-->
-									<!--<volist name="listwuzhong" id="vo">-->
-										<!--<tr>-->
-											<!--<td style="font-size:12px;">{$vo.verifydate}</td>-->
-											<!--<td style="font-size:12px;">{$vo.company}</td>-->
-											<!--<td style="font-size:12px;">{$vo.installposition}</td>-->
-											<!--<td style="font-size:12px;">{$vo.devnum}</td>-->
-											<!--<td style="font-size:12px;"></td>-->
-											<!--<td style="font-size:12px;">{$vo.model}</td>-->
-											<!--<td style="font-size:12px;">{$vo.gctj}</td>-->
-											<!--<td style="font-size:12px;">{$vo.workpressure}</td>-->
-											<!--<td style="font-size:12px;">{$vo.needpressure}</td>-->
-											<!--<td style="font-size:12px;">{$vo.verifyresult}</td>-->
-											<!--<td style="font-size:12px;">{$vo.rnum}</td>-->
-											<!--<td style="font-size:12px;">-->
-												<!--<div class="action-buttons">-->
-						                           <!--<a href="{:U('Project/add','id='.$vo['id'])}" class="table-actions" title="编辑" data-toggle="tooltip"><i class="icon-edit"></i></a>-->
-						                           <!--<a target="_blank" href="{:U('Project/toprint','type=1&id='.$vo['id'])}" class="table-actions" title="打印报告书" data-toggle="tooltip"><i class="icon-print"></i></a>-->
-												   <!--<a target="_blank" href="{:U('Project/toprint','type=2&id='.$vo['id'])}" class="table-actions" title="打印校验记录" data-toggle="tooltip"><i class="icon-save"></i></a>-->
-						                           <!--<a href="javascript:void(0);" class="table-actions" title="删除" data-toggle="tooltip" onclick="removeProduct({$vo.id});"><i class="icon-trash"></i></a>-->
-						                        <!--</div>-->
-					                        <!--</td>-->
-										<!--</tr>-->
-									<!--</volist>-->
-									<!--<empty name="listwuzhong">-->
-									<!--<tr>-->
-										<!--<td colspan="5">没有数据</td>										-->
-									<!--</tr>-->
-									<!--</empty>-->
-							<!--</table>-->
-							<!--<div>{$page2}</div>-->
-							<!--</div>-->
-							<!--<div id="page1" hidden>-->
-							<!--<input style="float: right; margin-bottom: 5px;;" type="button" onclick="xiangchengToExcel('mytable', 'W3C Example Table')" value="导出Excel">-->
-							<!--&lt;!&ndash;<div id="myTable"></div>&ndash;&gt;-->
-							<!--<div>{$page1}</div>-->
-							<!--<table class="table table-striped" id="mytable">-->
-								<!--<tr>-->
-									<!--<th>日期</th>-->
-									<!--<th>使用单位</th>-->
-									<!--<th>设备名称</th>-->
-									<!--<th>设备代码</th>-->
-									<!--<th>新/旧</th>-->
-									<!--<th>安全阀型号</th>-->
-									<!--<th>公称通径</th>-->
-									<!--<th>工作压力MPa</th>-->
-									<!--<th>整定压力MPa</th>-->
-									<!--<th>结论</th>-->
-									<!--<th>编号</th>-->
-									<!--<th>操作</th>-->
-								<!--</tr>-->
-								<!--<volist name="listxiangcheng" id="vo">-->
-									<!--<tr>-->
-										<!--<td style="font-size:12px;">{$vo.verifydate}</td>-->
-										<!--<td style="font-size:12px;">{$vo.company}</td>-->
-										<!--<td style="font-size:12px;">{$vo.installposition}</td>-->
-										<!--<td style="font-size:12px;">{$vo.devnum}</td>-->
-										<!--<td style="font-size:12px;">{$vo.newold}</td>-->
-										<!--<td style="font-size:12px;">{$vo.model}</td>-->
-										<!--<td style="font-size:12px;">{$vo.gctj}</td>-->
-										<!--<td style="font-size:12px;">{$vo.workpressure}</td>-->
-										<!--<td style="font-size:12px;">{$vo.needpressure}</td>-->
-										<!--<td style="font-size:12px;">{$vo.verifyresult}</td>-->
-										<!--<td style="font-size:12px;">{$vo.rnum}</td>-->
-										<!--<td style="font-size:12px;">-->
-											<!--<div class="action-buttons">-->
-												<!--<a href="{:U('Project/add','id='.$vo['id'])}" class="table-actions" title="编辑" data-toggle="tooltip"><i class="icon-edit"></i></a>-->
-												<!--<a target="_blank" href="{:U('Project/toprint','type=1&id='.$vo['id'])}" class="table-actions" title="打印报告书" data-toggle="tooltip"><i class="icon-print"></i></a>-->
-												<!--<a target="_blank" href="{:U('Project/toprint','type=2&id='.$vo['id'])}" class="table-actions" title="打印校验记录" data-toggle="tooltip"><i class="icon-save"></i></a>-->
-												<!--<a href="javascript:void(0);" class="table-actions" title="删除" data-toggle="tooltip" onclick="removeProduct({$vo.id});"><i class="icon-trash"></i></a>-->
-											<!--</div>-->
-										<!--</td>-->
-									<!--</tr>-->
-								<!--</volist>-->
-								<!--<empty name="listxiangcheng">-->
-									<!--<tr>-->
-										<!--<td colspan="5">没有数据</td>-->
-									<!--</tr>-->
-								<!--</empty>-->
-							<!--</table>-->
-							<!--<div>{$page1}</div>-->
-							<!--</div>-->
-
-
-
-
-
-
-
-
 
 							<div id="page">
 								<input style="float: right; margin-bottom: 5px;;" type="button" onclick="exportToExcel('mytable', 'W3C Example Table')" value="导出Excel">
@@ -254,6 +146,8 @@
 				}
 			});
 		}
+
+
 
 		//导出excel
 		var exportToExcel = (function() {
@@ -418,8 +312,6 @@
 
 			}
 		}
-
-
 
 	</script>
 </body>
