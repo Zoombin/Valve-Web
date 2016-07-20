@@ -16,14 +16,31 @@ class ProjectController extends CommonController {
         		    $where.=" and CONCAT(`rnum`,address) LIKE '%".$key."%'";
         		    $this->assign("key",$key);
         		}
-        		if($area==2){
-        		    $where.=" and sendfrom = 2";
-        		    $this->assign("currentarea",$area);
-        		}
         		if($area==1){
-                    $where.=" and sendfrom = 1";
+                    $where.=" and sendfrom = 1 and useto = 'R'";
                     $this->assign("currentarea",$area);
                 }
+        		if($area==2){
+        		    $where.=" and sendfrom = 1 and useto = 'G'";
+        		    $this->assign("currentarea",$area);
+        		}
+        		if($area==3){
+                    $where.=" and sendfrom = 1 and useto = 'D'";
+                    $this->assign("currentarea",$area);
+                }
+                if($area==4){
+                    $where.=" and sendfrom = 2 and useto = 'R'";
+                    $this->assign("currentarea",$area);
+                }
+                if($area==5){
+                    $where.=" and sendfrom = 2 and useto = 'G'";
+                    $this->assign("currentarea",$area);
+                }
+                if($area==6){
+                    $where.=" and sendfrom = 2 and useto = 'D'";
+                    $this->assign("currentarea",$area);
+                }
+
         		$count=$model->where($where)->count();
         		$page = new Page($count);
         		if($key){
@@ -141,9 +158,12 @@ class ProjectController extends CommonController {
 	            }
 	        }else{
 	              //这里是新增一个记录,此记录的编号会根据送达地与用途的值自动生成一个号码
-                  $data['rnum']=getNextRnum($data['sendfrom'],$data['useto']);
-                  $data['num']= getNum($data['sendfrom'],$data['useto']);
-	              $model->add($data);
+	              $autoAddNum = $_POST['autoAddNum'];
+	              for($i = 0; $i < $autoAddNum; $i++){
+	                  $data['rnum']=getNextRnum($data['sendfrom'],$data['useto']);
+                      $data['num']= getNum($data['sendfrom'],$data['useto']);
+                      $model->add($data);
+	              }
 	        }
 	        $this->success("数据已经保存成功",U("Project/index"));
 

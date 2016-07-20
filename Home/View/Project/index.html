@@ -42,9 +42,13 @@
 									<div class="col-md-8">
 										<div hidden><input class="form-control" id="currentarea" name="currentarea" value="{$currentarea}" type="text"></div>
 										<select id="area" name="area" class="form-control" onchange="areaChange()">
-											<option value="0">select</option>
-											<option value="1">相城区</option>
-											<option value="2">吴中区</option>
+											<option value="0">请选择</option>
+											<option value="1">相城区容器上</option>
+											<option value="2">相城区锅炉上</option>
+											<option value="3">相城区管道上</option>
+											<option value="4">吴中区容器上</option>
+											<option value="5">吴中区锅炉上</option>
+											<option value="6">吴中区管道上</option>
 										</select>
 
 									</div>
@@ -192,11 +196,23 @@
 
 
 		function load(){
+			if($('#currentarea').val()==1){
+				$('#area').val('1');
+			}
 			if($('#currentarea').val()==2){
 				$('#area').val('2');
 			}
-			if($('#currentarea').val()==1){
-				$('#area').val('1');
+			if($('#currentarea').val()==3){
+				$('#area').val('3');
+			}
+			if($('#currentarea').val()==4){
+				$('#area').val('4');
+			}
+			if($('#currentarea').val()==5){
+				$('#area').val('5');
+			}
+			if($('#currentarea').val()==6){
+				$('#area').val('6');
 			}
 
 			var pageSize = 15;    //每页显示的记录条数
@@ -304,13 +320,7 @@
 		}
 
 		function areaChange(){
-			if($('#area').val()=='1'){
 				document.forms["areaForm"].submit();
-			}
-			if($('#area').val()=='2'){
-				document.forms["areaForm"].submit();
-
-			}
 		}
 
 	</script>

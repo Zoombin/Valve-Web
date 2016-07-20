@@ -267,3 +267,12 @@ $('#companys').typeahead({
 $('#btnSearch').click(function(){
     document.forms["searchform"].submit();
 });
+
+
+//校验日期选好后，校验，审核，审批的日期自动和校验日期一样
+function verifyDateChange(){
+    var verifyDate = $('#verifyDate').val();
+    $('#verifyManDate').val(verifyDate);
+    $('#checkmandate').val(verifyDate);
+    $('#auditManDate').val(verifyDate);
+};
