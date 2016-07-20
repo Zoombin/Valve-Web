@@ -13,7 +13,7 @@ class ProjectController extends CommonController {
                 $area=I("post.area");
 
         		if($key){
-        		    $where.=" and CONCAT(`rnum`,address) LIKE '%".$key."%'";
+        		    $where.=" and CONCAT(`rnum`,company) LIKE '%".$key."%'";
         		    $this->assign("key",$key);
         		}
         		if($area==1){
