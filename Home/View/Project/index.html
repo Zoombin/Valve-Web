@@ -131,5 +131,18 @@
 	<include file="Common/footer" />
 	<script type="text/javascript" src="__PUBLIC__/js/customize/index.js">
 	</script>
+	<script>
+		function removeProduct(id){
+			alertify.confirm("确定要删除该报告？", function (e) {
+				if (e) {
+					$.post("{:U('Project/remove')}", { id: id},
+							function(data){
+								alertify.log(data);
+								reload(500);
+							});
+				}
+			});
+		}
+	</script>
 </body>
 </html>

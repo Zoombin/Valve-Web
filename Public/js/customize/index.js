@@ -8,18 +8,6 @@
             fileBottomNavCloseImage : '__PUBLIC__/images/closelabel.gif'
         });
     });
-function removeProduct(id){
-    alertify.confirm("确定要删除该报告？", function (e) {
-        if (e) {
-            $.post("{:U('Project/remove')}", { id: id},
-                function(data){
-                    alertify.log(data);
-                    reload(500);
-                });
-        }
-    });
-}
-
 
 
 //导出excel
