@@ -25,6 +25,18 @@ function load(){
         jiaoyanImg.src= verifyman;
     }
 
+    //若为不合格，记录中的3次实际整定压力和3次密封试验压力都变为/。校验有效期变为/。
+    var verifyResult = document.getElementById("verifyResult").value;
+
+    if(verifyResult=='不合格') {
+        document.getElementById("truepressure1").innerHTML = '<span class="text-info" id="truepressure1">&nbsp;&nbsp;/</span>';
+        document.getElementById("truepressure2").innerHTML = '<span class="text-info" id="truepressure2">&nbsp;&nbsp;/</span>';
+        document.getElementById("truepressure3").innerHTML = '<span class="text-info" id="truepressure3">&nbsp;&nbsp;/</span>';
+        document.getElementById("closepressure1").innerHTML = '<span class="text-info" id="closepressure1">&nbsp;&nbsp;/</span>';
+        document.getElementById("closepressure2").innerHTML = '<span class="text-info" id="closepressure2">&nbsp;&nbsp;/</span>';
+        document.getElementById("closepressure3").innerHTML = '<span class="text-info" id="closepressure3">&nbsp;&nbsp;/</span>';
+        document.getElementById("verifyvalidatedate").innerHTML = '<span id="verifyvalidatedate">/</span>'
+    }
 
 }
 pagesetup_null();

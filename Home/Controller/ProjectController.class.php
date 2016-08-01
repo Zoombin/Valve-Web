@@ -109,6 +109,7 @@ class ProjectController extends CommonController {
                 $project["standard"]=1;
                 $project["verifydate"]=$defaultverifydate;
                 $project["nextverifydate"]=date("Y-m-d",strtotime($defaultverifydate)+364*24*60*60);
+                $project["verifyvalidatedate"]=date("Y-m-d",strtotime($defaultverifydate)+364*24*60*60);
                 $project["verifymandate"]=date("Y-m-d");
                 $project["auditmandate"]=date("Y-m-d");
                 $project["checkmandate"]=date("Y-m-d");
@@ -118,6 +119,9 @@ class ProjectController extends CommonController {
                 $project['verifyman']=$verifyman;
                 $project['checkman']=$checkman;
                 $project['auditman']=$auditman;
+                $project['wgjc']='良好';
+                $project['temperature']=15;
+
                 $project['rnum']=getNextRnum($project['sendfrom'],$project['useto']);
 	        }
 	    }

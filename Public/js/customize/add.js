@@ -282,3 +282,42 @@ function verifyDateChange(){
     $('#checkmandate').val(verifyDate);
     $('#auditManDate').val(verifyDate);
 };
+
+//若新旧选择新，则维护检查情况和拆卸检查维修变为无
+$('#new').click(function(){
+    $('[name="repairs[]"]').each(function(){
+        if($(this).val()=="3"){
+            $(this).prop("checked",true);
+        }
+    });
+
+    $('#cxjcwx').val('无');
+});
+
+//若新旧选旧，则维修检查情况为密封面研磨，拆卸也变为密封面研磨
+$('#old').click(function(){
+    $('[name="repairs[]"]').each(function(){
+        if($(this).val()=="1"){
+            $(this).prop("checked",true);
+        }
+    });
+
+    $('#cxjcwx').val('密封面研磨');
+});
+
+//当校验结果选择不合格时：①报告中的新旧情况变为旧。②报告中的维修检查情况变为阀瓣和阀座密封面严重损坏，无法修复。③记录中的拆卸检查维修一项变为密封面研磨。④记录中的校验结论变为不合格。⑤记录中的备注变为阀瓣和阀座密封面严重损坏，无法修复。
+$('#lstverifyResult').change(function(){
+    if($('#lstverifyResult').val()=='不合格'){
+        $('#old').prop('checked',true);
+        $('[name="repairs[]"]').each(function(){
+            if($(this).val()=="2"){
+                $(this).prop("checked",true);
+            }
+        });
+        $('#cxjcwx').val('密封面研磨');
+        $('#recVerifyResult').val('不合格');
+        $('#remarks').val('阀瓣和阀座密封面严重损坏，无法修复。');
+        $('#verifyValidateDate').val('');
+
+    }
+});
