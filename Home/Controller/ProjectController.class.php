@@ -95,17 +95,29 @@ class ProjectController extends CommonController {
                 $this->assign('project', $project); // 赋值数据集
             }
             else{
+                $model=M('project');
+                $lastRecord = $model->order('id desc')->limit(1);
+                $defaultverifydate = $lastRecord->getField('verifydate');
+                $lastRecord = $model->order('id desc')->limit(1);
+                $verifyman = $lastRecord->getField('verifyman');
+                $lastRecord = $model->order('id desc')->limit(1);
+                $checkman = $lastRecord->getField('checkman');
+                $lastRecord = $model->order('id desc')->limit(1);
+                $auditman = $lastRecord->getField('auditman');
                 $project["type"]=1;
                 $project["verifyType"]=1;
                 $project["standard"]=1;
-                $project["verifydate"]=date("Y-m-d");
-                $project["nextverifydate"]=date("Y-m-d",time()+365*24*60*60);
+                $project["verifydate"]=$defaultverifydate;
+                $project["nextverifydate"]=date("Y-m-d",strtotime($defaultverifydate)+364*24*60*60);
                 $project["verifymandate"]=date("Y-m-d");
                 $project["auditmandate"]=date("Y-m-d");
                 $project["checkmandate"]=date("Y-m-d");
                 $project['repairs']=array();
                 $project['sendfrom']=1;
                 $project['useto']='R';
+                $project['verifyman']=$verifyman;
+                $project['checkman']=$checkman;
+                $project['auditman']=$auditman;
                 $project['rnum']=getNextRnum($project['sendfrom'],$project['useto']);
 	        }
 	    }

@@ -53,11 +53,14 @@ function load(){
     if(type=="弹簧式"){
         document.getElementById("type1").setAttribute("checked","checked");
     }
-    if(type=="先导式"){
+    else if(type=="先导式"){
         document.getElementById("type2").setAttribute("checked","checked");
     }
-    if(type=="重锤式"){
+    else if(type=="重锤式"){
         document.getElementById("type3").setAttribute("checked","checked");
+    }
+    else{
+        document.getElementById("type1").setAttribute("checked","checked");
     }
 
     //判断当前校验方式并选中
@@ -65,7 +68,10 @@ function load(){
     if(verifyType=="在线校验"){
         document.getElementById("verifyType2").setAttribute("checked","checked");
     }
-    if(verifyType=="离线校验"){
+    else if(verifyType=="离线校验"){
+        document.getElementById("verifyType1").setAttribute("checked","checked");
+    }
+    else{
         document.getElementById("verifyType1").setAttribute("checked","checked");
     }
 
