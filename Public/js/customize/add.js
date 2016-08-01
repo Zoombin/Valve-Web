@@ -347,7 +347,6 @@ $('#btnMakeData').click(function(){
         }
 
         var random2 = Math.random()*20+1;
-        alert(random2);
         if(random2<=1.5){
             $('#truePressure2').val((needPressure+0.01));
         }
