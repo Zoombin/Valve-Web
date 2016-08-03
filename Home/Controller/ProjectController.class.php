@@ -62,6 +62,43 @@ class ProjectController extends CommonController {
 	    $repairs=getRepairs();
 	    if($id){
 	        $project=M("project")->where("id='".$id."'")->find();
+	        //当压力为0.00时显示空
+            if($project['truepressure1']==0.00){
+                $project["truepressure1"] ='';
+            }
+            if($project['truepressure2']==0.00){
+                $project["truepressure2"] ='';
+            }
+            if($project['truepressure3']==0.00){
+                $project["truepressure3"] ='';
+            }
+            if($project['closepressure1']==0.00){
+                $project["closepressure1"] ='';
+            }
+            if($project['closepressure2']==0.00){
+                $project["closepressure2"] ='';
+            }
+            if($project['closepressure3']==0.00){
+                $project["closepressure3"] ='';
+            }
+            if($project['workpressure']==0.00){
+                $project["workpressure"] ='';
+            }
+            if($project['setpressure']==0.00){
+                $project["setpressure"] ='';
+            }
+            if($project['needpressure']==0.00){
+                $project["needpressure"] ='';
+            }
+            if($project['finalpressure']==0.00){
+                $project["finalpressure"] ='';
+            }
+            if($project['plevelfrom']==0.00){
+                $project["plevelfrom"] ='';
+            }
+             if($project['plevelto']==0.00){
+                $project["plevelto"] ='';
+            }
 	        $project['repairs']=explode(",", $project['repairs']);
 	    }else{
 	            //自动填充公司
@@ -115,7 +152,7 @@ class ProjectController extends CommonController {
                 $project["standard"]=1;
                 $project["verifydate"]=$defaultverifydate;
                 $project["nextverifydate"]=date("Y-m-d",strtotime($defaultverifydate)+364*24*60*60);
-                $project["verifyvalidatedate"]=date("Y-m-d",strtotime($defaultverifydate)+364*24*60*60);
+                $project["verifyvalidatedate"]='';
                 $project["verifymandate"]=$verifymandate;
                 $project["auditmandate"]=$auditmandate;
                 $project["checkmandate"]=$checkmandate;
@@ -127,6 +164,43 @@ class ProjectController extends CommonController {
                 $project['auditman']=$auditman;
                 $project['wgjc']='良好';
                 $project['temperature']=15;
+                //当压力为0.00时显示空
+                if($project['truepressure1']==0.00){
+                    $project["truepressure1"] ='';
+                }
+                if($project['truepressure2']==0.00){
+                    $project["truepressure2"] ='';
+                }
+                if($project['truepressure3']==0.00){
+                    $project["truepressure3"] ='';
+                }
+                if($project['closepressure1']==0.00){
+                    $project["closepressure1"] ='';
+                }
+                if($project['closepressure2']==0.00){
+                    $project["closepressure2"] ='';
+                }
+                if($project['closepressure3']==0.00){
+                    $project["closepressure3"] ='';
+                }
+                if($project['workpressure']==0.00){
+                    $project["workpressure"] ='';
+                }
+                if($project['setpressure']==0.00){
+                    $project["setpressure"] ='';
+                }
+                if($project['needpressure']==0.00){
+                    $project["needpressure"] ='';
+                }
+                if($project['finalpressure']==0.00){
+                    $project["finalpressure"] ='';
+                }
+                if($project['plevelfrom']==0.00){
+                    $project["plevelfrom"] ='';
+                }
+                 if($project['plevelto']==0.00){
+                    $project["plevelto"] ='';
+                }
 
                 $project['rnum']=getNextRnum($project['sendfrom'],$project['useto']);
 	        }
@@ -223,6 +297,44 @@ class ProjectController extends CommonController {
 	    $project["verifymandate"]=date("Y年 m月  d日",strtotime($project['verifymandate']));
 	    $project["auditmandate"]=date("Y年 m月 d日",strtotime($project['auditmandate']));
 	    $project["checkmandate"]=date("Y年 m月 d日",strtotime($project['checkmandate']));
+
+        //当压力为0.00时显示空
+	    if($project['truepressure1']==0.00){
+	        $project["truepressure1"] ='';
+	    }
+	    if($project['truepressure2']==0.00){
+        	$project["truepressure2"] ='';
+        }
+        if($project['truepressure3']==0.00){
+        	$project["truepressure3"] ='';
+        }
+        if($project['closepressure1']==0.00){
+        	$project["closepressure1"] ='';
+        }
+        if($project['closepressure2']==0.00){
+        	$project["closepressure2"] ='';
+        }
+        if($project['closepressure3']==0.00){
+        	$project["closepressure3"] ='';
+        }
+        if($project['workpressure']==0.00){
+            $project["workpressure"] ='';
+        }
+        if($project['setpressure']==0.00){
+            $project["setpressure"] ='';
+        }
+        if($project['needpressure']==0.00){
+            $project["needpressure"] ='';
+        }
+        if($project['finalpressure']==0.00){
+            $project["finalpressure"] ='';
+        }
+        if($project['plevelfrom']==0.00){
+            $project["plevelfrom"] ='';
+        }
+         if($project['plevelto']==0.00){
+            $project["plevelto"] ='';
+        }
 
 	    $this->assign('repairs', $repairsList);
 	    $this->assign('type', $type);
