@@ -326,17 +326,23 @@ $('#lstverifyResult').change(function(){
 //根据概率生成压力
 $('#btnMakeData').click(function(){
     var needPressure = parseFloat($('#needPressure').val());
-    var finalPressure = (needPressure *.9).toFixed(2);
-    $('#setPressure').val(needPressure);
+    var finalPressure;
+    if(needPressure<=0.3){
+        finalPressure = (needPressure-0.03).toFixed(2);
+    }
+    else{
+        finalPressure = (needPressure *.9).toFixed(2);
+    }
+    $('#setPressure').val(needPressure.toFixed(2));
     $('#finalPressure').val(finalPressure);
-    $('#truePressure3').val(needPressure);
+    $('#truePressure3').val(needPressure.toFixed(2));
     $('#closePressure1').val(finalPressure);
     $('#closePressure2').val(finalPressure);
     $('#closePressure3').val(finalPressure);
     if(needPressure){
         var random = Math.random()*10+1;
         if(random<=4){
-            $('#truePressure1').val(needPressure);
+            $('#truePressure1').val(needPressure.toFixed(2));
         }
         else if(random>4 && random<=7){
             var t1 = needPressure+0.01;
@@ -354,7 +360,7 @@ $('#btnMakeData').click(function(){
             $('#truePressure2').val((needPressure-0.01));
         }
         else{
-            $('#truePressure2').val(needPressure);
+            $('#truePressure2').val(needPressure.toFixed(2));
         }
     }
 });
