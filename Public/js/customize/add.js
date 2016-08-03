@@ -281,6 +281,25 @@ function verifyDateChange(){
     $('#verifyManDate').val(verifyDate);
     $('#checkmandate').val(verifyDate);
     $('#auditManDate').val(verifyDate);
+
+    function stringToDate(_date,_format,_delimiter)
+    {
+        var formatLowerCase=_format.toLowerCase();
+        var formatItems=formatLowerCase.split(_delimiter);
+        var dateItems=_date.split(_delimiter);
+        var monthIndex=formatItems.indexOf("mm");
+        var dayIndex=formatItems.indexOf("dd");
+        var yearIndex=formatItems.indexOf("yyyy");
+        var month=parseInt(dateItems[monthIndex]);
+        month-=1;
+        var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+        return formatedDate;
+    }
+    var date = stringToDate(verifyDate,"yyyy-mm-dd","-");
+    alert(date);
+
+    $('#nextVerifyDate').val((date.getFullYear()+1).toString()+'-'+(date.getMonth()+1).toString()+'-'+(date.getDate()-1).toString());
+
 };
 
 //若新旧选择新，则维护检查情况和拆卸检查维修变为无
