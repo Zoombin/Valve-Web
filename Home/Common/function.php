@@ -65,7 +65,8 @@ function getRepairs($id=''){
     $arr=array(
         1=>'密封面研磨',
         2=>'阀瓣和阀座密封面严重损坏，无法修复',
-        3=>'无'
+        3=>'无',
+        4=>'更换零件'
     );
     if($id&&isset($arr[$id])){
         return $arr[$id];
@@ -124,12 +125,10 @@ function getNextRnum($sendfrom='',$useto=''){
     $Users=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'");
     $Count = $Users->count();
     if($Count>0){
+        $Users=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'");
+        $numlist = $Users->order('num')->getField('num',$Count);
         for($i = 0; $i < $Count; $i++)
         {
-
-            $Users=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'");
-            $numlist = $Users->order('num')->getField('num',$Count);
-
             if($i != ($numlist[$i]-1)){
                 $formatnum=sprintf("%05d",$i+1);
                 $rnum = 'SZZTA-'.$sendfrom.$useto.'X-'.$formatnum.'-'.date("Y",time());
@@ -155,10 +154,10 @@ function getNum($sendfrom='',$useto=''){
     $Users=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'");
     $Count = $Users->count();
     if($Count>0){
+        $Users=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'");
+        $numlist = $Users->order('num')->getField('num',$Count);
         for($i = 0; $i < $Count; $i++)
         {
-            $Users=M('project')->where("sendfrom='".$sendfrom."' and useto='".$useto."' and rnum like '%".$year."'");
-            $numlist = $Users->order('num')->getField('num',$Count);
             if($i != ($numlist[$i]-1)){
                 $num = $i+1;
                 return $num;
