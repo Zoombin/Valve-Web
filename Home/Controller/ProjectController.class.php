@@ -372,7 +372,7 @@ class ProjectController extends CommonController {
 	         $this->assign('project', $project);
 	        $this->display ("print1");//报告
 	    }else{
-	        $project["rnum"]= substr($project["rnum"],6,9);
+	        $project["verifynum"]= substr($project["rnum"],6,9);
 	        $this->assign('project', $project);
 	        $this->display ("print2");//校验记录
 	    }
