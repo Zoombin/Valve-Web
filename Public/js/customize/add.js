@@ -296,9 +296,9 @@ function verifyDateChange(){
         return formatedDate;
     }
     var date = stringToDate(verifyDate,"yyyy-mm-dd","-");
-    alert(date);
 
     $('#nextVerifyDate').val((date.getFullYear()+1).toString()+'-'+(date.getMonth()+1).toString()+'-'+(date.getDate()-1).toString());
+    $('#verifyValidateDate').val((date.getFullYear()+1).toString()+'-'+(date.getMonth()+1).toString()+'-'+(date.getDate()-1).toString());
 
 };
 

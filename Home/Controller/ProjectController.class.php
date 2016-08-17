@@ -117,17 +117,40 @@ class ProjectController extends CommonController {
 	            $project["address"]=$address;
 	            $project["contact"]=$contact;
 	            $project["phone"]=$phone;
-	            $project["type"]=1;
+                $lastRecord = $model->order('id desc')->limit(1);
+                $defaultverifydate = $lastRecord->getField('verifydate');
+                $lastRecord = $model->order('id desc')->limit(1);
+                $verifyman = $lastRecord->getField('verifyman');
+                $lastRecord = $model->order('id desc')->limit(1);
+                $checkman = $lastRecord->getField('checkman');
+                $lastRecord = $model->order('id desc')->limit(1);
+                $auditman = $lastRecord->getField('auditman');
+                $lastRecord = $model->order('id desc')->limit(1);
+                $auditmandate = $lastRecord->getField('auditmandate');
+                $lastRecord = $model->order('id desc')->limit(1);
+                $verifymandate = $lastRecord->getField('verifymandate');
+                $lastRecord = $model->order('id desc')->limit(1);
+                $checkmandate = $lastRecord->getField('checkmandate');
+                $project["type"]=1;
                 $project["verifyType"]=1;
                 $project["standard"]=1;
-                $project["verifydate"]=date("Y-m-d");
-                $project["nextverifydate"]=date("Y-m-d",time()+365*24*60*60);
-                $project["verifymandate"]=date("Y-m-d");
-                $project["auditmandate"]=date("Y-m-d");
-                $project["checkmandate"]=date("Y-m-d");
+                $project["verifydate"]=$defaultverifydate;
+                $project["nextverifydate"]=date("Y-m-d",strtotime($defaultverifydate)+364*24*60*60);
+                $project["verifyvalidatedate"]=date("Y-m-d",strtotime($defaultverifydate)+364*24*60*60);;
+                $project["verifymandate"]=$verifymandate;
+                $project["auditmandate"]=$auditmandate;
+                $project["checkmandate"]=$checkmandate;
                 $project['repairs']=array();
                 $project['sendfrom']=1;
                 $project['useto']='R';
+                $project['verifyman']=$verifyman;
+                $project['checkman']=$checkman;
+                $project['auditman']=$auditman;
+                $project['wgjc']='良好';
+                $project['temperature']=15;
+                $project['devnum']='不明';
+                $project['recverifyresult']='合格';
+
                 $project['rnum']=getNextRnum($project['sendfrom'],$project['useto']);
                 $this->assign('project', $project); // 赋值数据集
             }
@@ -152,7 +175,7 @@ class ProjectController extends CommonController {
                 $project["standard"]=1;
                 $project["verifydate"]=$defaultverifydate;
                 $project["nextverifydate"]=date("Y-m-d",strtotime($defaultverifydate)+364*24*60*60);
-                $project["verifyvalidatedate"]='';
+                $project["verifyvalidatedate"]=date("Y-m-d",strtotime($defaultverifydate)+364*24*60*60);;
                 $project["verifymandate"]=$verifymandate;
                 $project["auditmandate"]=$auditmandate;
                 $project["checkmandate"]=$checkmandate;
@@ -164,6 +187,9 @@ class ProjectController extends CommonController {
                 $project['auditman']=$auditman;
                 $project['wgjc']='良好';
                 $project['temperature']=15;
+                $project['devnum']='不明';
+                $project['recverifyresult']='合格';
+
                 //当压力为0.00时显示空
                 if($project['truepressure1']==0.00){
                     $project["truepressure1"] ='';
@@ -338,13 +364,16 @@ class ProjectController extends CommonController {
 
 	    $this->assign('repairs', $repairsList);
 	    $this->assign('type', $type);
-	    $this->assign('project', $project);
+
 	    $this->assign('types', getTypes());
 	    $this->assign('verifyTypes', getVerifyTypes());
 	    $this->assign('standards', getStandards());
 	    if($type==1){
+	         $this->assign('project', $project);
 	        $this->display ("print1");//报告
 	    }else{
+	        $project["rnum"]= substr($project["rnum"],6,9);
+	        $this->assign('project', $project);
 	        $this->display ("print2");//校验记录
 	    }
 	}
