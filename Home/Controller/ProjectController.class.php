@@ -373,6 +373,7 @@ class ProjectController extends CommonController {
 	        $this->display ("print1");//报告
 	    }else{
 	        $project["verifynum"]= substr($project["rnum"],6,9);
+	        $project["verifyvalidatedate"]=date("Y年 m月 d日",strtotime($project['verifyvalidatedate']));
 	        $this->assign('project', $project);
 	        $this->display ("print2");//校验记录
 	    }
