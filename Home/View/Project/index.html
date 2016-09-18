@@ -57,7 +57,8 @@
 							</div>
 
 							<div id="page">
-								<input style="float: right; margin-bottom: 5px;;" type="button" onclick="javascript:method1('mytable')" value="导出Excel">
+
+								<a href="{:U('Project/export')}" id="excel_area"><input style="float: right; margin-bottom: 5px;" type="button"  value="导出Excel"></a>
 								<!--<div id="myTable"></div>-->
 								<!--<div>{$page}</div>-->
 								<a id="btn0"></a>
@@ -136,6 +137,19 @@
 			alertify.confirm("确定要删除该报告？", function (e) {
 				if (e) {
 					$.post("{:U('Project/remove')}", { id: id},
+							function(data){
+								alertify.log(data);
+								reload(500);
+							});
+				}
+			});
+		}
+
+		function exportExcel(){
+			var area = $('#area  option:selected').text();
+			alertify.confirm("确定要删除该报告？", function (e) {
+				if (e) {
+					$.post("{:U('Project/export')}", { area:area},
 							function(data){
 								alertify.log(data);
 								reload(500);

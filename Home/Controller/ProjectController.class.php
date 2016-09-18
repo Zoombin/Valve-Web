@@ -413,4 +413,37 @@ class ProjectController extends CommonController {
 	    imagepng($im);
 	    imagedestroy($im);
 	}
+
+	function export(){
+	    $xlsModel = M('project');
+	    $where="1=1";
+	    $area=I("get.area");
+        if($area==1){
+            $where.=" and sendfrom = 1 and useto = 'R'";
+            $this->assign("currentarea",$area);
+        }
+        if($area==2){
+            $where.=" and sendfrom = 1 and useto = 'G'";
+            $this->assign("currentarea",$area);
+        }
+        if($area==3){
+            $where.=" and sendfrom = 1 and useto = 'D'";
+            $this->assign("currentarea",$area);
+        }
+        if($area==4){
+            $where.=" and sendfrom = 2 and useto = 'R'";
+            $this->assign("currentarea",$area);
+        }
+        if($area==5){
+            $where.=" and sendfrom = 2 and useto = 'G'";
+            $this->assign("currentarea",$area);
+        }
+        if($area==6){
+            $where.=" and sendfrom = 2 and useto = 'D'";
+            $this->assign("currentarea",$area);
+        }
+        $data  = $xlsModel->where($where)->Field('verifydate,company,installposition,devnum,newold,model,gctj,workpressure,needpressure,rnum,verifyresult')->select();
+	    $filename = '安全阀';
+        exportexcel($data,array('日期','使用单位','设备名称','设备代码','新旧情况','安全阀型号','公称通径','工作压力MPa','整定压力MPa','编号','结论'),$filename);
+	}
 }

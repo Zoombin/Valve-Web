@@ -173,3 +173,30 @@ function getNum($sendfrom='',$useto=''){
     }
     return $num;
 }
+
+
+function exportexcel($data=array(),$title=array(),$filename='report'){
+    header("Content-type:application/octet-stream");
+    header("Accept-Ranges:bytes");
+    header("Content-type:application/vnd.ms-excel");
+    header("Content-Disposition:attachment;filename=".$filename.".xls");
+    header("Pragma: no-cache");
+    header("Expires: 0");
+    //导出xls 开始
+    if (!empty($title)){
+        foreach ($title as $k => $v) {
+            $title[$k]=iconv("utf-8", "utf-8",$v);
+        }
+        $title= implode(",", $title);
+        echo "$title\n";
+    }
+    if (!empty($data)){
+        foreach($data as $key=>$val){
+            foreach ($val as $ck => $cv) {
+                $data[$key][$ck]=iconv("utf-8", "utf-8", $cv);
+            }
+            $data[$key]=implode(", ", $data[$key]);
+        }
+        echo implode("\n",$data);
+    }
+}
