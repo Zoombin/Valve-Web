@@ -32,9 +32,6 @@ function load(){
         $('#area').val('6');
     }
 
-    //按区域导出excel
-    $("#excel_area").attr("href", "/valve/index.php?s=/Home/Project/export/area/"+$('#currentarea').val()+".html");
-
     var pageSize = 15;    //每页显示的记录条数
     var curPage=0;        //当前页
     var lastPage;        //最后页
@@ -137,6 +134,10 @@ function load(){
                 $(this).show();
         });
     }
+
+    //按区域导出excel
+    $("#excel_area").attr("href", "/valve/index.php?s=/Home/Project/export/area/"+$('#currentarea').val()+".html");
+    $("#btnExport").show();
 }
 
 function areaChange(){
