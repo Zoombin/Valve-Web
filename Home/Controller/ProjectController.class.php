@@ -68,6 +68,9 @@ class ProjectController extends CommonController {
                 }
 
         		$count=$model->where($where)->count();
+        		//总页数
+        		$this->assign("total",$count);
+        		//最后一页
         		if($pageto=='last'){
                     $pageNo = Ceil($count/15);
                     if($pageNo>1){
