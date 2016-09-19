@@ -52,6 +52,13 @@
 										</select>
 
 									</div>
+									<div class="col-md-8">
+										<a  href="#"  onclick="areaChange('first')">首页</a>&nbsp;&nbsp;
+										<a  href="#"  onclick="areaChange('previous')">上一页</a>&nbsp;&nbsp;
+										当前页：<input id="pageNo" value="{$pageNo}" size="2">&nbsp;&nbsp;
+										<a  href="#"  onclick="areaChange('next')">下一页</a>&nbsp;&nbsp;
+										<a  href="#"  onclick="areaChange('last')">尾页</a>
+									</div>
 									</form>
 								</div>
 							</div>
@@ -61,17 +68,6 @@
 								<a href="{:U('Project/export')}" id="excel_area"><input style="float: right; margin-bottom: 5px;" type="button"  value="导出Excel" id="btnExport" hidden></a>
 								<!--<div id="myTable"></div>-->
 								<!--<div>{$page}</div>-->
-								<a id="btn0"></a>
-								<input id="pageSize" type="text" size="1" maxlength="2" value="getDefaultValue()"/><a> 条 </a> <a href="#" id="pageSizeSet">设置</a>
-								<a id="sjzl"></a>
-								<a  href="#" id="btn1">首页</a>
-								<a  href="#" id="btn2">上一页</a>
-								<a  href="#" id="btn3">下一页</a>
-								<a  href="#" id="btn4">尾页</a>
-								<a>转到 </a>
-								<input id="changePage" type="text" size="1" maxlength="4"/>
-								<a>页 </a>
-								<a  href="#" id="btn5">跳转</a>
 
 								<table class="table table-striped" id="mytable">
 									<tr>
@@ -111,11 +107,11 @@
 											</td>
 										</tr>
 									</volist>
-									<empty name="listxiangcheng">
-										<tr>
-											<td colspan="5">没有数据</td>
-										</tr>
-									</empty>
+									<!--<empty name="listxiangcheng">-->
+										<!--<tr>-->
+											<!--<td colspan="5">没有数据</td>-->
+										<!--</tr>-->
+									<!--</empty>-->
 								</table>
 								<!--<div>{$page}</div>-->
 							</div>
@@ -145,18 +141,7 @@
 			});
 		}
 
-		function exportExcel(){
-			var area = $('#area  option:selected').text();
-			alertify.confirm("确定要删除该报告？", function (e) {
-				if (e) {
-					$.post("{:U('Project/export')}", { area:area},
-							function(data){
-								alertify.log(data);
-								reload(500);
-							});
-				}
-			});
-		}
+
 	</script>
 </body>
 </html>

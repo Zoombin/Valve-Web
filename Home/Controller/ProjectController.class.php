@@ -10,8 +10,34 @@ class ProjectController extends CommonController {
         		$model=M('project');
         		$where="1=1";
         		$key=$_POST["key"];
+
                 $area=I("post.area");
 
+                $pageNo = I("get.pageno");
+
+                //分页
+                if(!$pageNo){
+                    $pageNo = 1;
+                     $this->assign("pageNo",$pageNo);
+                }
+                $to = $pageNo * 15;
+                $from = $to -15;
+                $pageto = I("get.pageto");
+                if($pageto=='next'){
+                    $from +=15;
+                    $this->assign("pageNo",$pageNo+1);
+                }
+                if($pageto=='previous'){
+                    $from -=15;
+                    $this->assign("pageNo",$pageNo-1);
+                }
+                if($pageto=='first'){
+                    $from =0;
+                    $this->assign("pageNo",1);
+                }
+
+
+                //分类
         		if($key){
         		    $where.=" and CONCAT(`rnum`,company) LIKE '%".$key."%'";
         		    $this->assign("key",$key);
@@ -42,12 +68,23 @@ class ProjectController extends CommonController {
                 }
 
         		$count=$model->where($where)->count();
+        		if($pageto=='last'){
+                    $pageNo = Ceil($count/15);
+                    if($pageNo>1){
+                         $from = ($pageNo-1)*15;
+                    }
+                    else{
+                        $from = 0;
+                    }
+                    $this->assign("pageNo",$pageNo);
+                }
+
         		$page = new Page($count);
         		if($key){
         		    $page->parameter["key"]=urlencode($key);
         		    $page->parameter["area"]=urlencode($area);
         		}
-        		$list = $model->where($where)->order('num')->select();
+        		$list = $model->where($where)->order('num')->limit($from,15)->select();
 
         		$this->assign('list', $list); // 赋值数据集
         		$this->assign('page', $page->show());
