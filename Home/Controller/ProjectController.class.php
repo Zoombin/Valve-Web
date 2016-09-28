@@ -458,6 +458,12 @@ class ProjectController extends CommonController {
 	    $xlsModel = M('project');
 	    $where="1=1";
 	    $area=I("get.area");
+	    $key=I("get.key");
+
+	    if($key){
+            $where.=" and CONCAT(`rnum`,company) LIKE '%".$key."%'";
+        }
+
         if($area==1){
             $where.=" and sendfrom = 1 and useto = 'R'";
             $this->assign("currentarea",$area);
