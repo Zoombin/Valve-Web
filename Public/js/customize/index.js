@@ -31,6 +31,16 @@ function load(){
     if($('#currentarea').val()==6){
         $('#area').val('6');
     }
+    if($('#currentarea').val()==7){
+        $('#area').val('7');
+    }
+    if($('#currentarea').val()==8){
+        $('#area').val('8');
+    }
+    if($('#currentarea').val()==9){
+        $('#area').val('9');
+    }
+
 
     //按区域导出excel
     $("#excel_area").attr("href", "/valve/index.php?s=/Home/Project/export/area/"+$('#currentarea').val()+"/key/"+$('#key').val()+".html");

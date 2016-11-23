@@ -66,6 +66,18 @@ class ProjectController extends CommonController {
                     $where.=" and sendfrom = 2 and useto = 'D'";
                     $this->assign("currentarea",$area);
                 }
+                if($area==7){
+                    $where.=" and sendfrom = 3 and useto = 'R'";
+                    $this->assign("currentarea",$area);
+                }
+                if($area==8){
+                    $where.=" and sendfrom = 3 and useto = 'G'";
+                    $this->assign("currentarea",$area);
+                }
+                if($area==9){
+                    $where.=" and sendfrom = 3 and useto = 'D'";
+                    $this->assign("currentarea",$area);
+                }
 
         		$count=$model->where($where)->count();
         		//总页数

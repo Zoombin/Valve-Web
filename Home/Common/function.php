@@ -78,7 +78,8 @@ function getRepairs($id=''){
 function getSendfrom($id=''){
     $arr=array(
         1=>'相城区',
-        2=>'吴中区'
+        2=>'吴中区',
+        3=>'在线'
     );
     if($id&&isset($arr[$id])){
         return $arr[$id];
