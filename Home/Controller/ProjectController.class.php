@@ -396,7 +396,7 @@ class ProjectController extends CommonController {
         	$project["closepressure3"] ='';
         }
         if($project['workpressure']==0.00){
-            $project["workpressure"] ='';
+            $project["workpressure"] ='/';
         }
         if($project['setpressure']==0.00){
             $project["setpressure"] ='';
@@ -405,7 +405,7 @@ class ProjectController extends CommonController {
             $project["needpressure"] ='';
         }
         if($project['finalpressure']==0.00){
-            $project["finalpressure"] ='';
+            $project["finalpressure"] ='/';
         }
         if($project['plevelfrom']==0.00){
             $project["plevelfrom"] ='';
