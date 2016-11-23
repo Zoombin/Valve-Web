@@ -97,6 +97,14 @@ function load(){
     }
 
 
+
+    //默认氮气
+    if(document.getElementById("verifyMedium").value==''){
+        document.getElementById("verifyMedium").value='氮气';
+    }
+
+
+
     //selectlist选中那个人
     var auditman= document.getElementById("txtauditMan").value;
     if(auditman=="/valve/Public/images/feng.jpg"){
