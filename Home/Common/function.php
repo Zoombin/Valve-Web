@@ -70,7 +70,7 @@ function getRepairs($id=''){
         5=>'密封面漏气',
         6=>'螺纹接口损坏',
         7=>'表面油漆',
-        8=>'拆解清污'
+        8=>'清污'
     );
     if($id&&isset($arr[$id])){
         return $arr[$id];
