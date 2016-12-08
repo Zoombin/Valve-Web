@@ -40,7 +40,6 @@ function load()
     //设备代码为空时显示不明
     var devnum= document.getElementById("txtdevnum").value;
     if(devnum.trim()=='') {
-        alert(1);
         document.getElementById("devnum").innerHTML = '<div style="text-align: center;">' + '不明' + '</div>';
     }
     else{
