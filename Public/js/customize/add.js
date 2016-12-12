@@ -105,7 +105,7 @@ function load(){
 
 
 
-    //selectlist选中那个人
+    //校验
     var auditman= document.getElementById("txtauditMan").value;
     if(auditman=="/valve/Public/images/feng.jpg"){
         var opts = document.getElementById('auditMan');
@@ -147,6 +147,22 @@ function load(){
             }
         }
     }
+    else if(auditman=="/valve/Public/images/lixin.jpg"){
+        var opts = document.getElementById('auditMan');
+        for(var i=0;i<opts.options.length;i++){
+            if('/valve/Public/images/lixin.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(auditman=="/valve/Public/images/liwei.jpg"){
+        var opts = document.getElementById('auditMan');
+        for(var i=0;i<opts.options.length;i++){
+            if('/valve/Public/images/liwei.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
     else{
         var opts = document.getElementById('auditMan');
         for(var i=0;i<opts.options.length;i++){
@@ -157,7 +173,7 @@ function load(){
     }
 
 
-
+    //审核签名
     var checkman= document.getElementById("txtcheckman").value;
     if(checkman=="/valve/Public/images/feng.jpg"){
         var opts = document.getElementById('checkman');
@@ -199,6 +215,22 @@ function load(){
             }
         }
     }
+    else if(checkman=="/valve/Public/images/lixin.jpg"){
+        var opts = document.getElementById('checkman');
+        for(var i=0;i<opts.options.length;i++){
+            if('/valve/Public/images/lixin.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(checkman=="/valve/Public/images/liwei.jpg"){
+        var opts = document.getElementById('checkman');
+        for(var i=0;i<opts.options.length;i++){
+            if('/valve/Public/images/liwei.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
     else{
         var opts = document.getElementById('checkman');
         for(var i=0;i<opts.options.length;i++){
@@ -211,7 +243,7 @@ function load(){
 
 
 
-
+    //审批签名
     var verifyman= document.getElementById("txtverifyman").value;
     if(verifyman=="/valve/Public/images/feng.jpg"){
         var opts = document.getElementById('verifyMan');
@@ -249,6 +281,22 @@ function load(){
         var opts = document.getElementById('verifyMan');
         for(var i=0;i<opts.options.length;i++){
             if('/valve/Public/images/xu.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(verifyman=="/valve/Public/images/lixin.jpg"){
+        var opts = document.getElementById('verifyMan');
+        for(var i=0;i<opts.options.length;i++){
+            if('/valve/Public/images/lixin.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(verifyman=="/valve/Public/images/liwei.jpg"){
+        var opts = document.getElementById('verifyMan');
+        for(var i=0;i<opts.options.length;i++){
+            if('/valve/Public/images/liwei.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
