@@ -500,6 +500,18 @@ class ProjectController extends CommonController {
             $where.=" and sendfrom = 2 and useto = 'D'";
             $this->assign("currentarea",$area);
         }
+        if($area==7){
+            $where.=" and sendfrom = 3 and useto = 'R'";
+            $this->assign("currentarea",$area);
+        }
+        if($area==8){
+            $where.=" and sendfrom = 3 and useto = 'G'";
+            $this->assign("currentarea",$area);
+        }
+        if($area==9){
+            $where.=" and sendfrom = 3 and useto = 'D'";
+            $this->assign("currentarea",$area);
+        }
         $data  = $xlsModel->where($where)->Field('verifydate,company,installposition,devnum,newold,model,gctj,workpressure,needpressure,rnum,verifyresult')->order('num')->select();
 	    $filename = '安全阀';
         exportexcel($data,array('日期','使用单位','设备名称','设备代码','新旧情况','安全阀型号','公称通径','工作压力MPa','整定压力MPa','编号','结论'),$filename);
