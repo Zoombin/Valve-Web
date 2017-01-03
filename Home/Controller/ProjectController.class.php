@@ -369,7 +369,9 @@ class ProjectController extends CommonController {
 	        }
 	        $repairsList[]=$tmp;
 	    }
-	    $this->assign('year', date("Y",strtotime($project['verifydate'])));
+	    //这个值始终是2016
+	    $this->assign('year', 2016);
+
 	    $project["verifydate"]=date("Y年  m月 d日",strtotime($project['verifydate']));
 	    $project["nextverifydate"]=date("Y年  m月 d日",strtotime($project['nextverifydate']));
 	    $project["verifymandate"]=date("Y年 m月  d日",strtotime($project['verifymandate']));
