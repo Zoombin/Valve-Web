@@ -38,8 +38,8 @@
 							<div class="search-section">
 								<div class="input-group">
 									<form action="{:U('Project/index')}" method="post" id="areaForm">
-									<label class="control-label col-md-4" style="padding-top: 8px;">区域:</label>
-									<div class="col-md-8">
+									<label class="control-label col-md-1" style="padding-top: 8px;">区域:</label>
+									<div class="col-md-3">
 										<!--为了翻页时保留搜索条件-->
 										<div hidden><input class="form-control" placeholder="编号/公司名称" name="key" value="{$key}" type="text" id="key"></div>
 										<div hidden><input class="form-control" id="currentarea" name="currentarea" value="{$currentarea}" type="text"></div>
@@ -55,8 +55,13 @@
 											<option value="8">在线锅炉上</option>
 											<option value="9">在线管道上</option>
 										</select>
-
 									</div>
+
+									<label class="control-label col-md-1" style="padding-top: 8px;">年份:</label>
+									<div class="col-md-2">
+										<input type="text" class="form-control" name="search_year" id="search_year" value="{$search_year}">
+									</div>
+
 									<div class="col-md-12">
 										<a  href="#"  onclick="areaChange('first')">首页</a>&nbsp;&nbsp;
 										<a  href="#"  onclick="areaChange('previous')">上一页</a>&nbsp;&nbsp;
