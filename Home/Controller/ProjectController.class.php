@@ -81,9 +81,11 @@ class ProjectController extends CommonController {
 
                 //年份筛选
                 $search_year=I("post.search_year");
-                $where.=" and substring(rnum, -4) = ".$search_year;
-                $this->assign("search_year",$search_year);
-
+                if($search_year){
+                    $where.=" and substring(rnum, -4) = ".$search_year;
+                    $this->assign("search_year",$search_year);
+                }
+                
         		$count=$model->where($where)->count();
         		//总页数
         		$this->assign("total",$count);
