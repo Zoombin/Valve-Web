@@ -85,7 +85,7 @@ class ProjectController extends CommonController {
                     $where.=" and substring(rnum, -4) = ".$search_year;
                     $this->assign("search_year",$search_year);
                 }
-                
+
         		$count=$model->where($where)->count();
         		//总页数
         		$this->assign("total",$count);
@@ -480,6 +480,7 @@ class ProjectController extends CommonController {
 	    $where="1=1";
 	    $area=I("get.area");
 	    $key=I("get.key");
+	    $year=I("get.year");
 
 	    if($key){
             $where.=" and CONCAT(`rnum`,company) LIKE '%".$key."%'";
@@ -521,6 +522,18 @@ class ProjectController extends CommonController {
             $where.=" and sendfrom = 3 and useto = 'D'";
             $this->assign("currentarea",$area);
         }
+        if($area==9){
+            $where.=" and sendfrom = 3 and useto = 'D'";
+            $this->assign("currentarea",$area);
+        }
+
+        //年份筛选
+        $search_year=I("get.search_year");
+        if($search_year){
+            $where.=" and substring(rnum, -4) = ".$search_year;
+            $this->assign("search_year",$search_year);
+        }
+
         $data  = $xlsModel->where($where)->Field('verifydate,company,installposition,devnum,newold,model,gctj,workpressure,needpressure,rnum,verifyresult')->order('num')->select();
 	    $filename = '安全阀';
         exportexcel($data,array('日期','使用单位','设备名称','设备代码','新旧情况','安全阀型号','公称通径','工作压力MPa','整定压力MPa','编号','结论'),$filename);

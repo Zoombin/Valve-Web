@@ -43,7 +43,7 @@ function load(){
 
 
     //按区域导出excel
-    $("#excel_area").attr("href", "/valve/index.php?s=/Home/Project/export/area/"+$('#currentarea').val()+"/key/"+$('#key').val()+".html");
+    $("#excel_area").attr("href", "/valve/index.php?s=/Home/Project/export/area/"+$('#currentarea').val()+"/key/"+$('#key').val()+"/search_year/"+$('#search_year').val()+".html");
     $("#btnExport").show();
 }
 
