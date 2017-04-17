@@ -39,7 +39,7 @@ class ProjectController extends CommonController {
 
                 //分类
         		if($key){
-        		    $where.=" and CONCAT(`rnum`,company) LIKE '%".$key."%'";
+        		    $where.=" and CONCAT(CONCAT(`rnum`,company),address) LIKE '%".$key."%'";
         		    $this->assign("key",$key);
         		}
         		if($area==1){
