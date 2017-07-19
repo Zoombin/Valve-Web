@@ -163,6 +163,14 @@ function load(){
             }
         }
     }
+    else if(auditman=="/valve/Public/images/shao.jpg"){
+        var opts = document.getElementById('auditMan');
+        for(var i=0;i<opts.options.length;i++){
+            if('/valve/Public/images/shao.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
     else{
         var opts = document.getElementById('auditMan');
         for(var i=0;i<opts.options.length;i++){
@@ -227,6 +235,14 @@ function load(){
         var opts = document.getElementById('checkman');
         for(var i=0;i<opts.options.length;i++){
             if('/valve/Public/images/liwei.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(checkman=="/valve/Public/images/shao.jpg"){
+        var opts = document.getElementById('checkman');
+        for(var i=0;i<opts.options.length;i++){
+            if('/valve/Public/images/shao.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
@@ -297,6 +313,14 @@ function load(){
         var opts = document.getElementById('verifyMan');
         for(var i=0;i<opts.options.length;i++){
             if('/valve/Public/images/liwei.jpg'==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
+    else if(verifyman=="/valve/Public/images/shao.jpg"){
+        var opts = document.getElementById('verifyMan');
+        for(var i=0;i<opts.options.length;i++){
+            if('/valve/Public/images/shao.jpg'==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
