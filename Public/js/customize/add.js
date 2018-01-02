@@ -103,236 +103,155 @@ function load(){
         document.getElementById("verifyMedium").value='氮气';
     }
 
-
-
+    var feng = "/valve/Public/images/feng.jpg";
+    var pu = "/valve/Public/images/pu.jpg";
+    var zhou = "/valve/Public/images/zhou.jpg";
+    var ma = "/valve/Public/images/ma.jpg";
+    var xu = "/valve/Public/images/xu.jpg";
+    var lixin = "/valve/Public/images/lixin.jpg"
+    var liwei = "/valve/Public/images/liwei.jpg";
+    var shao = "/valve/Public/images/shao.jpg";
+    var fugengxing = "/valve/Public/images/fugengxing.png";
+    var xuyongqiang = "/valve/Public/images/xuyongqian.png";
+    var defaultSign = "0";
     //校验
     var auditman= document.getElementById("txtauditMan").value;
-    if(auditman=="/valve/Public/images/feng.jpg"){
-        var opts = document.getElementById('auditMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/feng.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(auditman=="/valve/Public/images/pu.jpg"){
-        var opts = document.getElementById('auditMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/pu.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(auditman=="/valve/Public/images/zhou.jpg"){
-        var opts = document.getElementById('auditMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/zhou.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(auditman=="/valve/Public/images/ma.jpg"){
-        var opts = document.getElementById('auditMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/ma.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(auditman=="/valve/Public/images/xu.jpg"){
-        var opts = document.getElementById('auditMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/xu.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(auditman=="/valve/Public/images/lixin.jpg"){
-        var opts = document.getElementById('auditMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/lixin.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(auditman=="/valve/Public/images/liwei.jpg"){
-        var opts = document.getElementById('auditMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/liwei.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(auditman=="/valve/Public/images/shao.jpg"){
-        var opts = document.getElementById('auditMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/shao.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else{
-        var opts = document.getElementById('auditMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('0'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
+    switch(auditman) {
+        case feng:
+            doAuditManSelect(feng);
+            break;
+        case pu:
+            doAuditManSelect(pu);
+            break;
+        case zhou:
+            doAuditManSelect(zhou);
+            break;
+        case ma:
+            doAuditManSelect(ma);
+            break;
+        case xu:
+            doAuditManSelect(xu);
+            break;
+        case lixin:
+            doAuditManSelect(lixin);
+            break;
+        case liwei:
+            doAuditManSelect(liwei);
+            break;
+        case shao:
+            doAuditManSelect(shao);
+            break;         
+        case fugengxing:
+            doAuditManSelect(fugengxing);
+            break; 
+        case xuyongqiang:
+            doAuditManSelect(xuyongqiang);
+            break;    
+        default:
+            doAuditManSelect(defaultSign);
     }
 
-
+    function doAuditManSelect(param){
+        var opts = document.getElementById('auditMan');
+        for(var i=0;i<opts.options.length;i++){
+            if(param==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
     //审核签名
     var checkman= document.getElementById("txtcheckman").value;
-    if(checkman=="/valve/Public/images/feng.jpg"){
-        var opts = document.getElementById('checkman');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/feng.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(checkman=="/valve/Public/images/pu.jpg"){
-        var opts = document.getElementById('checkman');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/pu.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(checkman=="/valve/Public/images/zhou.jpg"){
-        var opts = document.getElementById('checkman');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/zhou.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(checkman=="/valve/Public/images/ma.jpg"){
-        var opts = document.getElementById('checkman');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/ma.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(checkman=="/valve/Public/images/xu.jpg"){
-        var opts = document.getElementById('checkman');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/xu.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(checkman=="/valve/Public/images/lixin.jpg"){
-        var opts = document.getElementById('checkman');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/lixin.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(checkman=="/valve/Public/images/liwei.jpg"){
-        var opts = document.getElementById('checkman');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/liwei.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(checkman=="/valve/Public/images/shao.jpg"){
-        var opts = document.getElementById('checkman');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/shao.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else{
-        var opts = document.getElementById('checkman');
-        for(var i=0;i<opts.options.length;i++){
-            if('0'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
+    switch(checkman) {
+        case feng:
+            doCheckManSelect(feng);
+            break;
+        case pu:
+            doCheckManSelect(pu);
+            break;
+        case zhou:
+            doCheckManSelect(zhou);
+            break;
+        case ma:
+            doCheckManSelect(ma);
+            break;
+        case xu:
+            doCheckManSelect(xu);
+            break;
+        case lixin:
+            doCheckManSelect(lixin);
+            break;
+        case liwei:
+            doCheckManSelect(liwei);
+            break;
+        case shao:
+            doCheckManSelect(shao);
+            break;       
+        case fugengxing:
+            doCheckManSelect(fugengxing);
+            break; 
+        case xuyongqiang:
+            doCheckManSelect(xuyongqiang);
+            break;       
+        default:
+            doCheckManSelect(defaultSign);
     }
 
-
-
+    function doCheckManSelect(param){
+        var opts = document.getElementById('checkman');
+        for(var i=0;i<opts.options.length;i++){
+            if(param==opts.options[i].value){
+                opts.options[i].selected = 'selected';
+            }
+        }
+    }
 
     //审批签名
     var verifyman= document.getElementById("txtverifyman").value;
-    if(verifyman=="/valve/Public/images/feng.jpg"){
+    switch(verifyman) {
+        case feng:
+            doVerifyManSelect(feng);
+            break;
+        case pu:
+            doVerifyManSelect(pu);
+            break;
+        case zhou:
+            doVerifyManSelect(zhou);
+            break;
+        case ma:
+            doVerifyManSelect(ma);
+            break;
+        case xu:
+            doVerifyManSelect(xu);
+            break;
+        case lixin:
+            doVerifyManSelect(lixin);
+            break;
+        case liwei:
+            doVerifyManSelect(liwei);
+            break;
+        case shao:
+            doVerifyManSelect(shao);
+            break;      
+        case fugengxing:
+            doVerifyManSelect(fugengxing);
+            break; 
+        case xuyongqiang:
+            doVerifyManSelect(xuyongqiang);
+            break;        
+        default:
+            doVerifyManSelect(defaultSign);
+    }
+
+    function doVerifyManSelect(param){
         var opts = document.getElementById('verifyMan');
         for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/feng.jpg'==opts.options[i].value){
+            if(param==opts.options[i].value){
                 opts.options[i].selected = 'selected';
             }
         }
     }
-    else if(verifyman=="/valve/Public/images/pu.jpg"){
-        var opts = document.getElementById('verifyMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/pu.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(verifyman=="/valve/Public/images/zhou.jpg"){
-        var opts = document.getElementById('verifyMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/zhou.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(verifyman=="/valve/Public/images/ma.jpg"){
-        var opts = document.getElementById('verifyMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/ma.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(verifyman=="/valve/Public/images/xu.jpg"){
-        var opts = document.getElementById('verifyMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/xu.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(verifyman=="/valve/Public/images/lixin.jpg"){
-        var opts = document.getElementById('verifyMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/lixin.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(verifyman=="/valve/Public/images/liwei.jpg"){
-        var opts = document.getElementById('verifyMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/liwei.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else if(verifyman=="/valve/Public/images/shao.jpg"){
-        var opts = document.getElementById('verifyMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('/valve/Public/images/shao.jpg'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
-    else{
-        var opts = document.getElementById('verifyMan');
-        for(var i=0;i<opts.options.length;i++){
-            if('0'==opts.options[i].value){
-                opts.options[i].selected = 'selected';
-            }
-        }
-    }
+
+
 
 
     var listcompanys = $('#listcompanys').html();
