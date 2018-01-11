@@ -113,6 +113,7 @@ function load(){
     var shao = "/valve/Public/images/shao.jpg";
     var fugengxing = "/valve/Public/images/fugengxing.png";
     var xuyongqian = "/valve/Public/images/xuyongqian.png";
+    var gengzhijun = "/valve/Public/images/gengzhijun.jpg";
     var defaultSign = "0";
     //校验
     var auditman= document.getElementById("txtauditman").value;
@@ -147,6 +148,9 @@ function load(){
         case xuyongqian:
             doAuditManSelect(xuyongqian);
             break;    
+        case gengzhijun:
+            doAuditManSelect(gengzhijun);
+            break;  
         default:
             doAuditManSelect(defaultSign);
     }
@@ -191,7 +195,10 @@ function load(){
             break; 
         case xuyongqian:
             doCheckManSelect(xuyongqian);
-            break;       
+            break;      
+        case gengzhijun:
+            doCheckManSelect(gengzhijun);
+            break;   
         default:
             doCheckManSelect(defaultSign);
     }
@@ -237,7 +244,10 @@ function load(){
             break; 
         case xuyongqian:
             doVerifyManSelect(xuyongqian);
-            break;        
+            break;       
+        case gengzhijun:
+            doVerifyManSelect(gengzhijun);
+            break;   
         default:
             doVerifyManSelect(defaultSign);
     }
